@@ -12,7 +12,6 @@ import {
   withWidth,
   isWidthUp
 } from "@material-ui/core";
-import headerImage from "../../dummy_data/images/headerImage.jpg";
 import pattern from "../../dummy_data/images/Pattern.png";
 import boy from "../../dummy_data/images/boy.png";
 import blankCanvas from "../../dummy_data/images/blankCanvas.png";
@@ -20,24 +19,7 @@ import Image from "../../../shared/components/Image";
 import WaveBorder from "../../../shared/components/WaveBorder";
 
 const styles = theme => ({
-  // extraLargeButtonLabel: {
-  //   fontSize: theme.typography.body1.fontSize,
-  //   [theme.breakpoints.up("sm")]: {
-  //     fontSize: theme.typography.h6.fontSize
-  //   }
-  // },
-  // extraLargeButton: {
-  //   paddingTop: theme.spacing(1.5),
-  //   paddingBottom: theme.spacing(1.5),
-  //   [theme.breakpoints.up("xs")]: {
-  //     paddingTop: theme.spacing(1),
-  //     paddingBottom: theme.spacing(1)
-  //   },
-  //   [theme.breakpoints.up("lg")]: {
-  //     paddingTop: theme.spacing(2),
-  //     paddingBottom: theme.spacing(2)
-  //   }
-  // },
+  
   card: {
     boxShadow: theme.shadows[0],
     marginLeft: theme.spacing(2),

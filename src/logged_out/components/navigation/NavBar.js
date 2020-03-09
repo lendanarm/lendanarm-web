@@ -55,8 +55,13 @@ function NavBar(props) {
   } = props;
   const menuItems = [
     {
-      link: "/blog",
-      name: "News",
+      link: "/donate",
+      name: "Donate Blood",
+      icon: <BookIcon className="text-white" />
+    },
+    {
+      link: "/host",
+      name: "Host a Blood Drive",
       icon: <BookIcon className="text-white" />
     },
     {

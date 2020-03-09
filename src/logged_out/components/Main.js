@@ -44,7 +44,7 @@ class Main extends PureComponent {
 
   selectBlog = () => {
     smoothScrollTop();
-    document.title = "WaVer - Blog";
+    document.title = "Lend An Arm - Blog";
     this.setState({ selectedTab: "Blog" });
   };
 

@@ -76,14 +76,14 @@ function NavBar(props) {
     },
     {
       name: "Login",
-      onClick: openLoginDialog,
+      // onClick: openLoginDialog,
       variant: "outlined",
       icon: <LockOpenIcon className="text-white" />
     },
     {
       name: "Register",
       variant: "contained",
-      onClick: openRegisterDialog,
+      // onClick: openRegisterDialog,
       icon: <HowToRegIcon className="text-white" />
     }
   ];

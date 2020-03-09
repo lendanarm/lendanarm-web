@@ -242,7 +242,7 @@ function CtaSection(props) {
                             variant="body1"
                             style={{ color: "#FFF" }}
                           >
-                            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. 
+                            Track your donations, receive your medical reports. Create a blood drive; start a virtual donation campaign; connect, chat, and form bonds. 
                           </Typography>
                         </Box>
                         <Button

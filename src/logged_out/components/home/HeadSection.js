@@ -159,7 +159,7 @@ function HeadSection(props) {
                           className={classes.headerText}
                           variant={isWidthUp("lg", width) ? "h3" : "h4"}
                         >
-                          Lend An Arm
+                          Urgent Need For Blood?
                         </Typography>
                       </Box>
                       <div>

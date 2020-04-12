@@ -155,7 +155,7 @@ class LoginDialog extends PureComponent {
               />
               {status === "verificationEmailSend" ? (
                 <HighlightedInformation>
-                  We have send instructions on how to reset your password to
+                  We have sent instructions on how to reset your password to
                   your email address
                 </HighlightedInformation>
               ) : (

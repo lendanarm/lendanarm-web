@@ -16,6 +16,9 @@ import HowToRegIcon from "@material-ui/icons/HowToReg";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import BookIcon from "@material-ui/icons/Book";
 import NavigationDrawer from "../../../shared/components/NavigationDrawer";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import ApartmentIcon from "@material-ui/icons/Apartment";
+import OpacityIcon from "@material-ui/icons/Opacity";
 
 const styles = (theme) => ({
   appBar: {
@@ -57,28 +60,28 @@ function NavBar(props) {
     {
       link: "/our-solution",
       name: "Our Solution",
-      icon: <BookIcon className="text-white" />,
+      icon: <FavoriteBorderIcon className="text-white" />,
     },
     {
       link: "/host-drive",
       name: "Host a blood drive",
-      icon: <BookIcon className="text-white" />,
+      icon: <ApartmentIcon className="text-white" />,
     },
     {
       link: "/become-donor",
       name: "Become a donor",
-      icon: <BookIcon className="text-white" />,
+      icon: <OpacityIcon className="text-white" />,
     },
     {
       name: "Sign in",
-      // onClick: openLoginDialog,
+      onClick: openLoginDialog,
       variant: "outlined",
       icon: <LockOpenIcon className="text-white" />,
     },
     {
       name: "Join now",
       variant: "contained",
-      // onClick: openRegisterDialog,
+      onClick: openRegisterDialog,
       icon: <HowToRegIcon className="text-white" />,
     },
   ];

@@ -107,6 +107,10 @@ const styles = (theme) => ({
     fontSize: "4rem",
     lineHeight: "4.875rem",
     color: "#1A1A1A",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "2.5rem",
+      lineHeight: "2.5rem",
+    },
   },
   barMargin: {
     margin: theme.spacing(1),
@@ -157,7 +161,7 @@ function HeadSection(props) {
                       <Box mb={4}>
                         <Typography
                           className={classes.headerText}
-                          variant={isWidthUp("lg", width) ? "h3" : "h4"}
+                          variant={isWidthUp("lg", width) ? "h4" : "h5"}
                         >
                           Urgent Need For Blood.
                         </Typography>
@@ -177,27 +181,55 @@ function HeadSection(props) {
                           </Typography>
                         </Box>
                         <span>
-                          <span className={classes.barMargin}>
-                            <Button
-                              variant="contained"
-                              color="primary"
-                              size="large"
-                              // className={classes.butt}
-                              href="/hospitals"
-                            >
-                              For Hospitals
-                            </Button>
-                          </span>
-                          <span className={classes.barMargin}>
-                            <Button
-                              variant="outlined"
-                              color="primary"
-                              size="large"
-                              href="/contact"
-                            >
-                              For Blood Donors
-                            </Button>
-                          </span>
+                          {isWidthUp("sm", width) ? (
+                            <>
+                              <span className={classes.barMargin}>
+                                <Button
+                                  variant="contained"
+                                  color="primary"
+                                  size="large"
+                                  // className={classes.butt}
+                                  href="/hospitals"
+                                >
+                                  For Hospitals
+                                </Button>
+                              </span>
+                              <span className={classes.barMargin}>
+                                <Button
+                                  variant="outlined"
+                                  color="primary"
+                                  size="large"
+                                  href="/contact"
+                                >
+                                  For Blood Donors
+                                </Button>
+                              </span>
+                            </>
+                          ) : (
+                            <>
+                              <div className={classes.barMargin}>
+                                <Button
+                                  variant="contained"
+                                  color="primary"
+                                  size="large"
+                                  // className={classes.butt}
+                                  href="/hospitals"
+                                >
+                                  For Hospitals
+                                </Button>
+                              </div>
+                              <div className={classes.barMargin}>
+                                <Button
+                                  variant="outlined"
+                                  color="primary"
+                                  size="large"
+                                  href="/contact"
+                                >
+                                  For Blood Donors
+                                </Button>
+                              </div>
+                            </>
+                          )}
                         </span>
                       </div>
                     </Box>

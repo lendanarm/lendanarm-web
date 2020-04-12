@@ -8,7 +8,7 @@ import {
   Button,
   Hidden,
   IconButton,
-  withStyles
+  withStyles,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
@@ -17,30 +17,30 @@ import LockOpenIcon from "@material-ui/icons/LockOpen";
 import BookIcon from "@material-ui/icons/Book";
 import NavigationDrawer from "../../../shared/components/NavigationDrawer";
 
-const styles = theme => ({
+const styles = (theme) => ({
   appBar: {
     boxShadow: theme.shadows[2],
-    backgroundColor: theme.palette.common.white
+    backgroundColor: theme.palette.common.white,
   },
   toolbar: {
     display: "flex",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
   },
   menuButtonText: {
     fontSize: theme.typography.h6.fontSize,
     fontWeight: theme.typography.h6.fontWeight,
-    fontStyle: theme.typography.h6.fontStyle
+    fontStyle: theme.typography.h6.fontStyle,
   },
   brandText: {
     fontFamily: "'Baloo Bhaijaan', cursive",
-    fontWeight: 400
+    fontWeight: 400,
   },
   noDecoration: {
-    textDecoration: "none !important"
+    textDecoration: "none !important",
   },
   barMargin: {
     margin: theme.spacing(1),
-  }
+  },
 });
 
 function NavBar(props) {
@@ -51,60 +51,52 @@ function NavBar(props) {
     handleMobileDrawerOpen,
     handleMobileDrawerClose,
     mobileDrawerOpen,
-    selectedTab
+    selectedTab,
   } = props;
   const menuItems = [
     {
-      link: "/donate",
-      name: "Donate Blood",
-      icon: <BookIcon className="text-white" />
+      link: "/our-solution",
+      name: "Our Solution",
+      icon: <BookIcon className="text-white" />,
     },
     {
-      link: "/host",
-      name: "Host a Blood Drive",
-      icon: <BookIcon className="text-white" />
+      link: "/host-drive",
+      name: "Host a blood drive",
+      icon: <BookIcon className="text-white" />,
     },
     {
-      link: "/about",
-      name: "About Us",
-      icon: <BookIcon className="text-white" />
+      link: "/become-donor",
+      name: "Become a donor",
+      icon: <BookIcon className="text-white" />,
     },
     {
-      link: "/contact",
-      name: "Contact Us",
-      icon: <BookIcon className="text-white" />
-    },
-    {
-      link: "/translate",
-      name: "English",
-      icon: <BookIcon className="text-white" />
-    },
-    {
-      name: "Login",
+      name: "Sign in",
       // onClick: openLoginDialog,
       variant: "outlined",
-      icon: <LockOpenIcon className="text-white" />
+      icon: <LockOpenIcon className="text-white" />,
     },
     {
-      name: "Register",
+      name: "Join now",
       variant: "contained",
       // onClick: openRegisterDialog,
-      icon: <HowToRegIcon className="text-white" />
-    }
+      icon: <HowToRegIcon className="text-white" />,
+    },
   ];
   return (
     <div className={classes.root}>
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
           <div>
-            <Typography
-              variant="h4"
-              className={classes.brandText}
-              display="inline"
-              color="primary"
-            >
-              LendAnArm
-            </Typography>
+            <Link to="/" className={classes.noDecoration}>
+              <Typography
+                variant="h4"
+                className={classes.brandText}
+                display="inline"
+                color="primary"
+              >
+                LendAnArm
+              </Typography>
+            </Link>
           </div>
           <div>
             <Hidden mdUp>
@@ -116,7 +108,7 @@ function NavBar(props) {
               </IconButton>
             </Hidden>
             <Hidden smDown>
-              {menuItems.map(element => {
+              {menuItems.map((element) => {
                 if (element.link) {
                   return (
                     <Link
@@ -137,16 +129,16 @@ function NavBar(props) {
                 }
                 return (
                   <span className={classes.barMargin}>
-                  <Button
-                    variant={element.variant}
-                    color="primary"
-                    size="large"
-                    onClick={element.onClick}
-                    classes={{ text: classes.menuButtonText }}
-                    key={element.name}
-                  >
-                    {element.login ? element.name : element.name}
-                  </Button>
+                    <Button
+                      variant={element.variant}
+                      color="primary"
+                      size="large"
+                      onClick={element.onClick}
+                      classes={{ text: classes.menuButtonText }}
+                      key={element.name}
+                    >
+                      {element.login ? element.name : element.name}
+                    </Button>
                   </span>
                 );
               })}
@@ -172,7 +164,7 @@ NavBar.propTypes = {
   mobileDrawerOpen: PropTypes.bool,
   selectedTab: PropTypes.string,
   openRegisterDialog: PropTypes.func.isRequired,
-  openLoginDialog: PropTypes.func.isRequired
+  openLoginDialog: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles, { withTheme: true })(NavBar);

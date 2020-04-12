@@ -14,10 +14,10 @@ import smoothScrollTop from "../../shared/functions/smoothScrollTop";
 
 AOS.init({ once: true });
 
-const styles = theme => ({
+const styles = (theme) => ({
   wrapper: {
-    backgroundColor: theme.palette.background.default
-  }
+    backgroundColor: theme.palette.background.default,
+  },
 });
 
 class Main extends PureComponent {
@@ -26,7 +26,7 @@ class Main extends PureComponent {
     mobileDrawerOpen: false,
     blogPosts: [],
     dialogOpen: null,
-    cookieRulesDialogOpen: false
+    cookieRulesDialogOpen: false,
   };
 
   blogPostsMaxUnix = Math.round(new Date().getTime() / 1000);
@@ -38,8 +38,26 @@ class Main extends PureComponent {
   selectHome = () => {
     smoothScrollTop();
     document.title =
-      "LendAnArm - Nigeria's First Smart Blood Bank";
+      "LendAnArm - Blood Donor Community | Smart Blood Blood-Banking";
     this.setState({ selectedTab: "Home" });
+  };
+
+  selectHost = () => {
+    smoothScrollTop();
+    document.title = "LendAnArm - Host a Blood Drive";
+    this.setState({ selectedTab: "Host Drive" });
+  };
+
+  selectBecome = () => {
+    smoothScrollTop();
+    document.title = "LendAnArm - Become a Donor";
+    this.setState({ selectedTab: "Become a Donor" });
+  };
+
+  selectSolution = () => {
+    smoothScrollTop();
+    document.title = "LendAnArm - Our Solution";
+    this.setState({ selectedTab: "Our Solution" });
   };
 
   selectBlog = () => {
@@ -59,7 +77,7 @@ class Main extends PureComponent {
   openRegisterDialog = () => {
     this.setState({
       dialogOpen: "register",
-      mobileDrawerOpen: false
+      mobileDrawerOpen: false,
     });
   };
 
@@ -75,7 +93,7 @@ class Main extends PureComponent {
     this.setState({ mobileDrawerOpen: false });
   };
 
-  switchSelectedTab = tab => {
+  switchSelectedTab = (tab) => {
     this.setState({ selectedTab: tab });
   };
 
@@ -88,7 +106,7 @@ class Main extends PureComponent {
      * You would fetch this from the server, however we gonna use the example values from state here
      */
     this.blogPostsMaxUnix = dummyBlogPosts[dummyBlogPosts.length - 1].date;
-    const blogPosts = dummyBlogPosts.map(blogPost => {
+    const blogPosts = dummyBlogPosts.map((blogPost) => {
       let title = blogPost.title;
       title = title.toLowerCase();
       /* Remove unwanted characters, only accept alphanumeric and space */
@@ -102,7 +120,7 @@ class Main extends PureComponent {
       return blogPost;
     });
     this.setState({
-      blogPosts
+      blogPosts,
     });
   };
 
@@ -121,7 +139,7 @@ class Main extends PureComponent {
       mobileDrawerOpen,
       blogPosts,
       dialogOpen,
-      cookieRulesDialogOpen
+      cookieRulesDialogOpen,
     } = this.state;
     return (
       <div className={classes.wrapper}>
@@ -155,6 +173,9 @@ class Main extends PureComponent {
           blogPosts={blogPosts}
           selectHome={this.selectHome}
           selectBlog={this.selectBlog}
+          selectSolution={this.selectSolution}
+          selectBecome={this.selectBecome}
+          selectHost={this.selectHost}
         />
         <Footer />
       </div>
@@ -163,7 +184,7 @@ class Main extends PureComponent {
 }
 
 Main.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles, { withTheme: true })(Main);

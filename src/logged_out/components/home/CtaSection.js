@@ -10,34 +10,34 @@ import {
   Box,
   withStyles,
   withWidth,
-  isWidthUp
+  isWidthUp,
 } from "@material-ui/core";
 import phone1 from "../../dummy_data/images/Phone1.png";
 import phone2 from "../../dummy_data/images/Phone2.png";
 import Image from "../../../shared/components/Image";
-import AndroidIcon from '@material-ui/icons/Android';
-import AppleIcon from '@material-ui/icons/Apple';
+import AndroidIcon from "@material-ui/icons/Android";
+import AppleIcon from "@material-ui/icons/Apple";
 import whoImg from "../../dummy_data/images/who.svg";
 import resImg from "../../dummy_data/images/resolutionproject.png";
 
-const styles = theme => ({
+const styles = (theme) => ({
   extraLargeButtonLabel: {
     fontSize: theme.typography.body1.fontSize,
     [theme.breakpoints.up("sm")]: {
-      fontSize: theme.typography.h6.fontSize
-    }
+      fontSize: theme.typography.h6.fontSize,
+    },
   },
   extraLargeButton: {
     paddingTop: theme.spacing(1.5),
     paddingBottom: theme.spacing(1.5),
     [theme.breakpoints.up("xs")]: {
       paddingTop: theme.spacing(1),
-      paddingBottom: theme.spacing(1)
+      paddingBottom: theme.spacing(1),
     },
     [theme.breakpoints.up("lg")]: {
       paddingTop: theme.spacing(2),
-      paddingBottom: theme.spacing(2)
-    }
+      paddingBottom: theme.spacing(2),
+    },
   },
   card: {
     boxShadow: theme.shadows[0],
@@ -45,81 +45,84 @@ const styles = theme => ({
     marginRight: theme.spacing(2),
     [theme.breakpoints.up("xs")]: {
       paddingTop: theme.spacing(2),
-      paddingBottom: theme.spacing(2)
+      paddingBottom: theme.spacing(2),
     },
     [theme.breakpoints.up("sm")]: {
       paddingTop: theme.spacing(2),
       paddingBottom: theme.spacing(2),
       paddingLeft: theme.spacing(0),
-      paddingRight: theme.spacing(0)
+      paddingRight: theme.spacing(0),
     },
     [theme.breakpoints.up("md")]: {
       paddingTop: theme.spacing(5.5),
       paddingBottom: theme.spacing(5.5),
       paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(2)
+      paddingRight: theme.spacing(2),
     },
     [theme.breakpoints.up("lg")]: {
       paddingTop: theme.spacing(2),
       paddingBottom: theme.spacing(2),
       paddingLeft: theme.spacing(0),
-      paddingRight: theme.spacing(0)
+      paddingRight: theme.spacing(0),
     },
     [theme.breakpoints.down("lg")]: {
-      width: "auto"
-    }
+      width: "auto",
+    },
   },
   wrapper: {
     position: "relative",
     backgroundColor: theme.palette.primary.main,
-    paddingBottom: theme.spacing(2)
+    paddingBottom: theme.spacing(2),
   },
   image: {
     maxWidth: "100%",
     verticalAlign: "middle",
     borderRadius: theme.shape.borderRadius,
-    boxShadow: theme.shadows[4]
+    boxShadow: theme.shadows[4],
   },
   container: {
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(6),
     [theme.breakpoints.down("md")]: {
-      marginBottom: theme.spacing(4.5)
+      marginBottom: theme.spacing(4.5),
     },
     [theme.breakpoints.down("sm")]: {
-      marginBottom: theme.spacing(3)
+      marginBottom: theme.spacing(3),
     },
     [theme.breakpoints.down("sm")]: {
-      marginBottom: theme.spacing(1.5)
-    }
+      marginBottom: theme.spacing(1.5),
+    },
   },
   containerFix: {
     [theme.breakpoints.up("md")]: {
-      maxWidth: "none !important"
-    }
+      maxWidth: "none !important",
+    },
   },
   waveBorder: {
-    paddingTop: theme.spacing(4)
+    paddingTop: theme.spacing(4),
   },
   headerText: {
     fontStyle: "normal",
     fontWeight: "bold",
     fontSize: "4rem",
     lineHeight: "4.875rem",
-    color: "#1A1A1A"
+    color: "#1A1A1A",
   },
   headerText2: {
     fontStyle: "normal",
     fontWeight: "bold",
     fontSize: "2.25rem",
     lineHeight: "2.75rem",
-    color: "#1A1A1A"
+    color: "#1A1A1A",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "2rem",
+      lineHeight: "2rem",
+    },
   },
   barMargin: {
     margin: theme.spacing(1),
   },
 
- 
   phone1: {
     width: "40%",
     marginLeft: "20px",
@@ -136,20 +139,19 @@ const styles = theme => ({
     },
   },
   rotateImg: {
-    
     [theme.breakpoints.down("sm")]: {
       textAlign: "center",
-      '&:hover': {
+      "&:hover": {
         transform: "rotate(0.5deg)",
-        zIndex: -1
-      }
+        zIndex: -1,
+      },
     },
     [theme.breakpoints.up("md")]: {
-      '&:hover': {
+      "&:hover": {
         transform: "rotate(5deg)",
         marginLeft: "-20px",
-    }
-    }
+      },
+    },
   },
 
   whiteText: {
@@ -157,20 +159,20 @@ const styles = theme => ({
     maxWidth: "80%",
     position: "relative",
     left: "180px",
-    bottom: "130px"
+    bottom: "130px",
   },
   button: {
     margin: theme.spacing(1),
   },
   justifyForSm: {
     [theme.breakpoints.down("sm")]: {
-      justifyContent: "center"
-    }
+      justifyContent: "center",
+    },
   },
   redForSm: {
     [theme.breakpoints.down("sm")]: {
-      backgroundColor: "rgb(138, 3, 3)"
-    }
+      backgroundColor: "rgb(138, 3, 3)",
+    },
   },
   partners: {
     display: "flex",
@@ -181,44 +183,46 @@ const styles = theme => ({
   partner: {
     width: "90%",
     [theme.breakpoints.down("sm")]: {
-      width: "80%"
+      width: "80%",
     },
     [theme.breakpoints.down("xs")]: {
-      width: "60%"
-    }
-  }
+      width: "60%",
+    },
+  },
 });
-
 
 function CtaSection(props) {
   const { classes, theme, width } = props;
   return (
     <div style={{ backgroundColor: theme.palette.primary.main }}>
       <div className="container-fluid lg-p-top-alt">
-      <div className={classNames("container-fluid", classes.container)}>
+        <div className={classNames("container-fluid", classes.container)}>
           <Box display="flex" justifyContent="center" className="row">
             <Card
               className={classes.card}
-              style={{ backgroundColor: "rgb(138, 3, 3)"}}
+              style={{ backgroundColor: "rgb(138, 3, 3)" }}
               data-aos-delay="200"
               data-aos="zoom-in"
             >
               <div className={classNames(classes.containerFix, "container")}>
-                <Box justifyContent="space-between" className={classNames("row", classes.justifyForSm)}>
-                    <Grid item md={6} className={classes.rotateImg}>
+                <Box
+                  justifyContent="space-between"
+                  className={classNames("row", classes.justifyForSm)}
+                >
+                  <Grid item md={6} className={classes.rotateImg}>
                     <Hidden smDown>
-                    <Image 
+                      <Image
                         src={phone1}
                         className={classes.phone1}
                         alt="Bigger Phone"
                       />
                     </Hidden>
-                      <Image 
-                        src={phone2}
-                        className={classes.phone2}
-                        alt="Smaller Phone"
-                      />
-                    </Grid>
+                    <Image
+                      src={phone2}
+                      className={classes.phone2}
+                      alt="Smaller Phone"
+                    />
+                  </Grid>
                   <Grid item xs={12} md={5} className={classes.redForSm}>
                     <Box
                       display="flex"
@@ -232,7 +236,7 @@ function CtaSection(props) {
                           variant={isWidthUp("lg", width) ? "h3" : "h4"}
                           style={{ color: "#FFF" }}
                         >
-                          You can do all with the Mobile Application
+                          You can do all with the mobile application
                         </Typography>
                       </Box>
                       <div>
@@ -242,7 +246,9 @@ function CtaSection(props) {
                             variant="body1"
                             style={{ color: "#FFF" }}
                           >
-                            Track your donations, receive your medical reports. Create a blood drive; start a virtual donation campaign; connect, chat, and form bonds. 
+                            Track your donations, receive your medical reports.
+                            Create a blood drive; start a virtual donation
+                            campaign; connect, chat, and form bonds.
                           </Typography>
                         </Box>
                         <Button
@@ -265,20 +271,28 @@ function CtaSection(props) {
                         </Button>
                       </div>
                       <div className={classes.partners}>
-                      <a href="http://innov.afro.who.int/innovators/dr-imodoye-abioro-27" target="_blank" rel="noopener">
-                      <Image 
-                        src={whoImg}
-                        className={classes.partner}
-                        alt="Smaller Phone"
-                      />
-                      </a>
-                      <a href="https://resolutionproject.org/54th-social-venture-challenge-yields-two-new-winners-from-african-leadership-academy/" target="_blank" rel="noopener">
-                      <Image 
-                        src={resImg}
-                        className={classes.partner}
-                        alt="Smaller Phone"
-                      />
-                      </a>
+                        <a
+                          href="http://innov.afro.who.int/innovators/dr-imodoye-abioro-27"
+                          target="_blank"
+                          rel="noopener"
+                        >
+                          <Image
+                            src={whoImg}
+                            className={classes.partner}
+                            alt="Smaller Phone"
+                          />
+                        </a>
+                        <a
+                          href="https://resolutionproject.org/54th-social-venture-challenge-yields-two-new-winners-from-african-leadership-academy/"
+                          target="_blank"
+                          rel="noopener"
+                        >
+                          <Image
+                            src={resImg}
+                            className={classes.partner}
+                            alt="Smaller Phone"
+                          />
+                        </a>
                       </div>
                     </Box>
                   </Grid>
@@ -295,10 +309,7 @@ function CtaSection(props) {
 CtaSection.propTypes = {
   classes: PropTypes.object,
   width: PropTypes.string,
-  theme: PropTypes.object
+  theme: PropTypes.object,
 };
 
-export default withWidth()(
-  withStyles(styles, { withTheme: true })(CtaSection)
-);
-
+export default withWidth()(withStyles(styles, { withTheme: true })(CtaSection));

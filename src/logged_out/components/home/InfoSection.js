@@ -10,7 +10,7 @@ import {
   Box,
   withStyles,
   withWidth,
-  isWidthUp
+  isWidthUp,
 } from "@material-ui/core";
 import pattern from "../../dummy_data/images/Pattern.png";
 import boy from "../../dummy_data/images/boy.png";
@@ -18,116 +18,118 @@ import blankCanvas from "../../dummy_data/images/blankCanvas.png";
 import Image from "../../../shared/components/Image";
 import WaveBorder from "../../../shared/components/WaveBorder";
 
-const styles = theme => ({
-  
+const styles = (theme) => ({
   card: {
     boxShadow: theme.shadows[0],
     marginLeft: theme.spacing(2),
     marginRight: theme.spacing(4),
     [theme.breakpoints.up("xs")]: {
       paddingTop: theme.spacing(2),
-      paddingBottom: theme.spacing(2)
+      paddingBottom: theme.spacing(2),
     },
     [theme.breakpoints.up("sm")]: {
       paddingTop: theme.spacing(2),
       paddingBottom: theme.spacing(2),
       paddingLeft: theme.spacing(0),
-      paddingRight: theme.spacing(0)
+      paddingRight: theme.spacing(0),
     },
     [theme.breakpoints.up("md")]: {
       paddingTop: theme.spacing(5.5),
       paddingBottom: theme.spacing(5.5),
       paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(2)
+      paddingRight: theme.spacing(2),
     },
     [theme.breakpoints.up("lg")]: {
       paddingTop: theme.spacing(2),
       paddingBottom: theme.spacing(2),
       paddingLeft: theme.spacing(0),
-      paddingRight: theme.spacing(0)
+      paddingRight: theme.spacing(0),
     },
     [theme.breakpoints.down("lg")]: {
-      width: "auto"
-    }
+      width: "auto",
+    },
   },
   wrapper: {
     position: "relative",
     backgroundColor: theme.palette.background.paper,
-    paddingBottom: theme.spacing(2)
+    paddingBottom: theme.spacing(2),
   },
   image: {
     maxWidth: "100%",
     verticalAlign: "middle",
     borderRadius: theme.shape.borderRadius,
-    boxShadow: theme.shadows[4]
+    boxShadow: theme.shadows[4],
   },
   container: {
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(6),
     [theme.breakpoints.down("md")]: {
-      marginBottom: theme.spacing(4.5)
+      marginBottom: theme.spacing(4.5),
     },
     [theme.breakpoints.down("sm")]: {
-      marginBottom: theme.spacing(3)
+      marginBottom: theme.spacing(3),
     },
     [theme.breakpoints.down("sm")]: {
-      marginBottom: theme.spacing(1.5)
-    }
+      marginBottom: theme.spacing(1.5),
+    },
   },
   containerFix: {
     [theme.breakpoints.up("md")]: {
-      maxWidth: "none !important"
-    }
+      maxWidth: "none !important",
+    },
   },
   waveBorder: {
-    paddingTop: theme.spacing(4)
+    paddingTop: theme.spacing(4),
   },
   headerText: {
     fontStyle: "normal",
     fontWeight: "bold",
     fontSize: "4rem",
     lineHeight: "4.875rem",
-    color: "#1A1A1A"
+    color: "#1A1A1A",
   },
   headerText2: {
     fontStyle: "normal",
     fontWeight: "bold",
     fontSize: "2.25rem",
     lineHeight: "2.75rem",
-    color: "#1A1A1A"
+    color: "#1A1A1A",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "2rem",
+      lineHeight: "2rem",
+    },
   },
   barMargin: {
     margin: theme.spacing(1),
   },
   patternPosition: {
-    maxWidth: "80%"
+    maxWidth: "80%",
   },
   boyPosition: {
     maxWidth: "80%",
     marginTop: "-180px",
-    marginLeft: "50px"
+    marginLeft: "50px",
   },
   canvasPosition: {
     maxWidth: "80%",
     marginTop: "-130.2px",
-    marginLeft: "166px"
+    marginLeft: "166px",
   },
   whiteText: {
     color: "#fff",
     width: "70%",
     position: "relative",
     left: "180px",
-    bottom: "130px"
-  }
+    bottom: "130px",
+  },
 });
-
 
 function InfoSection(props) {
   const { classes, theme, width } = props;
   return (
     <div style={{ backgroundColor: "#FFFFFF" }}>
       <div className="container-fluid lg-p-top-alt">
-      <div className={classNames("container-fluid", classes.container)}>
+        <div className={classNames("container-fluid", classes.container)}>
           <Box display="flex" justifyContent="center" className="row">
             <Card
               className={classes.card}
@@ -136,10 +138,9 @@ function InfoSection(props) {
             >
               <div className={classNames(classes.containerFix, "container")}>
                 <Box justifyContent="space-between" className="row">
-                  
                   <Hidden smDown>
                     <Grid item md={6}>
-                      <Image 
+                      <Image
                         src={pattern}
                         className={classes.patternPosition}
                         alt="dot patterns"
@@ -150,21 +151,22 @@ function InfoSection(props) {
                         alt="a boy"
                       />
                       <Hidden mdDown>
-                      <Image
-                        src={blankCanvas}
-                        className={classes.canvasPosition}
-                        alt="blank canvas"
-                      />
-                      
+                        <Image
+                          src={blankCanvas}
+                          className={classes.canvasPosition}
+                          alt="blank canvas"
+                        />
+
                         <Typography
                           variant="body1"
                           className={classes.whiteText}
                         >
-                            Here is also a catching text which isn't compulsory though. But then, it's cool.
+                          Here is also a catching text which isn't compulsory
+                          though. But then, it's cool.
                         </Typography>
                       </Hidden>
                     </Grid>
-                    </Hidden> 
+                  </Hidden>
                   <Grid item sm={12} md={5}>
                     <Box
                       display="flex"
@@ -175,7 +177,7 @@ function InfoSection(props) {
                       <Box mb={4}>
                         <Typography
                           className={classes.headerText2}
-                          variant={isWidthUp("lg", width) ? "h3" : "h4"}
+                          variant={isWidthUp("lg", width) ? "h4" : "h5"}
                         >
                           Here is a Large Text Maybe a Line or Two
                         </Typography>
@@ -187,7 +189,13 @@ function InfoSection(props) {
                             variant="body1"
                             color="textSecondary"
                           >
-                            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
+                            It is a long established fact that a reader will be
+                            distracted by the readable content of a page when
+                            looking at its layout. The point of using Lorem
+                            Ipsum is that it has a more-or-less normal
+                            distribution of letters, as opposed to using
+                            'Content here, content here', making it look like
+                            readable English.
                           </Typography>
                         </Box>
                       </div>
@@ -212,10 +220,9 @@ function InfoSection(props) {
 InfoSection.propTypes = {
   classes: PropTypes.object,
   width: PropTypes.string,
-  theme: PropTypes.object
+  theme: PropTypes.object,
 };
 
 export default withWidth()(
   withStyles(styles, { withTheme: true })(InfoSection)
 );
-

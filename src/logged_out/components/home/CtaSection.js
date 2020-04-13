@@ -236,7 +236,7 @@ function CtaSection(props) {
                           variant={isWidthUp("lg", width) ? "h3" : "h4"}
                           style={{ color: "#FFF" }}
                         >
-                          You can do all with the mobile application
+                          You can do all with the mobile application.
                         </Typography>
                       </Box>
                       <div>
@@ -246,9 +246,10 @@ function CtaSection(props) {
                             variant="body1"
                             style={{ color: "#FFF" }}
                           >
-                            Track your donations, receive your medical reports.
-                            Create a blood drive; start a virtual donation
-                            campaign; connect, chat, and form bonds.
+                            Build a blood donation routine, track donations and
+                            receive your medical reports. Create a blood drive
+                            or start a virtual donation campaign. Connect, chat,
+                            form bonds and build a vibrant donor network.
                           </Typography>
                         </Box>
                         <Button

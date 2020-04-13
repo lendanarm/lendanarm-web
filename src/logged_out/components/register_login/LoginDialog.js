@@ -163,7 +163,7 @@ class LoginDialog extends PureComponent {
                   {/* Email is: <b>test@web.com</b>
                   <br />
                   Password is: <b>test</b> */}
-                  Login disabled until full launch
+                  Temporarily disabled. Undergoing maintenance.
                 </HighlightedInformation>
               )}
             </Fragment>

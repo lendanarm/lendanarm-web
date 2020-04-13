@@ -7,27 +7,27 @@ import {
   Checkbox,
   Typography,
   FormControlLabel,
-  withStyles
+  withStyles,
 } from "@material-ui/core";
 import FormDialog from "../../../shared/components/FormDialog";
 import HighlightedInformation from "../../../shared/components/HighlightedInformation";
 import ButtonCircularProgress from "../../../shared/components/ButtonCircularProgress";
 
-const styles = theme => ({
+const styles = (theme) => ({
   link: {
     transition: theme.transitions.create(["background-color"], {
       duration: theme.transitions.duration.complex,
-      easing: theme.transitions.easing.easeInOut
+      easing: theme.transitions.easing.easeInOut,
     }),
     cursor: "pointer",
     color: theme.palette.primary.main,
     "&:enabled:hover": {
-      color: theme.palette.primary.dark
+      color: theme.palette.primary.dark,
     },
     "&:enabled:focus": {
-      color: theme.palette.primary.dark
-    }
-  }
+      color: theme.palette.primary.dark,
+    },
+  },
 });
 
 class RegisterDialog extends PureComponent {
@@ -57,7 +57,7 @@ class RegisterDialog extends PureComponent {
       openTermsDialog,
       setStatus,
       status,
-      classes
+      classes,
     } = this.props;
     const { loading, termsOfServiceError } = this.state;
     return (
@@ -66,7 +66,7 @@ class RegisterDialog extends PureComponent {
         onClose={onClose}
         open
         headline="Register"
-        onFormSubmit={e => {
+        onFormSubmit={(e) => {
           e.preventDefault();
           this.register();
         }}
@@ -81,7 +81,7 @@ class RegisterDialog extends PureComponent {
               fullWidth
               error={status === "invalidEmail"}
               label="Email Address"
-              inputRef={node => {
+              inputRef={(node) => {
                 this.registerEmail = node;
               }}
               autoFocus
@@ -104,7 +104,7 @@ class RegisterDialog extends PureComponent {
               }
               label="Password"
               type="password"
-              inputRef={node => {
+              inputRef={(node) => {
                 this.registerPassword = node;
               }}
               autoComplete="off"
@@ -137,7 +137,7 @@ class RegisterDialog extends PureComponent {
               }
               label="Repeat Password"
               type="password"
-              inputRef={node => {
+              inputRef={(node) => {
                 this.registerPasswordRepeat = node;
               }}
               autoComplete="off"
@@ -164,7 +164,7 @@ class RegisterDialog extends PureComponent {
               control={
                 <Checkbox
                   color="primary"
-                  inputRef={node => {
+                  inputRef={(node) => {
                     this.registerTermsCheckbox = node;
                   }}
                   onChange={() => {
@@ -180,7 +180,7 @@ class RegisterDialog extends PureComponent {
                     onClick={loading ? null : openTermsDialog}
                     tabIndex={0}
                     role="button"
-                    onKeyDown={event => {
+                    onKeyDown={(event) => {
                       // For screenreaders listen to space and enter events
                       if (
                         (!loading && event.keyCode === 13) ||
@@ -201,7 +201,7 @@ class RegisterDialog extends PureComponent {
                 error
                 style={{
                   display: "block",
-                  marginTop: theme.spacing(-1)
+                  marginTop: theme.spacing(-1),
                 }}
               >
                 In order to create an account, you have to accept our terms of
@@ -215,7 +215,7 @@ class RegisterDialog extends PureComponent {
               </HighlightedInformation>
             ) : (
               <HighlightedInformation>
-                Registration is disabled until we go live.
+                Temporarily disabled. Undergoing maintenance.
               </HighlightedInformation>
             )}
           </Fragment>
@@ -244,7 +244,7 @@ RegisterDialog.propTypes = {
   openTermsDialog: PropTypes.func.isRequired,
   status: PropTypes.string,
   setStatus: PropTypes.func.isRequired,
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles, { withTheme: true })(RegisterDialog);

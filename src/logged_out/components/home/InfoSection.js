@@ -150,7 +150,7 @@ function InfoSection(props) {
                         className={classes.boyPosition}
                         alt="a boy"
                       />
-                      <Hidden mdDown>
+                      <Hidden smDown>
                         <Image
                           src={blankCanvas}
                           className={classes.canvasPosition}
@@ -161,8 +161,9 @@ function InfoSection(props) {
                           variant="body1"
                           className={classes.whiteText}
                         >
-                          Here is also a catching text which isn't compulsory
-                          though. But then, it's cool.
+                          Our real life heroes are on an all-out mission to save
+                          lives by donating blood. Be part of this. Join the
+                          movement.
                         </Typography>
                       </Hidden>
                     </Grid>
@@ -179,7 +180,7 @@ function InfoSection(props) {
                           className={classes.headerText2}
                           variant={isWidthUp("lg", width) ? "h4" : "h5"}
                         >
-                          Here is a Large Text Maybe a Line or Two
+                          Envoys on a mission to save lives.
                         </Typography>
                       </Box>
                       <div>
@@ -189,13 +190,13 @@ function InfoSection(props) {
                             variant="body1"
                             color="textSecondary"
                           >
-                            It is a long established fact that a reader will be
-                            distracted by the readable content of a page when
-                            looking at its layout. The point of using Lorem
-                            Ipsum is that it has a more-or-less normal
-                            distribution of letters, as opposed to using
-                            'Content here, content here', making it look like
-                            readable English.
+                            We maintain a closely regulated chain of smart blood
+                            banks, delivery motorcycles and drone fleets to
+                            ensure safe supply and fast delivery of blood, blood
+                            products and other essential medical products to
+                            Hospitals across Nigeria. As we deliver within
+                            minutes, our hospital and blood bank partners can
+                            depend on us.
                           </Typography>
                         </Box>
                       </div>

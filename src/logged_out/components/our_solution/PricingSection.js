@@ -104,15 +104,15 @@ function PricingSection(props) {
               title="Hospitals (Silver)"
               pricing={
                 <span>
-                  $29.99
+                  FREE
                   <Typography display="inline"> / month</Typography>
                 </span>
               }
               features={[
-                "Blood bank management suite",
+                "SOS Requests",
                 "Enroll donors into database",
                 "Automate blood donation reminders",
-                "SOS requests",
+                "Order blood units from LAA (pay per order)",
               ]}
             />
           </Grid>
@@ -129,14 +129,14 @@ function PricingSection(props) {
               title="Hospitals (Diamond)"
               pricing={
                 <span>
-                  $49.99
+                  $100
                   <Typography display="inline"> / month</Typography>
                 </span>
               }
               features={[
                 "Silver Features",
+                "Virtual Bloodbanking Software",
                 "LAA Electronic Medical Records Suite",
-                "Track Blood Delivery",
                 "LAA Verification",
               ]}
             />

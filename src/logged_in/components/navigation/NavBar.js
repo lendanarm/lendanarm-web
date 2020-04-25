@@ -18,32 +18,42 @@ import {
   Box,
   withStyles,
   isWidthUp,
-  withWidth
+  withWidth,
 } from "@material-ui/core";
+import Menu from "@material-ui/core/Menu";
+import Button from "@material-ui/core/Button";
+import MenuItem from "@material-ui/core/MenuItem";
+import Fade from "@material-ui/core/Fade";
 import DashboardIcon from "@material-ui/icons/Dashboard";
+import HomeIcon from "@material-ui/icons/Home";
 import ImageIcon from "@material-ui/icons/Image";
 import AccountBalanceIcon from "@material-ui/icons/AccountBalance";
-import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
 import MenuIcon from "@material-ui/icons/Menu";
+import EmailIcon from "@material-ui/icons/Email";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import MessagePopperButton from "./MessagePopperButton";
 import SideDrawer from "./SideDrawer";
 import Balance from "./Balance";
 import NavigationDrawer from "../../../shared/components/NavigationDrawer";
 import profilePicture from "../../dummy_data/images/profilePicture.jpg";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import LocalShippingIcon from "@material-ui/icons/LocalShipping";
+import LocalHospitalIcon from "@material-ui/icons/LocalHospital";
+import MoreButton from "./MoreButton";
+import ForumIcon from "@material-ui/icons/Forum";
 
-const styles = theme => ({
+const styles = (theme) => ({
   appBar: {
-    boxShadow: theme.shadows[6],
+    boxShadow: theme.shadows[3],
     backgroundColor: theme.palette.common.white,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
+      duration: theme.transitions.duration.leavingScreen,
     }),
     [theme.breakpoints.down("xs")]: {
       width: "100%",
-      marginLeft: 0
-    }
+      marginLeft: 0,
+    },
   },
   appBarToolbar: {
     display: "flex",
@@ -52,16 +62,16 @@ const styles = theme => ({
     paddingRight: theme.spacing(1),
     [theme.breakpoints.up("sm")]: {
       paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(2)
+      paddingRight: theme.spacing(2),
     },
     [theme.breakpoints.up("md")]: {
       paddingLeft: theme.spacing(3),
-      paddingRight: theme.spacing(3)
+      paddingRight: theme.spacing(3),
     },
     [theme.breakpoints.up("lg")]: {
       paddingLeft: theme.spacing(4),
-      paddingRight: theme.spacing(4)
-    }
+      paddingRight: theme.spacing(4),
+    },
   },
   accountAvatar: {
     backgroundColor: theme.palette.secondary.main,
@@ -71,8 +81,8 @@ const styles = theme => ({
     marginRight: theme.spacing(2),
     [theme.breakpoints.down("xs")]: {
       marginLeft: theme.spacing(1.5),
-      marginRight: theme.spacing(1.5)
-    }
+      marginRight: theme.spacing(1.5),
+    },
   },
   drawerPaper: {
     height: "100%vh",
@@ -82,18 +92,18 @@ const styles = theme => ({
     overflowX: "hidden",
     marginTop: theme.spacing(8),
     [theme.breakpoints.up("sm")]: {
-      width: theme.spacing(9)
+      width: theme.spacing(28),
     },
-    backgroundColor: theme.palette.common.black
+    backgroundColor: theme.palette.primary.main,
   },
   smBordered: {
     [theme.breakpoints.down("xs")]: {
-      borderRadius: "50% !important"
-    }
+      borderRadius: "50% !important",
+    },
   },
   menuLink: {
     textDecoration: "none",
-    color: theme.palette.text.primary
+    color: "#FFFFFF",
   },
   iconListItem: {
     width: "auto",
@@ -101,30 +111,58 @@ const styles = theme => ({
     paddingTop: 11,
     paddingBottom: 11,
     marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1)
+    marginRight: theme.spacing(1),
   },
   textPrimary: {
-    color: theme.palette.primary.main
+    color: "#8C8C8C",
   },
   mobileItemSelected: {
-    backgroundColor: `${theme.palette.primary.main} !important`
+    backgroundColor: `${theme.palette.primary.main} !important`,
   },
   brandText: {
     fontFamily: "'Baloo Bhaijaan', cursive",
-    fontWeight: 400
+    fontWeight: 400,
   },
   username: {
     paddingLeft: 0,
-    paddingRight: theme.spacing(2)
+    paddingRight: theme.spacing(2),
   },
   justifyCenter: {
-    justifyContent: "center"
+    justifyContent: "center",
   },
   permanentDrawerListItem: {
-    justifyContent: "center",
-    paddingTop: theme.spacing(2),
-    paddingBottom: theme.spacing(2)
-  }
+    // justifyContent: "center",
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
+  },
+  iconMargin: {
+    marginLeft: theme.spacing(2),
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: theme.spacing(1.5),
+      marginRight: theme.spacing(1.5),
+    },
+  },
+  moreStyle: {
+    marginLeft: theme.spacing(2),
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: theme.spacing(1.5),
+    },
+    paddingLeft: theme.spacing(2),
+  },
+  moreIcons: {
+    color: "#8C8C8C",
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: theme.spacing(1.5),
+      marginRight: theme.spacing(1.5),
+    },
+  },
+  moreLink: {
+    textDecoration: "none",
+    color: "#8C8C8C",
+  },
 });
 
 class NavBar extends PureComponent {
@@ -151,75 +189,132 @@ class NavBar extends PureComponent {
 
   render() {
     const { mobileOpen, sideDrawerOpen } = this.state;
+
     const { selectedTab, messages, classes, width } = this.props;
     const menuItems = [
       {
-        link: "/c/dashboard",
-        name: "Dashboard",
-        onClick: () => {
-          this.closeMobileDrawer();
-        },
-        icon: {
-          desktop: (
-            <DashboardIcon
-              className={
-                selectedTab === "Dashboard" ? classes.textPrimary : "text-white"
-              }
-              fontSize="small"
-            />
-          ),
-          mobile: <DashboardIcon className="text-white" />
-        }
-      },
-      {
         link: "/c/posts",
-        name: "Posts",
+        name: "Home",
         onClick: () => {
           this.closeMobileDrawer();
         },
         icon: {
           desktop: (
-            <ImageIcon
+            <HomeIcon
               className={
-                selectedTab === "Posts" ? classes.textPrimary : "text-white"
+                selectedTab === "Posts"
+                  ? classes.textPrimary + " " + classes.iconMargin
+                  : "text-white" + " " + classes.iconMargin
               }
               fontSize="small"
             />
           ),
-          mobile: <ImageIcon className="text-white" />
-        }
+          mobile: <HomeIcon className="text-white" />,
+        },
       },
       {
-        link: "/c/subscription",
-        name: "Subscription",
+        link: "/c/discussions",
+        name: "Discussions",
         onClick: () => {
           this.closeMobileDrawer();
         },
         icon: {
           desktop: (
-            <AccountBalanceIcon
+            <ForumIcon
               className={
-                selectedTab === "Subscription"
-                  ? classes.textPrimary
-                  : "text-white"
+                selectedTab === "Discussions"
+                  ? classes.textPrimary + " " + classes.iconMargin
+                  : "text-white" + " " + classes.iconMargin
               }
               fontSize="small"
             />
           ),
-          mobile: <AccountBalanceIcon className="text-white" />
-        }
+          mobile: <ForumIcon className="text-white" />,
+        },
       },
       {
-        link: "/",
-        name: "Logout",
+        link: "/c/blood_donations",
+        name: "Donations",
+        onClick: () => {
+          this.closeMobileDrawer();
+        },
         icon: {
           desktop: (
-            <PowerSettingsNewIcon className="text-white" fontSize="small" />
+            <FavoriteIcon
+              className={
+                selectedTab === "Donations"
+                  ? classes.textPrimary + " " + classes.iconMargin
+                  : "text-white" + " " + classes.iconMargin
+              }
+              fontSize="small"
+            />
           ),
-          mobile: <PowerSettingsNewIcon className="text-white" />
-        }
-      }
+          mobile: <FavoriteIcon className="text-white" />,
+        },
+      },
+      {
+        link: "/c/blood_drives",
+        name: "Drives",
+        onClick: () => {
+          this.closeMobileDrawer();
+        },
+        icon: {
+          desktop: (
+            <LocalShippingIcon
+              className={
+                selectedTab === "Drives"
+                  ? classes.textPrimary + " " + classes.iconMargin
+                  : "text-white" + " " + classes.iconMargin
+              }
+              fontSize="small"
+            />
+          ),
+          mobile: <LocalShippingIcon className="text-white" />,
+        },
+      },
+      {
+        link: "/c/medical_reports",
+        name: "Medical Reports",
+        onClick: () => {
+          this.closeMobileDrawer();
+        },
+        icon: {
+          desktop: (
+            <LocalHospitalIcon
+              className={
+                selectedTab === "Medical Reports"
+                  ? classes.textPrimary + " " + classes.iconMargin
+                  : "text-white" + " " + classes.iconMargin
+              }
+              fontSize="small"
+            />
+          ),
+          mobile: <LocalHospitalIcon className="text-white" />,
+        },
+      },
+      {
+        link: "/c/profile",
+        name: "Profile",
+        onClick: () => {
+          this.closeMobileDrawer();
+        },
+        icon: {
+          desktop: (
+            <Avatar
+              src={profilePicture}
+              className={
+                selectedTab === "Profile"
+                  ? classes.textPrimary + " " + classes.accountAvatar
+                  : "text-white" + " " + classes.accountAvatar
+              }
+              fontSize="small"
+            />
+          ),
+          mobile: <HomeIcon className="text-white" />,
+        },
+      },
     ];
+
     return (
       <Fragment>
         <AppBar position="sticky" className={classes.appBar}>
@@ -239,15 +334,7 @@ class NavBar extends PureComponent {
                   display="inline"
                   color="primary"
                 >
-                  Wa
-                </Typography>
-                <Typography
-                  variant="h4"
-                  className={classes.brandText}
-                  display="inline"
-                  color="secondary"
-                >
-                  Ver
+                  LendAnArm
                 </Typography>
               </Hidden>
             </Box>
@@ -257,11 +344,11 @@ class NavBar extends PureComponent {
               alignItems="center"
               width="100%"
             >
-              {isWidthUp("sm", width) && (
+              {/* {isWidthUp("sm", width) && (
                 <Box mr={3}>
                   <Balance balance={2573} />
                 </Box>
-              )}
+              )} */}
               <MessagePopperButton messages={messages} />
               <ListItem
                 disableGutters
@@ -276,7 +363,7 @@ class NavBar extends PureComponent {
                   <ListItemText
                     className={classes.username}
                     primary={
-                      <Typography color="textPrimary">Username</Typography>
+                      <Typography color="textPrimary">userHandle</Typography>
                     }
                   />
                 )}
@@ -292,51 +379,58 @@ class NavBar extends PureComponent {
           <Drawer //  both drawers can be combined into one for performance
             variant="permanent"
             classes={{
-              paper: classes.drawerPaper
+              paper: classes.drawerPaper,
             }}
             open={false}
           >
             <List>
-              {menuItems.map((element, index) => (
-                <Link
-                  to={element.link}
-                  className={classes.menuLink}
-                  onClick={element.onClick}
-                  key={index}
-                  ref={node => {
-                    this.links[index] = node;
-                  }}
-                >
-                  <Tooltip
+              {menuItems.map((element, index) => {
+                if (element.link) {
+                  return (
+                    <Link
+                      to={element.link}
+                      className={classes.menuLink}
+                      onClick={element.onClick}
+                      key={index}
+                      ref={(node) => {
+                        this.links[index] = node;
+                      }}
+                    >
+                      {/* <Tooltip
                     title={element.name}
                     placement="right"
                     key={element.name}
-                  >
-                    <ListItem
-                      selected={selectedTab === element.name}
-                      button
-                      divider={index !== menuItems.length - 1}
-                      className={classes.permanentDrawerListItem}
-                      onClick={() => {
-                        this.links[index].click();
-                      }}
-                    >
-                      <ListItemIcon className={classes.justifyCenter}>
-                        {element.icon.desktop}
-                      </ListItemIcon>
-                    </ListItem>
-                  </Tooltip>
-                </Link>
-              ))}
+                  > */}
+                      <ListItem
+                        selected={selectedTab === element.name}
+                        button
+                        className={classes.permanentDrawerListItem}
+                        onClick={() => {
+                          this.links[index].click();
+                        }}
+                      >
+                        <ListItemIcon>{element.icon.desktop}</ListItemIcon>
+                        <ListItemText primary={element.name} />
+                      </ListItem>
+                      {/* </Tooltip> */}
+                    </Link>
+                  );
+                }
+              })}
+              <MoreButton
+                classes={classes}
+                selectedTab={selectedTab}
+                links={this.links}
+              />
             </List>
           </Drawer>
         </Hidden>
         <NavigationDrawer
-          menuItems={menuItems.map(element => ({
+          menuItems={menuItems.map((element) => ({
             link: element.link,
             name: element.name,
             icon: element.icon.mobile,
-            onClick: element.onClick
+            onClick: element.onClick,
           }))}
           anchor="left"
           open={mobileOpen}
@@ -352,7 +446,7 @@ NavBar.propTypes = {
   messages: PropTypes.arrayOf(PropTypes.object).isRequired,
   selectedTab: PropTypes.string.isRequired,
   width: PropTypes.string.isRequired,
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withWidth()(withStyles(styles, { withTheme: true })(NavBar));

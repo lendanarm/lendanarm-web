@@ -6,7 +6,7 @@ import UserDataArea from "./UserDataArea";
 import AccountInformationArea from "./AccountInformationArea";
 import StatisticsArea from "./StatisticsArea";
 
-class Dashboard extends PureComponent {
+class AccountSettings extends PureComponent {
   componentDidMount() {
     const { selectDashboard } = this.props;
     selectDashboard();
@@ -19,7 +19,7 @@ class Dashboard extends PureComponent {
       toggleAccountActivation,
       pushMessageToSnackbar,
       targets,
-      isAccountActivated
+      isAccountActivated,
     } = this.props;
     return (
       <Fragment>
@@ -48,14 +48,14 @@ class Dashboard extends PureComponent {
   }
 }
 
-Dashboard.propTypes = {
+AccountSettings.propTypes = {
   CardChart: PropTypes.elementType,
   statistics: PropTypes.object.isRequired,
   toggleAccountActivation: PropTypes.func,
   pushMessageToSnackbar: PropTypes.func,
   targets: PropTypes.arrayOf(PropTypes.object).isRequired,
   isAccountActivated: PropTypes.bool.isRequired,
-  selectDashboard: PropTypes.func.isRequired
+  selectDashboard: PropTypes.func.isRequired,
 };
 
-export default Dashboard;
+export default AccountSettings;

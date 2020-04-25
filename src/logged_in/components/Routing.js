@@ -2,12 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Switch } from "react-router-dom";
 import { withStyles } from "@material-ui/core";
-import Dashboard from "./dashboard/Dashboard";
-import Posts from "./posts/Posts";
+import AccountSettings from "./Account/AccountSettings";
+import Posts from "./Home/Posts";
 import Subscription from "./subscription/Subscription";
 import PropsRoute from "../../shared/components/PropsRoute";
 
-const styles = theme => ({
+const styles = (theme) => ({
   wrapper: {
     margin: theme.spacing(1),
     width: "auto",
@@ -16,30 +16,30 @@ const styles = theme => ({
       marginLeft: "auto",
       marginRight: "auto",
       marginTop: theme.spacing(4),
-      marginBottom: theme.spacing(4)
+      marginBottom: theme.spacing(4),
     },
     [theme.breakpoints.up("sm")]: {
       marginTop: theme.spacing(6),
       marginBottom: theme.spacing(6),
       width: "90%",
       marginLeft: "auto",
-      marginRight: "auto"
+      marginRight: "auto",
     },
     [theme.breakpoints.up("md")]: {
       marginTop: theme.spacing(6),
       marginBottom: theme.spacing(6),
       width: "82.5%",
       marginLeft: "auto",
-      marginRight: "auto"
+      marginRight: "auto",
     },
     [theme.breakpoints.up("lg")]: {
       marginTop: theme.spacing(6),
       marginBottom: theme.spacing(6),
       width: "70%",
       marginLeft: "auto",
-      marginRight: "auto"
-    }
-  }
+      marginRight: "auto",
+    },
+  },
 });
 
 function Routing(props) {
@@ -62,32 +62,14 @@ function Routing(props) {
     isAccountActivated,
     selectDashboard,
     selectPosts,
-    selectSubscription
+    selectSubscription,
   } = props;
   return (
     <div className={classes.wrapper}>
       <Switch>
         <PropsRoute
-          path="/c/posts"
-          component={Posts}
-          EmojiTextArea={EmojiTextArea}
-          ImageCropper={ImageCropper}
-          Dropzone={Dropzone}
-          DateTimePicker={DateTimePicker}
-          pushMessageToSnackbar={pushMessageToSnackbar}
-          posts={posts}
-          selectPosts={selectPosts}
-        />
-        <PropsRoute
-          path="/c/subscription"
-          component={Subscription}
-          transactions={transactions}
-          pushMessageToSnackbar={pushMessageToSnackbar}
-          selectSubscription={selectSubscription}
-        />
-        <PropsRoute
-          path=""
-          component={Dashboard}
+          path="/c/account_settings"
+          component={AccountSettings}
           handleNumberChange={handleNumberChange}
           handleSwitchToggle={handleSwitchToggle}
           handleSelectChange={handleSelectChange}
@@ -98,6 +80,24 @@ function Routing(props) {
           targets={targets}
           isAccountActivated={isAccountActivated}
           selectDashboard={selectDashboard}
+        />
+        <PropsRoute
+          path="/c/subscription"
+          component={Subscription}
+          transactions={transactions}
+          pushMessageToSnackbar={pushMessageToSnackbar}
+          selectSubscription={selectSubscription}
+        />
+        <PropsRoute
+          path="/"
+          component={Posts}
+          EmojiTextArea={EmojiTextArea}
+          ImageCropper={ImageCropper}
+          Dropzone={Dropzone}
+          DateTimePicker={DateTimePicker}
+          pushMessageToSnackbar={pushMessageToSnackbar}
+          posts={posts}
+          selectPosts={selectPosts}
         />
       </Switch>
     </div>
@@ -123,7 +123,7 @@ Routing.propTypes = {
   isAccountActivated: PropTypes.bool.isRequired,
   selectDashboard: PropTypes.func.isRequired,
   selectPosts: PropTypes.func.isRequired,
-  selectSubscription: PropTypes.func.isRequired
+  selectSubscription: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles, { withTheme: true })(Routing);

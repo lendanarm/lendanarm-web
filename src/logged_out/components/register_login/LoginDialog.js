@@ -60,7 +60,7 @@ class LoginDialog extends PureComponent {
       }, 1500);
     } else {
       setTimeout(() => {
-        history.push("/c/dashboard");
+        history.push("/c/home");
       }, 150);
     }
   };
@@ -82,7 +82,7 @@ class LoginDialog extends PureComponent {
           loading={loading}
           onFormSubmit={(e) => {
             e.preventDefault();
-            // this.login();
+            this.login();
           }}
           hideBackdrop
           headline="Login"

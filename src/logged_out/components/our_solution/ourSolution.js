@@ -1,9 +1,8 @@
 import React, { Fragment, PureComponent } from "react";
 import PropTypes from "prop-types";
-import HeadSection from "../home/HeadSection";
-import InfoSection from "../home/InfoSection";
-import HowToSection from "../home/HowToSection";
-import CtaSection from "../home/CtaSection";
+import HeroSection from "./HeroSection";
+import FeatureSection from "./FeatureSection";
+import PricingSection from "./PricingSection";
 
 class OurSolution extends PureComponent {
   componentDidMount() {
@@ -14,9 +13,9 @@ class OurSolution extends PureComponent {
   render() {
     return (
       <Fragment>
-        {/* <HeadSection /> */}
-        {/* <InfoSection />
-        <HowToSection /> */}
+        <HeroSection />
+        <FeatureSection />
+        <PricingSection />
         {/* <CtaSection /> */}
       </Fragment>
     );

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import HeadSection from "./HeadSection";
 import InfoSection from "./InfoSection";
 import HowToSection from "./HowToSection";
-import CtaSection from "./CtaSection"
+import CtaSection from "./CtaSection";
 
 class Home extends PureComponent {
   componentDidMount() {
@@ -24,7 +24,7 @@ class Home extends PureComponent {
 }
 
 Home.propTypes = {
-  selectHome: PropTypes.func.isRequired
+  selectHome: PropTypes.func.isRequired,
 };
 
 export default Home;

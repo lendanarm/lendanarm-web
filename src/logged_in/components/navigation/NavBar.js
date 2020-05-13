@@ -1,5 +1,5 @@
 import React, { PureComponent, Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import {
@@ -14,33 +14,28 @@ import {
   ListItemIcon,
   ListItemText,
   Hidden,
-  Tooltip,
   Box,
   withStyles,
   isWidthUp,
   withWidth,
 } from "@material-ui/core";
-import Menu from "@material-ui/core/Menu";
-import Button from "@material-ui/core/Button";
-import MenuItem from "@material-ui/core/MenuItem";
-import Fade from "@material-ui/core/Fade";
-import DashboardIcon from "@material-ui/icons/Dashboard";
 import HomeIcon from "@material-ui/icons/Home";
-import ImageIcon from "@material-ui/icons/Image";
-import AccountBalanceIcon from "@material-ui/icons/AccountBalance";
 import MenuIcon from "@material-ui/icons/Menu";
-import EmailIcon from "@material-ui/icons/Email";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import MessagePopperButton from "./MessagePopperButton";
 import SideDrawer from "./SideDrawer";
-import Balance from "./Balance";
 import NavigationDrawer from "../../../shared/components/NavigationDrawer";
 import profilePicture from "../../dummy_data/images/profilePicture.jpg";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import LocalShippingIcon from "@material-ui/icons/LocalShipping";
 import LocalHospitalIcon from "@material-ui/icons/LocalHospital";
+import Button from "@material-ui/core/Button";
 import MoreButton from "./MoreButton";
 import ForumIcon from "@material-ui/icons/Forum";
+import Notifications from "./Notifications";
+//Redux Stuff
+import { connect } from "react-redux";
+import { logout } from "../../../redux/actions/userActions";
 
 const styles = (theme) => ({
   appBar: {
@@ -150,18 +145,13 @@ const styles = (theme) => ({
     },
     paddingLeft: theme.spacing(2),
   },
-  moreIcons: {
-    color: "#8C8C8C",
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(2),
-    [theme.breakpoints.down("xs")]: {
-      marginLeft: theme.spacing(1.5),
-      marginRight: theme.spacing(1.5),
+
+  buttons: {
+    textAlign: "center",
+    "& a": {
+      marginLeft: "10px",
+      marginRight: "10px",
     },
-  },
-  moreLink: {
-    textDecoration: "none",
-    color: "#8C8C8C",
   },
 });
 
@@ -190,7 +180,17 @@ class NavBar extends PureComponent {
   render() {
     const { mobileOpen, sideDrawerOpen } = this.state;
 
-    const { selectedTab, messages, classes, width } = this.props;
+    const {
+      selectedTab,
+      messages,
+      classes,
+      width,
+      history,
+      user: {
+        credentials: { imageUrl, handle },
+        authenticated,
+      },
+    } = this.props;
     const menuItems = [
       {
         link: "/c/posts",
@@ -301,7 +301,7 @@ class NavBar extends PureComponent {
         icon: {
           desktop: (
             <Avatar
-              src={profilePicture}
+              src={imageUrl}
               className={
                 selectedTab === "Profile"
                   ? classes.textPrimary + " " + classes.accountAvatar
@@ -314,6 +314,8 @@ class NavBar extends PureComponent {
         },
       },
     ];
+
+    const unAuthMenuItems = menuItems.slice(0, 4);
 
     return (
       <Fragment>
@@ -338,41 +340,70 @@ class NavBar extends PureComponent {
                 </Typography>
               </Hidden>
             </Box>
-            <Box
-              display="flex"
-              justifyContent="flex-end"
-              alignItems="center"
-              width="100%"
-            >
-              {/* {isWidthUp("sm", width) && (
+            {authenticated ? (
+              <Fragment>
+                <Box
+                  display="flex"
+                  justifyContent="flex-end"
+                  alignItems="center"
+                  width="100%"
+                >
+                  {/* {isWidthUp("sm", width) && (
                 <Box mr={3}>
                   <Balance balance={2573} />
                 </Box>
               )} */}
-              <MessagePopperButton messages={messages} />
-              <ListItem
-                disableGutters
-                className={classNames(classes.iconListItem, classes.smBordered)}
-              >
-                <Avatar
-                  alt="profile picture"
-                  src={profilePicture}
-                  className={classNames(classes.accountAvatar)}
-                />
-                {isWidthUp("sm", width) && (
-                  <ListItemText
-                    className={classes.username}
-                    primary={
-                      <Typography color="textPrimary">userHandle</Typography>
-                    }
-                  />
-                )}
-              </ListItem>
-            </Box>
-            <IconButton onClick={this.openDrawer} color="primary">
-              <SupervisorAccountIcon />
-            </IconButton>
-            <SideDrawer open={sideDrawerOpen} onClose={this.closeDrawer} />
+                  <Notifications />
+                  <MessagePopperButton messages={messages} />
+                  <ListItem
+                    disableGutters
+                    className={classNames(
+                      classes.iconListItem,
+                      classes.smBordered
+                    )}
+                  >
+                    <Avatar
+                      alt="profile picture"
+                      src={imageUrl}
+                      className={classNames(classes.accountAvatar)}
+                    />
+                    {isWidthUp("sm", width) && (
+                      <ListItemText
+                        className={classes.username}
+                        primary={
+                          <Typography color="textPrimary">
+                            @ {handle}
+                          </Typography>
+                        }
+                      />
+                    )}
+                  </ListItem>
+                </Box>
+                <IconButton onClick={this.openDrawer} color="primary">
+                  <SupervisorAccountIcon />
+                </IconButton>
+                <SideDrawer open={sideDrawerOpen} onClose={this.closeDrawer} />
+              </Fragment>
+            ) : (
+              <div className={classes.buttons}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  component={Link}
+                  to="/login"
+                >
+                  Login
+                </Button>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  component={Link}
+                  to="/signup"
+                >
+                  Signup
+                </Button>
+              </div>
+            )}
           </Toolbar>
         </AppBar>
         <Hidden xsDown>
@@ -384,9 +415,9 @@ class NavBar extends PureComponent {
             open={false}
           >
             <List>
-              {menuItems.map((element, index) => {
-                if (element.link) {
-                  return (
+              {authenticated ? (
+                <Fragment>
+                  {menuItems.map((element, index) => (
                     <Link
                       to={element.link}
                       className={classes.menuLink}
@@ -396,11 +427,6 @@ class NavBar extends PureComponent {
                         this.links[index] = node;
                       }}
                     >
-                      {/* <Tooltip
-                    title={element.name}
-                    placement="right"
-                    key={element.name}
-                  > */}
                       <ListItem
                         selected={selectedTab === element.name}
                         button
@@ -412,16 +438,40 @@ class NavBar extends PureComponent {
                         <ListItemIcon>{element.icon.desktop}</ListItemIcon>
                         <ListItemText primary={element.name} />
                       </ListItem>
-                      {/* </Tooltip> */}
                     </Link>
-                  );
-                }
-              })}
-              <MoreButton
-                classes={classes}
-                selectedTab={selectedTab}
-                links={this.links}
-              />
+                  ))}
+                  <MoreButton
+                    classes={classes}
+                    logout={() => this.props.logout(history)}
+                  />
+                </Fragment>
+              ) : (
+                <Fragment>
+                  {unAuthMenuItems.map((element, index) => (
+                    <Link
+                      to={element.link}
+                      className={classes.menuLink}
+                      onClick={element.onClick}
+                      key={index}
+                      ref={(node) => {
+                        this.links[index] = node;
+                      }}
+                    >
+                      <ListItem
+                        selected={selectedTab === element.name}
+                        button
+                        className={classes.permanentDrawerListItem}
+                        onClick={() => {
+                          this.links[index].click();
+                        }}
+                      >
+                        <ListItemIcon>{element.icon.desktop}</ListItemIcon>
+                        <ListItemText primary={element.name} />
+                      </ListItem>
+                    </Link>
+                  ))}
+                </Fragment>
+              )}
             </List>
           </Drawer>
         </Hidden>
@@ -447,6 +497,18 @@ NavBar.propTypes = {
   selectedTab: PropTypes.string.isRequired,
   width: PropTypes.string.isRequired,
   classes: PropTypes.object.isRequired,
+  logout: PropTypes.func.isRequired,
+  authenticated: PropTypes.bool.isRequired,
+  credentials: PropTypes.object.isRequired,
 };
+const mapActionsToProps = {
+  logout,
+};
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
 
-export default withWidth()(withStyles(styles, { withTheme: true })(NavBar));
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(withRouter(withWidth()(withStyles(styles, { withTheme: true })(NavBar))));

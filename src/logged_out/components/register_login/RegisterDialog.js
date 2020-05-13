@@ -12,6 +12,11 @@ import {
 import FormDialog from "../../../shared/components/FormDialog";
 import HighlightedInformation from "../../../shared/components/HighlightedInformation";
 import ButtonCircularProgress from "../../../shared/components/ButtonCircularProgress";
+import axios from "axios";
+import { withRouter } from "react-router-dom";
+//Redux Stuff
+import { connect } from "react-redux";
+import { signupUser } from "../../../redux/actions/userActions";
 
 const styles = (theme) => ({
   link: {
@@ -31,23 +36,46 @@ const styles = (theme) => ({
 });
 
 class RegisterDialog extends PureComponent {
-  state = { loading: false, termsOfServiceError: false };
+  constructor() {
+    super();
+    this.state = {
+      email: "",
+      password: "",
+      confirmPassword: "",
+      handle: "",
+      fullName: "",
+      termsOfServiceError: false,
+      errors: {},
+      accountCreated: false,
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.UI.errors) {
+      this.setState({ errors: nextProps.UI.errors });
+    }
+  }
 
   register = () => {
-    const { setStatus } = this.props;
+    const { history } = this.props;
     if (!this.registerTermsCheckbox.checked) {
       this.setState({ termsOfServiceError: true });
       return;
     }
-    if (this.registerPassword.value !== this.registerPasswordRepeat.value) {
-      setStatus("passwordsDontMatch");
-      return;
-    }
-    setStatus(null);
-    this.setState({ loading: true });
-    setTimeout(() => {
-      this.setState({ loading: false });
-    }, 1500);
+    const newUserData = {
+      email: this.state.email,
+      password: this.state.password,
+      confirmPassword: this.state.confirmPassword,
+      handle: this.state.handle,
+      fullName: this.state.fullName,
+    };
+    this.props.signupUser(newUserData, history);
+  };
+  handleChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value,
+    });
   };
 
   render() {
@@ -55,11 +83,19 @@ class RegisterDialog extends PureComponent {
       theme,
       onClose,
       openTermsDialog,
-      setStatus,
-      status,
       classes,
+      UI: { loading },
     } = this.props;
-    const { loading, termsOfServiceError } = this.state;
+    const {
+      termsOfServiceError,
+      email,
+      password,
+      confirmPassword,
+      handle,
+      fullName,
+      accountCreated,
+      errors,
+    } = this.state;
     return (
       <FormDialog
         loading={loading}
@@ -79,7 +115,9 @@ class RegisterDialog extends PureComponent {
               margin="normal"
               required
               fullWidth
-              error={status === "invalidEmail"}
+              error={errors.email ? true : false}
+              name="email"
+              value={email}
               label="Email Address"
               inputRef={(node) => {
                 this.registerEmail = node;
@@ -87,11 +125,8 @@ class RegisterDialog extends PureComponent {
               autoFocus
               autoComplete="off"
               type="email"
-              onChange={() => {
-                if (status === "invalidEmail") {
-                  setStatus(null);
-                }
-              }}
+              onChange={this.handleChange}
+              helperText={errors.email}
               FormHelperTextProps={{ error: true }}
             />
             <TextField
@@ -99,32 +134,17 @@ class RegisterDialog extends PureComponent {
               margin="normal"
               required
               fullWidth
-              error={
-                status === "passwordTooShort" || status === "passwordsDontMatch"
-              }
+              error={errors.password ? true : false}
               label="Password"
+              name="password"
+              value={password}
               type="password"
               inputRef={(node) => {
                 this.registerPassword = node;
               }}
               autoComplete="off"
-              onChange={() => {
-                if (
-                  status === "passwordTooShort" ||
-                  status === "passwordsDontMatch"
-                ) {
-                  setStatus(null);
-                }
-              }}
-              helperText={(() => {
-                if (status === "passwordTooShort") {
-                  return "Create a password at least 6 characters long.";
-                }
-                if (status === "passwordsDontMatch") {
-                  return "Your passwords dont match.";
-                }
-                return null;
-              })()}
+              onChange={this.handleChange}
+              helperText={errors.password}
               FormHelperTextProps={{ error: true }}
             />
             <TextField
@@ -132,31 +152,53 @@ class RegisterDialog extends PureComponent {
               margin="normal"
               required
               fullWidth
-              error={
-                status === "passwordTooShort" || status === "passwordsDontMatch"
-              }
+              error={errors.confirmPassword ? true : false}
               label="Repeat Password"
+              name="confirmPassword"
               type="password"
+              value={confirmPassword}
               inputRef={(node) => {
                 this.registerPasswordRepeat = node;
               }}
               autoComplete="off"
-              onChange={() => {
-                if (
-                  status === "passwordTooShort" ||
-                  status === "passwordsDontMatch"
-                ) {
-                  setStatus(null);
-                }
+              onChange={this.handleChange}
+              helperText={errors.confirmPassword}
+              FormHelperTextProps={{ error: true }}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              error={errors.handle ? true : false}
+              label="LAA Handle"
+              name="handle"
+              type="text"
+              value={handle}
+              inputRef={(node) => {
+                this.handle = node;
               }}
-              helperText={(() => {
-                if (status === "passwordTooShort") {
-                  return "Create a password at least 6 characters long.";
-                }
-                if (status === "passwordsDontMatch") {
-                  return "Your passwords dont match.";
-                }
-              })()}
+              autoComplete="off"
+              onChange={this.handleChange}
+              helperText={errors.handle}
+              FormHelperTextProps={{ error: true }}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              error={errors.fullName ? true : false}
+              label="Your Full Name"
+              name="fullName"
+              type="text"
+              value={fullName}
+              inputRef={(node) => {
+                this.fullName = node;
+              }}
+              autoComplete="off"
+              onChange={this.handleChange}
+              helperText={errors.fullName}
               FormHelperTextProps={{ error: true }}
             />
             <FormControlLabel
@@ -208,15 +250,20 @@ class RegisterDialog extends PureComponent {
                 service.
               </FormHelperText>
             )}
-            {status === "accountCreated" ? (
+            {/* {accountCreated ? (
               <HighlightedInformation>
                 We have created your account. Please click on the link in the
                 email we have sent to you before logging in.
               </HighlightedInformation>
-            ) : (
-              <HighlightedInformation>
-                Temporarily disabled. Undergoing maintenance.
-              </HighlightedInformation>
+            ) : ( */}
+            <HighlightedInformation>
+              Temporarily disabled. Undergoing maintenance.
+            </HighlightedInformation>
+            {/* )} */}
+            {errors.general && (
+              <Typography variant="body2" className={classes.customError}>
+                {errors.general}
+              </Typography>
             )}
           </Fragment>
         }
@@ -242,9 +289,20 @@ RegisterDialog.propTypes = {
   theme: PropTypes.object.isRequired,
   onClose: PropTypes.func.isRequired,
   openTermsDialog: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
   status: PropTypes.string,
   setStatus: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+  UI: PropTypes.object.isRequired,
+  signupUser: PropTypes.func.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(RegisterDialog);
+const mapStateToProps = (state) => ({
+  user: state.user,
+  UI: state.UI,
+});
+
+export default connect(mapStateToProps, { signupUser })(
+  withRouter(withStyles(styles, { withTheme: true })(RegisterDialog))
+);

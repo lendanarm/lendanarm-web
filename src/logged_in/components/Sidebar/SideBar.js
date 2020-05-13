@@ -9,10 +9,6 @@ const styles = (theme) => ({
   sideBar: {
     height: "100%vh",
     whiteSpace: "nowrap",
-    border: 0,
-    marginTop: theme.spacing(4),
-    paddingRight: "16px",
-    [theme.breakpoints.up("sm")]: {},
   },
 });
 

@@ -1,10 +1,17 @@
-import React from "react";
+import React, { memo } from "react";
 import PropTypes from "prop-types";
 import { Switch } from "react-router-dom";
 import { withStyles } from "@material-ui/core";
 import AccountSettings from "./Account/AccountSettings";
 import Posts from "./Home/Posts";
 import Subscription from "./subscription/Subscription";
+import Beta from "./Beta/Beta";
+import Discussions from "./Discussions/Discussions";
+import Donations from "./Donations/Donations";
+import Drives from "./Drives/Drives";
+import MedicalReports from "./Medical_Reports/MedicalReports";
+import Profile from "./Profile/Profile";
+import User from "./Profile/User";
 import PropsRoute from "../../shared/components/PropsRoute";
 
 const styles = (theme) => ({
@@ -15,25 +22,25 @@ const styles = (theme) => ({
       width: "95%",
       marginLeft: "auto",
       marginRight: "auto",
-      marginTop: theme.spacing(4),
+      marginTop: theme.spacing(2),
       marginBottom: theme.spacing(4),
     },
     [theme.breakpoints.up("sm")]: {
-      marginTop: theme.spacing(6),
+      marginTop: theme.spacing(3),
       marginBottom: theme.spacing(6),
       width: "90%",
       marginLeft: "auto",
       marginRight: "auto",
     },
     [theme.breakpoints.up("md")]: {
-      marginTop: theme.spacing(6),
+      marginTop: theme.spacing(3),
       marginBottom: theme.spacing(6),
       width: "82.5%",
       marginLeft: "auto",
       marginRight: "auto",
     },
     [theme.breakpoints.up("lg")]: {
-      marginTop: theme.spacing(6),
+      marginTop: theme.spacing(3),
       marginBottom: theme.spacing(6),
       width: "70%",
       marginLeft: "auto",
@@ -60,13 +67,71 @@ function Routing(props) {
     statistics,
     targets,
     isAccountActivated,
-    selectDashboard,
     selectPosts,
+    selectBeta,
+    selectDiscussions,
+    selectDonations,
+    selectDrives,
+    selectMedicalReports,
+    selectProfile,
+    selectSettings,
     selectSubscription,
+    openAddBalanceDialog,
   } = props;
   return (
     <div className={classes.wrapper}>
       <Switch>
+        <PropsRoute
+          path="/c/posts"
+          component={Posts}
+          EmojiTextArea={EmojiTextArea}
+          ImageCropper={ImageCropper}
+          Dropzone={Dropzone}
+          DateTimePicker={DateTimePicker}
+          pushMessageToSnackbar={pushMessageToSnackbar}
+          posts={posts}
+          selectPosts={selectPosts}
+        />
+        <PropsRoute
+          path="/c/discussions"
+          component={Discussions}
+          transactions={transactions}
+          pushMessageToSnackbar={pushMessageToSnackbar}
+          selectDiscussions={selectDiscussions}
+          openAddBalanceDialog={openAddBalanceDialog}
+        />
+        <PropsRoute
+          path="/c/blood_donations"
+          component={Donations}
+          transactions={transactions}
+          pushMessageToSnackbar={pushMessageToSnackbar}
+          selectDonations={selectDonations}
+          openAddBalanceDialog={openAddBalanceDialog}
+        />
+        <PropsRoute
+          path="/c/blood_drives"
+          component={Drives}
+          transactions={transactions}
+          pushMessageToSnackbar={pushMessageToSnackbar}
+          selectDrives={selectDrives}
+          openAddBalanceDialog={openAddBalanceDialog}
+        />
+        <PropsRoute
+          path="/c/medical_reports"
+          component={MedicalReports}
+          transactions={transactions}
+          pushMessageToSnackbar={pushMessageToSnackbar}
+          selectMedicalReports={selectMedicalReports}
+          openAddBalanceDialog={openAddBalanceDialog}
+        />
+        <PropsRoute
+          path="/c/profile"
+          component={Profile}
+          transactions={transactions}
+          pushMessageToSnackbar={pushMessageToSnackbar}
+          selectProfile={selectProfile}
+          openAddBalanceDialog={openAddBalanceDialog}
+        />
         <PropsRoute
           path="/c/account_settings"
           component={AccountSettings}
@@ -79,26 +144,20 @@ function Routing(props) {
           statistics={statistics}
           targets={targets}
           isAccountActivated={isAccountActivated}
-          selectDashboard={selectDashboard}
+          selectSettings={selectSettings}
         />
+
         <PropsRoute
-          path="/c/subscription"
-          component={Subscription}
+          path="/c/beta"
+          component={Beta}
           transactions={transactions}
           pushMessageToSnackbar={pushMessageToSnackbar}
-          selectSubscription={selectSubscription}
+          selectBeta={selectBeta}
+          openAddBalanceDialog={openAddBalanceDialog}
         />
-        <PropsRoute
-          path="/"
-          component={Posts}
-          EmojiTextArea={EmojiTextArea}
-          ImageCropper={ImageCropper}
-          Dropzone={Dropzone}
-          DateTimePicker={DateTimePicker}
-          pushMessageToSnackbar={pushMessageToSnackbar}
-          posts={posts}
-          selectPosts={selectPosts}
-        />
+
+        <PropsRoute path="/c/users/:handle" component={User} />
+        <PropsRoute path="/c/:handle/post/:postId" component={User} />
       </Switch>
     </div>
   );
@@ -124,6 +183,7 @@ Routing.propTypes = {
   selectDashboard: PropTypes.func.isRequired,
   selectPosts: PropTypes.func.isRequired,
   selectSubscription: PropTypes.func.isRequired,
+  openAddBalanceDialog: PropTypes.func,
 };
 
-export default withStyles(styles, { withTheme: true })(Routing);
+export default withStyles(styles, { withTheme: true })(memo(Routing));

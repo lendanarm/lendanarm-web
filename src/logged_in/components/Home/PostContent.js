@@ -9,7 +9,7 @@ import {
   Button,
   Paper,
   Box,
-  withStyles
+  withStyles,
 } from "@material-ui/core";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -21,15 +21,18 @@ const styles = {
   dBlock: { display: "block" },
   dNone: { display: "none" },
   toolbar: {
-    justifyContent: "space-between"
-  }
+    justifyContent: "space-between",
+  },
+  paper: {
+    marginBottom: "20px",
+  },
 };
 
 class PostContent extends PureComponent {
   state = {
     page: 0,
     deletePostDialogOpen: false,
-    deletePostLoading: false
+    deletePostLoading: false,
   };
 
   rowsPerPage = 25;
@@ -37,7 +40,7 @@ class PostContent extends PureComponent {
   closeDeletePostDialog = () => {
     this.setState({
       deletePostDialogOpen: false,
-      deletePostLoading: false
+      deletePostLoading: false,
     });
   };
 
@@ -47,17 +50,17 @@ class PostContent extends PureComponent {
     setTimeout(() => {
       this.setState({
         deletePostLoading: false,
-        deletePostDialogOpen: false
+        deletePostDialogOpen: false,
       });
       pushMessageToSnackbar({
-        text: "Your scheduled post has been deleted"
+        text: "Your scheduled post has been deleted",
       });
     }, 1500);
   };
 
   onDelete = () => {
     this.setState({
-      deletePostDialogOpen: true
+      deletePostDialogOpen: true,
     });
   };
 
@@ -70,7 +73,7 @@ class PostContent extends PureComponent {
     options.push({
       name: "Delete",
       onClick: this.onDelete,
-      icon: <DeleteIcon />
+      icon: <DeleteIcon />,
     });
     const { posts } = this.props;
     const { page } = this.state;
@@ -83,7 +86,7 @@ class PostContent extends PureComponent {
                 page * this.rowsPerPage,
                 page * this.rowsPerPage + this.rowsPerPage
               )
-              .map(element => (
+              .map((element) => (
                 <Grid item xs={6} sm={4} md={3} key={element.id}>
                   <SelfAligningImage
                     src={element.src}
@@ -111,51 +114,23 @@ class PostContent extends PureComponent {
     const { openAddPostModal, posts, classes } = this.props;
 
     return (
-      <Paper>
-        <Toolbar className={classes.toolbar}>
-          <Typography variant="h6">Your Posts</Typography>
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={openAddPostModal}
-          >
-            <Box mr={1} display="flex" alignItems="center">
-              <AddCircleOutlineIcon fontSize="small" />
-            </Box>
-            New
-          </Button>
-        </Toolbar>
-        <Divider />
-        {this.printImageGrid()}
-        <TablePagination
-          component="div"
-          count={posts.length}
-          rowsPerPage={this.rowsPerPage}
-          page={page}
-          backIconButtonProps={{
-            "aria-label": "Previous Page"
-          }}
-          nextIconButtonProps={{
-            "aria-label": "Next Page"
-          }}
-          onChangePage={this.handleChangePage}
-          classes={{
-            select: classes.dNone,
-            selectIcon: classes.dNone,
-            actions: posts.length > 0 ? classes.dBlock : classes.dNone,
-            caption: posts.length > 0 ? classes.dBlock : classes.dNone
-          }}
-          labelRowsPerPage=""
-        />
-        <ConfirmationDialog
-          open={deletePostDialogOpen}
-          title="Confirmation"
-          content="Do you really want to delete the post?"
-          onClose={this.closeDeletePostDialog}
-          loading={deletePostLoading}
-          onConfirm={this.deletePost}
-        />
-      </Paper>
+      <>
+        <Paper className={classes.paper}>
+          <Toolbar className={classes.toolbar}>
+            <Typography variant="h6">What's on your mind?</Typography>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={openAddPostModal}
+            >
+              <Box mr={1} display="flex" alignItems="center">
+                <AddCircleOutlineIcon fontSize="small" />
+              </Box>
+              Post
+            </Button>
+          </Toolbar>
+        </Paper>
+      </>
     );
   }
 }
@@ -164,7 +139,7 @@ PostContent.propTypes = {
   openAddPostModal: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
   posts: PropTypes.arrayOf(PropTypes.object).isRequired,
-  pushMessageToSnackbar: PropTypes.func
+  pushMessageToSnackbar: PropTypes.func,
 };
 
 export default withStyles(styles)(PostContent);

@@ -6,11 +6,17 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
 //Icons
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import SettingsIcon from "@material-ui/icons/Settings";
 import AllInclusiveIcon from "@material-ui/icons/AllInclusive";
 import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
+import DeleteOutline from "@material-ui/icons/DeleteOutline";
+//Redux Stuff
+import { connect } from "react-redux";
+import { deletePost } from "../../../redux/actions/dataActions";
 
 class MoreButton extends Component {
   state = {
@@ -23,59 +29,53 @@ class MoreButton extends Component {
   handleClose = () => {
     this.setState({ anchorEl: null });
   };
+  deletePost = () => {
+    this.props.deletePost(this.props.post.postId);
+    this.setState({ open: false });
+  };
 
   render() {
-    const { classes, logout } = this.props;
+    const {
+      classes,
+      logout,
+      user: {
+        authenticated,
+        credentials: { handle },
+      },
+      post: { userHandle, postId },
+    } = this.props;
     const anchorEl = this.state.anchorEl;
 
+    const deleteButton =
+      authenticated && userHandle === handle
+        ? {
+            itemId: "1",
+            title: "Delete post",
+            onClick: { deletePost },
+            icon: <DeleteOutline style={{ marginRight: 10, fontSize: 15 }} />,
+          }
+        : null;
     const moreMenuItems = [
-      {
-        itemId: "1",
-        title: "Settings",
-        link: "/c/account_settings",
-        icon: <SettingsIcon style={{ marginRight: 10 }} />,
-      },
+      deleteButton,
       {
         itemId: "2",
-        title: "Beta",
-        link: "/c/beta",
-        icon: <AllInclusiveIcon style={{ marginRight: 10 }} />,
-      },
-      {
-        itemId: "3",
-        title: "Logout",
-        onClick: { logout },
-        icon: <PowerSettingsNewIcon style={{ marginRight: 10 }} />,
+        title: `Connect @${handle}`,
+        icon: <AllInclusiveIcon style={{ marginRight: 10, fontSize: 15 }} />,
       },
     ];
 
     let moreMenuMarkup = moreMenuItems.map((item) => {
-      return item.link ? (
-        <MenuItem key={item.itemId} onClick={this.handleClose}>
-          {item.icon}
-          <Typography
-            component={Link}
-            color="default"
-            variant="body1"
-            to={item.link}
-            style={{
-              textDecoration: "none",
-              color: "#8C8C8C",
-            }}
-          >
-            {item.title}
-          </Typography>
-        </MenuItem>
-      ) : (
+      return !item ? null : (
         <MenuItem key={item.itemId} onClick={this.handleClose}>
           {item.icon}
           <Typography
             color="default"
-            variant="body1"
-            onClick={logout}
+            variant="p"
+            onClick={this.deletePost}
             style={{
               textDecoration: "none",
               color: "#8C8C8C",
+              fontSize: "12px",
             }}
           >
             {item.title}
@@ -86,15 +86,14 @@ class MoreButton extends Component {
 
     return (
       <Fragment>
-        <Button
+        <IconButton
           aria-owns={anchorEl ? "simple-menu" : undefined}
           aria-haspopup="true"
+          aria-label="post options"
           onClick={this.handleOpen}
-          startIcon={<MoreHorizIcon />}
-          className={classes.menuLink + " " + classes.moreStyle}
         >
-          More
-        </Button>
+          <MoreVertIcon style={{ fontSize: "15" }} />
+        </IconButton>
         <Menu
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
@@ -113,4 +112,8 @@ MoreButton.propTypes = {
   moreMenuItems: PropTypes.array.isRequired,
 };
 
-export default MoreButton;
+const mapActionsToProps = {
+  deletePost,
+};
+
+export default connect(null, mapActionsToProps)(MoreButton);

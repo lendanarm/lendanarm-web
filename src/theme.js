@@ -13,7 +13,7 @@ const textPrimary = "#8C8C8C";
 const textSecondary = "#575757";
 const textDisabled = "#A6A6A6";
 const backgroundPaper = "#fff";
-const backgroundAlt ="#E5E5E5";
+const backgroundAlt = "#E5E5E5";
 
 // borders
 const borderWidth = 2;
@@ -35,7 +35,7 @@ const theme = createMuiTheme({
     secondary: { main: secondary },
     common: {
       black,
-      darkBlack
+      darkBlack,
     },
     text: {
       primary: textPrimary,
@@ -45,7 +45,7 @@ const theme = createMuiTheme({
     warning: {
       light: warningLight,
       main: warningMain,
-      dark: warningDark
+      dark: warningDark,
     },
     // Used to shift a color's luminance by approximately
     // two indexes within its tonal palette.
@@ -54,9 +54,9 @@ const theme = createMuiTheme({
     background: {
       paper: backgroundPaper,
       default: background,
-      alternate: backgroundAlt
+      alternate: backgroundAlt,
     },
-    spacing: spacing
+    spacing: spacing,
   },
   breakpoints: {
     // Define custom breakpoint values.
@@ -69,18 +69,18 @@ const theme = createMuiTheme({
       lg,
       md,
       sm,
-      xs
-    }
+      xs,
+    },
   },
   border: {
     borderColor: borderColor,
-    borderWidth: borderWidth
+    borderWidth: borderWidth,
   },
   overrides: {
     MuiExpansionPanel: {
       root: {
-        position: "static"
-      }
+        position: "static",
+      },
     },
     MuiTableCell: {
       root: {
@@ -89,80 +89,80 @@ const theme = createMuiTheme({
         borderBottom: `${borderWidth}px solid ${borderColor}`,
         [`@media (max-width:  ${sm}px)`]: {
           paddingLeft: spacing,
-          paddingRight: spacing
-        }
-      }
+          paddingRight: spacing,
+        },
+      },
     },
     MuiDivider: {
       root: {
         backgroundColor: borderColor,
-        height: borderWidth
-      }
+        height: borderWidth,
+      },
     },
     MuiPrivateNotchedOutline: {
       root: {
-        borderWidth: borderWidth
-      }
+        borderWidth: borderWidth,
+      },
     },
     MuiListItem: {
       divider: {
-        borderBottom: `${borderWidth}px solid ${borderColor}`
-      }
+        borderBottom: `${borderWidth}px solid ${borderColor}`,
+      },
     },
     MuiDialog: {
       paper: {
         width: "100%",
         maxWidth: 430,
         marginLeft: spacing,
-        marginRight: spacing
-      }
+        marginRight: spacing,
+      },
     },
     MuiTooltip: {
       tooltip: {
-        backgroundColor: darkBlack
-      }
+        backgroundColor: darkBlack,
+      },
     },
     MuiExpansionPanelDetails: {
       root: {
         [`@media (max-width:  ${sm}px)`]: {
           paddingLeft: spacing,
-          paddingRight: spacing
-        }
-      }
-    }
+          paddingRight: spacing,
+        },
+      },
+    },
   },
   typography: {
     useNextVariants: true,
     fontFamily: [
-      'Nunito',
-      'Roboto',
+      "Nunito",
+      "Roboto",
       '"Helvetica Neue"',
-      'Arial',
-      'sans-serif'
-    ].join(','),
+      "Arial",
+      "sans-serif",
+    ].join(","),
     h6: {
       fontSize: "0.875rem",
       fontWeight: 400,
       lineHeight: 1.0625,
-      fontStyle: "normal"
+      fontStyle: "normal",
     },
-    button : {
-      textTransform: "none"
+    button: {
+      textTransform: "none",
     },
     body1: {
       fontStyle: "normal",
       fontWeight: "normal",
       fontSize: "1.125rem",
-      lineHeight: "1.6875"
+      lineHeight: "1.6875",
     },
     footerMenuText: {
       fontStyle: "normal",
       fontWeight: "600px",
       fontSize: "18px",
       lineHeight: "22px",
-      letterSpacing: "0.02em"
-    }
-  }
+      letterSpacing: "0.02em",
+    },
+  },
 });
 
 export default responsiveFontSizes(theme);

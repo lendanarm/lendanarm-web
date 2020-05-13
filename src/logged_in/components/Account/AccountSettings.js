@@ -8,8 +8,8 @@ import StatisticsArea from "./StatisticsArea";
 
 class AccountSettings extends PureComponent {
   componentDidMount() {
-    const { selectDashboard } = this.props;
-    selectDashboard();
+    const { selectSettings } = this.props;
+    selectSettings();
   }
 
   render() {
@@ -55,7 +55,7 @@ AccountSettings.propTypes = {
   pushMessageToSnackbar: PropTypes.func,
   targets: PropTypes.arrayOf(PropTypes.object).isRequired,
   isAccountActivated: PropTypes.bool.isRequired,
-  selectDashboard: PropTypes.func.isRequired,
+  selectSettings: PropTypes.func.isRequired,
 };
 
 export default AccountSettings;

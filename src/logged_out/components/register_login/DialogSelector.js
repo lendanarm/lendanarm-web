@@ -9,14 +9,14 @@ import ModalBackdrop from "../../../shared/components/ModalBackdrop";
 class DialogSelector extends PureComponent {
   state = {
     loginStatus: null,
-    registerStatus: null
+    registerStatus: null,
   };
 
-  setRegisterStatus = registerStatus => {
+  setRegisterStatus = (registerStatus) => {
     this.setState({ registerStatus });
   };
 
-  setLoginStatus = loginStatus => {
+  setLoginStatus = (loginStatus) => {
     this.setState({ loginStatus });
   };
 
@@ -32,7 +32,7 @@ class DialogSelector extends PureComponent {
       openTermsDialog,
       openRegisterDialog,
       openLoginDialog,
-      openChangePasswordDialog
+      openChangePasswordDialog,
     } = this.props;
     const { loginStatus, registerStatus } = this.state;
     switch (dialogOpen) {
@@ -51,8 +51,6 @@ class DialogSelector extends PureComponent {
         return (
           <LoginDialog
             onClose={this.onClose}
-            status={loginStatus}
-            setStatus={this.setLoginStatus}
             openChangePasswordDialog={openChangePasswordDialog}
           />
         );
@@ -84,7 +82,7 @@ DialogSelector.propTypes = {
   onClose: PropTypes.func.isRequired,
   openTermsDialog: PropTypes.func.isRequired,
   openRegisterDialog: PropTypes.func.isRequired,
-  openChangePasswordDialog: PropTypes.func.isRequired
+  openChangePasswordDialog: PropTypes.func.isRequired,
 };
 
 export default DialogSelector;

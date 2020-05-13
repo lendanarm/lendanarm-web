@@ -8,8 +8,12 @@ import ConsecutiveSnackbarMessages from "../../shared/components/ConsecutiveSnac
 import SideBar from "./Sidebar/SideBar";
 import smoothScrollTop from "../../shared/functions/smoothScrollTop";
 import persons from "../dummy_data/persons";
+import Grid from "@material-ui/core/Grid";
 
 const styles = (theme) => ({
+  root: {
+    flexGrow: 1,
+  },
   main: {
     marginLeft: theme.spacing(28),
     transition: theme.transitions.create(["width", "margin"], {
@@ -20,21 +24,32 @@ const styles = (theme) => ({
       marginLeft: 0,
     },
   },
-  split: {
-    [theme.breakpoints.up("sm")]: {
-      display: "flex",
-      flexDirection: "row",
+  sidebarWrapper: {
+    margin: theme.spacing(1),
+    [theme.breakpoints.up("xs")]: {
+      width: "95%",
+      marginLeft: "auto",
+      marginRight: "auto",
+      marginTop: theme.spacing(2),
+      marginBottom: theme.spacing(4),
     },
-  },
-  middle: {
     [theme.breakpoints.up("sm")]: {
-      width: "70%",
+      marginTop: theme.spacing(3),
+      marginBottom: theme.spacing(6),
+      width: "100%",
+      paddingRight: theme.spacing(1),
     },
-  },
-  last: {
-    [theme.breakpoints.up("sm")]: {
-      width: "30%",
-      maxHeight: "100vh",
+    [theme.breakpoints.up("md")]: {
+      marginTop: theme.spacing(3),
+      marginBottom: theme.spacing(6),
+      width: "100%",
+      paddingRight: theme.spacing(2),
+    },
+    [theme.breakpoints.up("lg")]: {
+      marginTop: theme.spacing(3),
+      marginBottom: theme.spacing(6),
+      width: "100%",
+      paddingRight: theme.spacing(2),
     },
   },
 });
@@ -255,6 +270,13 @@ class Main extends PureComponent {
     //   });
     // }
   };
+  selectSettings = () => {
+    smoothScrollTop();
+    document.title = "LendAnArm - Account Settings & Privacy";
+    this.setState({
+      selectedTab: "Settings",
+    });
+  };
 
   selectPosts = () => {
     smoothScrollTop();
@@ -295,6 +317,48 @@ class Main extends PureComponent {
       selectedTab: "Subscription",
     });
   };
+  selectBeta = () => {
+    smoothScrollTop();
+    document.title = "LendAnArm - Beta ";
+    this.setState({
+      selectedTab: "Beta",
+    });
+  };
+  selectDiscussions = () => {
+    smoothScrollTop();
+    document.title = "LendAnArm - Discussion Board";
+    this.setState({
+      selectedTab: "Discussions",
+    });
+  };
+  selectDonations = () => {
+    smoothScrollTop();
+    document.title = "LendAnArm - Track Your Blood Donations";
+    this.setState({
+      selectedTab: "Donations",
+    });
+  };
+  selectDrives = () => {
+    smoothScrollTop();
+    document.title = "LendAnArm - Blood Drives near You | Host a Blood Drive";
+    this.setState({
+      selectedTab: "Drives",
+    });
+  };
+  selectMedicalReports = () => {
+    smoothScrollTop();
+    document.title = "LendAnArm - Your Medical Reports";
+    this.setState({
+      selectedTab: "Medical Reports",
+    });
+  };
+  selectProfile = () => {
+    smoothScrollTop();
+    document.title = "LendAnArm - Your Profile";
+    this.setState({
+      selectedTab: "Profile",
+    });
+  };
 
   render() {
     const { classes } = this.props;
@@ -319,8 +383,8 @@ class Main extends PureComponent {
           getPushMessageFromChild={this.getPushMessageFromChild}
         />
         <main className={classNames(classes.main)}>
-          <div className={classNames(classes.split)}>
-            <div className={classNames(classes.middle)}>
+          <Grid container className={classNames(classes.root)}>
+            <Grid item xs={8}>
               <Routing
                 isAccountActivated={isAccountActivated}
                 ImageCropper={ImageCropper}
@@ -339,13 +403,22 @@ class Main extends PureComponent {
                 targets={targets}
                 selectDashboard={this.selectDashboard}
                 selectPosts={this.selectPosts}
+                selectSettings={this.selectSettings}
                 selectSubscription={this.selectSubscription}
+                selectBeta={this.selectBeta}
+                selectDiscussions={this.selectDiscussions}
+                selectDonations={this.selectDonations}
+                selectDrives={this.selectDrives}
+                selectMedicalReports={this.selectMedicalReports}
+                selectProfile={this.selectProfile}
               />
-            </div>
-            <div className={classNames(classes.last)}>
+            </Grid>
+            <Grid item xs={4} className={classes.sidebarWrapper}>
               <SideBar />
-            </div>
-          </div>
+            </Grid>
+            {/* <div className={classNames(classes.middle)}></div>
+            <div className={classNames(classes.last)}></div> */}
+          </Grid>
         </main>
       </Fragment>
     );

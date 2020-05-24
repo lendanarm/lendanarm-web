@@ -1,44 +1,29 @@
-import React, { Fragment } from "react";
+//Package Imports
+import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import {
-  Grid,
-  Typography,
-  Card,
-  Button,
-  Hidden,
-  Box,
-  withStyles,
-  withWidth,
-  isWidthUp,
-} from "@material-ui/core";
-import phone1 from "../../dummy_data/images/Phone1.png";
-import phone2 from "../../dummy_data/images/Phone2.png";
-import Image from "../../../shared/components/Image";
+//MUI Component Imports
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import Card from "@material-ui/core/Card";
+import Button from "@material-ui/core/Button";
+import Hidden from "@material-ui/core/Hidden";
+import Box from "@material-ui/core/Box";
+import withStyles from "@material-ui/core/styles/withStyles";
+import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
+//MUI Icon Imports
 import AndroidIcon from "@material-ui/icons/Android";
 import AppleIcon from "@material-ui/icons/Apple";
-import whoImg from "../../dummy_data/images/who.svg";
-import resImg from "../../dummy_data/images/resolutionproject.png";
+//Local Component Imports
+import Image from "../../../shared/components/Image";
+import PartnerSlider from "./PartnerSlider";
+//Local Image Imports
+import phone1 from "../../data/images/Phone1.png";
+import phone2 from "../../data/images/Phone2.png";
+import whoImg from "../../data/images/who.svg";
+import resImg from "../../data/images/resolutionproject.png";
 
 const styles = (theme) => ({
-  extraLargeButtonLabel: {
-    fontSize: theme.typography.body1.fontSize,
-    [theme.breakpoints.up("sm")]: {
-      fontSize: theme.typography.h6.fontSize,
-    },
-  },
-  extraLargeButton: {
-    paddingTop: theme.spacing(1.5),
-    paddingBottom: theme.spacing(1.5),
-    [theme.breakpoints.up("xs")]: {
-      paddingTop: theme.spacing(1),
-      paddingBottom: theme.spacing(1),
-    },
-    [theme.breakpoints.up("lg")]: {
-      paddingTop: theme.spacing(2),
-      paddingBottom: theme.spacing(2),
-    },
-  },
   card: {
     boxShadow: theme.shadows[0],
     marginLeft: theme.spacing(2),
@@ -73,12 +58,6 @@ const styles = (theme) => ({
     position: "relative",
     backgroundColor: theme.palette.primary.main,
     paddingBottom: theme.spacing(2),
-  },
-  image: {
-    maxWidth: "100%",
-    verticalAlign: "middle",
-    borderRadius: theme.shape.borderRadius,
-    boxShadow: theme.shadows[4],
   },
   container: {
     marginTop: theme.spacing(3),
@@ -141,16 +120,6 @@ const styles = (theme) => ({
   rotateImg: {
     [theme.breakpoints.down("sm")]: {
       textAlign: "center",
-      "&:hover": {
-        transform: "rotate(0.5deg)",
-        zIndex: -1,
-      },
-    },
-    [theme.breakpoints.up("md")]: {
-      "&:hover": {
-        transform: "rotate(5deg)",
-        marginLeft: "-20px",
-      },
     },
   },
 
@@ -174,21 +143,6 @@ const styles = (theme) => ({
       backgroundColor: "rgb(138, 3, 3)",
     },
   },
-  partners: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "flex-end",
-    marginTop: "50px",
-  },
-  partner: {
-    width: "90%",
-    [theme.breakpoints.down("sm")]: {
-      width: "80%",
-    },
-    [theme.breakpoints.down("xs")]: {
-      width: "60%",
-    },
-  },
 });
 
 function CtaSection(props) {
@@ -201,7 +155,7 @@ function CtaSection(props) {
             <Card
               className={classes.card}
               style={{ backgroundColor: "rgb(138, 3, 3)" }}
-              data-aos-delay="200"
+              data-aos-delay="500"
               data-aos="zoom-in"
             >
               <div className={classNames(classes.containerFix, "container")}>
@@ -271,30 +225,7 @@ function CtaSection(props) {
                           Download on Google Play
                         </Button>
                       </div>
-                      <div className={classes.partners}>
-                        <a
-                          href="http://innov.afro.who.int/innovators/dr-imodoye-abioro-27"
-                          target="_blank"
-                          rel="noopener"
-                        >
-                          <Image
-                            src={whoImg}
-                            className={classes.partner}
-                            alt="Smaller Phone"
-                          />
-                        </a>
-                        <a
-                          href="https://resolutionproject.org/54th-social-venture-challenge-yields-two-new-winners-from-african-leadership-academy/"
-                          target="_blank"
-                          rel="noopener"
-                        >
-                          <Image
-                            src={resImg}
-                            className={classes.partner}
-                            alt="Smaller Phone"
-                          />
-                        </a>
-                      </div>
+                      <PartnerSlider classes={classes} />
                     </Box>
                   </Grid>
                 </Box>

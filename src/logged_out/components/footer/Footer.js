@@ -1,15 +1,14 @@
+//Package Imports
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  Grid,
-  Box,
-  IconButton,
-  withStyles,
-  withWidth,
-  isWidthUp,
-} from "@material-ui/core";
+import { Link } from "react-router-dom";
+//MUI Imports
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
+import IconButton from "@material-ui/core/IconButton";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
-import Link from "@material-ui/core/Link";
+import withStyles from "@material-ui/core/styles/withStyles";
+import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
 
 const styles = (theme) => ({
   footerInner: {
@@ -34,11 +33,6 @@ const styles = (theme) => ({
     borderTopWidth: "0.02px",
     borderTopColor: "#E5E5E5",
   },
-  brandText: {
-    fontFamily: "'Baloo Bhaijaan', cursive",
-    fontWeight: 400,
-    color: theme.palette.common.white,
-  },
   footerLinks: {
     fontStyle: "normal",
     fontWeight: "400",
@@ -46,9 +40,7 @@ const styles = (theme) => ({
     lineHeight: "19px",
     letterSpacing: "0.05em",
     color: "#4F4F4F",
-    "&:hover": {
-      textDecoration: "none",
-    },
+    textDecoration: "none",
     cursor: "Pointer",
   },
   socialIcon: {
@@ -177,7 +169,7 @@ function Footer(props) {
                 style={{ textAlign: "center" }}
                 className={classes.footerMenuItem}
               >
-                <Link href={menuItem.link} className={classes.footerLinks}>
+                <Link to={menuItem.link} className={classes.footerLinks}>
                   {menuItem.title}
                 </Link>
               </Breadcrumbs>
@@ -205,7 +197,7 @@ function Footer(props) {
               </Box>
             </div>
             <div className={classes.privacyPolicy}>
-              <Link href="/" className={classes.footerLinks}>
+              <Link to="/" className={classes.footerLinks}>
                 Privacy Policy
               </Link>
             </div>

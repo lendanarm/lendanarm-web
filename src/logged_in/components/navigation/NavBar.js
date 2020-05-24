@@ -25,7 +25,7 @@ import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import MessagePopperButton from "./MessagePopperButton";
 import SideDrawer from "./SideDrawer";
 import NavigationDrawer from "../../../shared/components/NavigationDrawer";
-import profilePicture from "../../dummy_data/images/profilePicture.jpg";
+import profilePicture from "../../data/images/profilePicture.jpg";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import LocalShippingIcon from "@material-ui/icons/LocalShipping";
 import LocalHospitalIcon from "@material-ui/icons/LocalHospital";

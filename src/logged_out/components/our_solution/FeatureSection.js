@@ -1,29 +1,19 @@
+//Package Imports
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  Grid,
-  Typography,
-  isWidthUp,
-  withWidth,
-  withStyles,
-} from "@material-ui/core";
 import classNames from "classnames";
-import CodeIcon from "@material-ui/icons/Code";
-import BuildIcon from "@material-ui/icons/Build";
-import ComputerIcon from "@material-ui/icons/Computer";
-import BarChartIcon from "@material-ui/icons/BarChart";
-import HeadsetMicIcon from "@material-ui/icons/HeadsetMic";
-import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
-import CloudIcon from "@material-ui/icons/Cloud";
-import MeassageIcon from "@material-ui/icons/Message";
-import CancelIcon from "@material-ui/icons/Cancel";
+//MUI Component Imports
+import Grid from "@material-ui/core/Grid";
+import withStyles from "@material-ui/core/styles/withStyles";
+import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
+//Local Component Imports
 import calculateSpacing from "./calculateSpacing";
 import FeatureCard from "./FeatureCard";
 import Image from "../../../shared/components/Image";
-import BloodConnect from "../../dummy_data/images/world2.svg";
-import BloodBank from "../../dummy_data/images/bloodbank.svg";
-import BloodDonation from "../../dummy_data/images/blooddonation.svg";
-import BloodDelivery from "../../dummy_data/images/blooddelivery.svg";
+//Local Image Imports
+import BloodBank from "../../data/images/bloodbank.svg";
+import BloodDonation from "../../data/images/blooddonation.svg";
+import BloodDelivery from "../../data/images/blooddelivery.svg";
 
 const styles = (theme) => ({
   featureContainer: {
@@ -32,44 +22,33 @@ const styles = (theme) => ({
   },
 });
 
-const iconSize = 20;
-
 const features = [
   {
-    color: "#00C853",
-    headline: "Feature 1",
-    text:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-    icon: <Image src={BloodConnect} alt="header example" />,
-    mdDelay: "0",
-    smDelay: "0",
-  },
-  {
-    color: "#6200EA",
-    headline: "Feature 2",
-    text:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-    icon: <Image src={BloodBank} alt="header example" />,
-    mdDelay: "200",
-    smDelay: "200",
-  },
-  {
     color: "#0091EA",
-    headline: "Feature 3",
+    headline: "Awareness Campaigns",
     text:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-    icon: <Image src={BloodDonation} alt="header example" />,
-    mdDelay: "400",
-    smDelay: "0",
+      "We run blood donation awareness campaigns with extensive use of local electronic, print and social media in both English and Yoruba languages to sensitize the public on the importance of voluntary blood donation. ",
+    icon: <Image src={BloodDonation} alt="awareness" />,
+    mdDelay: "300",
+    smDelay: "200",
   },
   {
     color: "#d50000",
-    headline: "Feature 4",
+    headline: "Blood Drives",
     text:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-    icon: <Image src={BloodDelivery} alt="header example" />,
-    mdDelay: "0",
-    smDelay: "200",
+      "We hold serial mobile blood drives at multiple locations across the cities, with incentives given to voluntary donors at these drives in line with the national blood policy and World Health Organization framework.",
+    icon: <Image src={BloodDelivery} alt="blood drives" />,
+    mdDelay: "400",
+    smDelay: "300",
+  },
+  {
+    color: "#6200EA",
+    headline: "Banking Services",
+    text:
+      "With state-of-the-art storage equipment and qualified personnel, blood collected at each drive are stored and retrieved when needed using our blood bank management software.",
+    icon: <Image src={BloodBank} alt="laa banking" />,
+    mdDelay: "500",
+    smDelay: "400",
   },
 ];
 
@@ -84,7 +63,7 @@ function FeatureSection(props) {
               item
               xs={12}
               sm={6}
-              md={3}
+              md={4}
               data-aos="zoom-in-up"
               data-aos-delay={
                 isWidthUp("md", width) ? element.mdDelay : element.smDelay
@@ -108,7 +87,6 @@ function FeatureSection(props) {
 FeatureSection.propTypes = {
   classes: PropTypes.object,
   width: PropTypes.string.isRequired,
-  theme: PropTypes.object,
 };
 
 export default withWidth()(

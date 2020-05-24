@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
-import noImg from "../../../logged_in/dummy_data/images/no-img.png";
+import noImg from "../../../logged_in/data/images/no-img.png";
 //MUI
 import Paper from "@material-ui/core/Paper";
 //Icons

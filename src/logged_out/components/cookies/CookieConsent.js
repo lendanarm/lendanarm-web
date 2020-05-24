@@ -1,22 +1,20 @@
 import React, { PureComponent, Fragment } from "react";
 import PropTypes from "prop-types";
 import Cookies from "js-cookie";
-import {
-  Snackbar,
-  Button,
-  Typography,
-  Box,
-  withStyles
-} from "@material-ui/core";
+import Snackbar from "@material-ui/core/Snackbar";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
+import withStyles from "@material-ui/core/styles/withStyles";
 import fetchIpData from "./fetchIpData";
 
-const styles = theme => ({
+const styles = (theme) => ({
   snackbarContent: {
     borderBotttomLeftRadius: 0,
     borderBottomRightRadius: 0,
     paddingLeft: theme.spacing(3),
-    paddingRight: theme.spacing(3)
-  }
+    paddingRight: theme.spacing(3),
+  },
 });
 
 /**
@@ -25,7 +23,7 @@ const styles = theme => ({
  */
 class CookieConsent extends PureComponent {
   state = {
-    visible: false
+    visible: false,
   };
 
   europeanCountryCodes = [
@@ -56,7 +54,8 @@ class CookieConsent extends PureComponent {
     "RO",
     "SE",
     "SI",
-    "SK"
+    "SK",
+    "NG",
   ];
 
   componentDidMount() {
@@ -67,7 +66,7 @@ class CookieConsent extends PureComponent {
 
   openOnEuCountry = () => {
     fetchIpData
-      .then(data => {
+      .then((data) => {
         if (
           data &&
           data.country &&
@@ -88,7 +87,7 @@ class CookieConsent extends PureComponent {
    */
   onAccept = () => {
     Cookies.set("remember-cookie-snackbar", "", {
-      expires: 365
+      expires: 365,
     });
     this.setState({ visible: false });
   };
@@ -122,7 +121,7 @@ class CookieConsent extends PureComponent {
 }
 
 CookieConsent.propTypes = {
-  handleCookieRulesDialogOpen: PropTypes.func.isRequired
+  handleCookieRulesDialogOpen: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles, { withTheme: true })(CookieConsent);

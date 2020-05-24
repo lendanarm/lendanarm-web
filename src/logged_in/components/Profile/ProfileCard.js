@@ -14,7 +14,7 @@ import PhotoCameraRoundedIcon from "@material-ui/icons/PhotoCameraRounded";
 import LocationOn from "@material-ui/icons/LocationOn";
 import LinkIcon from "@material-ui/icons/Link";
 import CalendarToday from "@material-ui/icons/CalendarToday";
-import donationVector from "../../dummy_data/images/donationVector.svg";
+import donationVector from "../../data/images/donationVector.svg";
 import PeopleIcon from "@material-ui/icons/People";
 
 export default function DonationCta({

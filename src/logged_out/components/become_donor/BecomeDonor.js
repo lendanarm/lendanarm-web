@@ -1,30 +1,24 @@
 import React, { Fragment, PureComponent } from "react";
 import PropTypes from "prop-types";
-import HeadSection from "../home/HeadSection";
-import InfoSection from "../home/InfoSection";
-import HowToSection from "../home/HowToSection";
-import CtaSection from "../home/CtaSection";
+import HeroSection from "./HeroSection";
 
 class BecomeDonor extends PureComponent {
   componentDidMount() {
-    const { selectHome } = this.props;
-    selectHome();
+    const { selectBecome } = this.props;
+    selectBecome();
   }
 
   render() {
     return (
       <Fragment>
-        {/* <HeadSection /> */}
-        {/* <InfoSection /> */}
-        {/* <HowToSection />
-        <CtaSection /> */}
+        <HeroSection />
       </Fragment>
     );
   }
 }
 
 BecomeDonor.propTypes = {
-  selectHome: PropTypes.func.isRequired,
+  selectBecome: PropTypes.func.isRequired,
 };
 
 export default BecomeDonor;

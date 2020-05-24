@@ -1,6 +1,8 @@
+//Packages
 import React, { Fragment, PureComponent } from "react";
 import PropTypes from "prop-types";
-import HeadSection from "./HeadSection";
+//Local Component Imports
+import HeroSection from "./HeroSection";
 import InfoSection from "./InfoSection";
 import HowToSection from "./HowToSection";
 import CtaSection from "./CtaSection";
@@ -14,7 +16,7 @@ class Home extends PureComponent {
   render() {
     return (
       <Fragment>
-        <HeadSection />
+        <HeroSection />
         <InfoSection />
         <HowToSection />
         <CtaSection />

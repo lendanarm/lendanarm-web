@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from "react";
-import noImg from "../../logged_in/dummy_data/images/no-img.png";
+import noImg from "../../logged_in/data/images/no-img.png";
 import PropTypes from "prop-types";
 //MUI
 import withStyles from "@material-ui/core/styles/withStyles";

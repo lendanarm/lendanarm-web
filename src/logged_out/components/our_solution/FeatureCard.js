@@ -1,6 +1,9 @@
+//Package Imports
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
-import { Typography, withStyles } from "@material-ui/core";
+//MUI Component Imports
+import Typography from "@material-ui/core/Typography";
+import withStyles from "@material-ui/core/styles/withStyles";
 
 const styles = (theme) => ({
   iconWrapper: {
@@ -26,6 +29,7 @@ function shadeColor(hex, percent) {
   const G = (f >> 8) & 0x00ff;
 
   const B = f & 0x0000ff;
+
   return `#${(
     0x1000000 +
     (Math.round((t - R) * p) + R) * 0x10000 +

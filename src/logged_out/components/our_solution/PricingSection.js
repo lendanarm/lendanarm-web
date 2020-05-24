@@ -1,13 +1,13 @@
+//Package Imports
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import {
-  Grid,
-  Typography,
-  isWidthUp,
-  withWidth,
-  withStyles,
-} from "@material-ui/core";
+//MUI Component Imports
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import withStyles from "@material-ui/core/styles/withStyles";
+import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
+//Local Component Imports
 import PriceCard from "./PriceCard";
 import calculateSpacing from "./calculateSpacing";
 
@@ -149,6 +149,7 @@ function PricingSection(props) {
 
 PricingSection.propTypes = {
   width: PropTypes.string.isRequired,
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles, { withTheme: true })(

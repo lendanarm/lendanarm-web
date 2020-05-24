@@ -7,7 +7,7 @@ import NavBar from "./navigation/NavBar";
 import ConsecutiveSnackbarMessages from "../../shared/components/ConsecutiveSnackbarMessages";
 import SideBar from "./Sidebar/SideBar";
 import smoothScrollTop from "../../shared/functions/smoothScrollTop";
-import persons from "../dummy_data/persons";
+import persons from "../data/persons";
 import Grid from "@material-ui/core/Grid";
 
 const styles = (theme) => ({

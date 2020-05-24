@@ -1,68 +1,61 @@
+//Package Imports
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import {
-  Grid,
-  Typography,
-  isWidthUp,
-  withWidth,
-  withStyles
-} from "@material-ui/core";
+//MUI Component Imports
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import withStyles from "@material-ui/core/styles/withStyles";
+import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
+//Local Component Imports
 import StepsToDonate from "./StepsToDonate";
 import calculateSpacing from "./calculateSpacing";
 import Steps from "./Steps";
 import WaveBorder from "../../../shared/components/WaveBorder";
 
-const styles = theme => ({
+const styles = (theme) => ({
   containerFix: {
     [theme.breakpoints.down("md")]: {
       paddingLeft: theme.spacing(6),
-      paddingRight: theme.spacing(6)
+      paddingRight: theme.spacing(6),
     },
     [theme.breakpoints.down("sm")]: {
       paddingLeft: theme.spacing(4),
-      paddingRight: theme.spacing(4)
+      paddingRight: theme.spacing(4),
     },
     [theme.breakpoints.down("xs")]: {
       paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(2)
+      paddingRight: theme.spacing(2),
     },
     overflow: "hidden",
     paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(1)
+    paddingBottom: theme.spacing(1),
   },
   cardWrapper: {
     [theme.breakpoints.down("xs")]: {
       marginLeft: "auto",
       marginRight: "auto",
-      maxWidth: 340
-    }
+      maxWidth: 340,
+    },
   },
   cardWrapperHighlighted: {
     [theme.breakpoints.down("xs")]: {
       marginLeft: "auto",
       marginRight: "auto",
-      maxWidth: 360
-    }
+      maxWidth: 360,
+    },
   },
-  joinText: {
-    fontStyle: "normal",
-    fontWeight: "600",
-    fontSize: "27px",
-    lineHeight: "34px"
-
-  }
 });
 
 function HowToSection(props) {
   const { width, classes, theme } = props;
   return (
-    <div className="lg-p-top" style={{ backgroundColor: "#E5E5E5" }} >
-      {/* <Typography variant="h3" align="center" className="lg-mg-bottom-alt" style={{ color: "#8A0303"}}>
-        Join the Movement
-      </Typography> */}
+    <div className="lg-p-top" style={{ backgroundColor: "#E5E5E5" }}>
       <Steps />
-      <div className={classNames("container-fluid", classes.containerFix)} style={{ paddingBottom: "50px" }}>
+      <div
+        className={classNames("container-fluid", classes.containerFix)}
+        style={{ paddingBottom: "50px" }}
+      >
         <Grid
           container
           spacing={calculateSpacing(width)}
@@ -77,11 +70,14 @@ function HowToSection(props) {
             data-aos="zoom-in-up"
           >
             <StepsToDonate
-              title="First Step"
-              features={["It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English."]}
+              title="Registration"
+              features={[
+                "On-site personnel would obtain demographic data and valid identification such as national or school ID, voter’s card, driver’s license or international passport.",
+              ]}
+              style={{ height: "100%" }}
             />
           </Grid>
-          
+
           <Grid
             item
             className={classes.cardWrapper}
@@ -92,9 +88,12 @@ function HowToSection(props) {
             data-aos-delay={isWidthUp("md", width) ? "400" : "0"}
           >
             <StepsToDonate
-              title="Second Step"
+              title="Screening"
               highlighted
-              features={["It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English."]}
+              features={[
+                "To ensure a safe blood donation process for donors and safe blood for recipients, our phlebotomist would check your vitals and ask you a few questions about your medical history. ",
+              ]}
+              style={{ height: "100%" }}
             />
           </Grid>
           <Grid
@@ -107,11 +106,13 @@ function HowToSection(props) {
             data-aos-delay={isWidthUp("md", width) ? "600" : "200"}
           >
             <StepsToDonate
-              title="Third Step"
-              features={["It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English."]}
+              title="Donation"
+              features={[
+                "After you obtain clearance to participate in a blood donation event, our phlebotomist(s) would go on to collect your blood while observing necessary aseptic precautions.",
+              ]}
+              style={{ height: "100%" }}
             />
           </Grid>
-          
         </Grid>
       </div>
       <WaveBorder
@@ -125,7 +126,9 @@ function HowToSection(props) {
 }
 
 HowToSection.propTypes = {
-  width: PropTypes.string.isRequired
+  width: PropTypes.string.isRequired,
+  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles, { withTheme: true })(

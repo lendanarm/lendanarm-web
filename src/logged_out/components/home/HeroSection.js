@@ -1,43 +1,26 @@
+//Package Imports
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import {
-  Grid,
-  Typography,
-  Card,
-  Button,
-  Hidden,
-  Box,
-  withStyles,
-  withWidth,
-  isWidthUp,
-} from "@material-ui/core";
-import woman from "../../dummy_data/images/woman.png";
-import child from "../../dummy_data/images/Child.png";
+import { Link } from "react-router-dom";
+//MUI Component Imports
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import Card from "@material-ui/core/Card";
+import Button from "@material-ui/core/Button";
+import Box from "@material-ui/core/Box";
+import withStyles from "@material-ui/core/styles/withStyles";
+import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
+//Local Component Imports
 import Image from "../../../shared/components/Image";
+//Local image imports
+import bwWoman from "../../data/images/woman.png";
+import woman from "../../data/images/Child.png";
 
 const styles = (theme) => ({
-  // extraLargeButtonLabel: {
-  //   fontSize: theme.typography.body1.fontSize,
-  //   [theme.breakpoints.up("sm")]: {
-  //     fontSize: theme.typography.h6.fontSize
-  //   }
-  // },
-  // extraLargeButton: {
-  //   paddingTop: theme.spacing(1.5),
-  //   paddingBottom: theme.spacing(1.5),
-  //   [theme.breakpoints.up("xs")]: {
-  //     paddingTop: theme.spacing(1),
-  //     paddingBottom: theme.spacing(1)
-  //   },
-  //   [theme.breakpoints.up("lg")]: {
-  //     paddingTop: theme.spacing(2),
-  //     paddingBottom: theme.spacing(2)
-  //   }
-  // },
   card: {
     boxShadow: theme.shadows[0],
-    marginLeft: theme.spacing(8),
+    marginLeft: theme.spacing(4),
     marginRight: theme.spacing(2),
     [theme.breakpoints.up("xs")]: {
       paddingTop: theme.spacing(2),
@@ -70,24 +53,17 @@ const styles = (theme) => ({
     },
   },
   wrapper: {
-    position: "relative",
     backgroundColor: theme.palette.background.paper,
     paddingBottom: theme.spacing(2),
   },
-  image: {
-    maxWidth: "100%",
-    verticalAlign: "middle",
-    borderRadius: theme.shape.borderRadius,
-    boxShadow: theme.shadows[4],
-  },
   container: {
-    marginTop: theme.spacing(6),
-    marginBottom: theme.spacing(6),
+    marginTop: theme.spacing(4.5),
+    marginBottom: theme.spacing(4.5),
     [theme.breakpoints.down("md")]: {
-      marginBottom: theme.spacing(4.5),
+      marginBottom: theme.spacing(2),
     },
     [theme.breakpoints.down("sm")]: {
-      marginBottom: theme.spacing(3),
+      marginBottom: theme.spacing(2),
     },
     [theme.breakpoints.down("sm")]: {
       marginBottom: theme.spacing(1.5),
@@ -98,14 +74,11 @@ const styles = (theme) => ({
       maxWidth: "none !important",
     },
   },
-  waveBorder: {
-    paddingTop: theme.spacing(4),
-  },
   headerText: {
     fontStyle: "normal",
     fontWeight: "bold",
-    fontSize: "4rem",
-    lineHeight: "4.875rem",
+    fontSize: "3.5rem",
+    lineHeight: "4rem",
     color: "#1A1A1A",
     [theme.breakpoints.down("sm")]: {
       fontSize: "2.5rem",
@@ -119,23 +92,25 @@ const styles = (theme) => ({
     [theme.breakpoints.down("sm")]: {
       marginTop: "1.875rem",
     },
+    position: "relative",
+  },
+  bwWomanPosition: {
+    width: "90%",
+    height: "auto",
+    borderRadius: 5,
+    marginBottom: "14%",
   },
   womanPosition: {
-    maxWidth: "85%",
-    marginTop: "1.875rem",
-  },
-  childPosition: {
-    maxWidth: "85%",
-    marginTop: "-10.125rem",
-    marginLeft: "-3.125rem",
-    [theme.breakpoints.down("sm")]: {
-      marginLeft: "5.25rem",
-    },
+    width: "90%",
+    height: "auto",
+    position: "absolute",
+    top: "25%",
+    right: "20%",
   },
 });
 
 function HeadSection(props) {
-  const { classes, theme, width } = props;
+  const { classes, width } = props;
   return (
     <Fragment>
       <div className={classNames("lg-p-top", classes.wrapper)}>
@@ -188,8 +163,9 @@ function HeadSection(props) {
                                   variant="contained"
                                   color="primary"
                                   size="large"
+                                  component={Link}
                                   // className={classes.butt}
-                                  href="/hospitals"
+                                  to="#"
                                 >
                                   For Hospitals
                                 </Button>
@@ -198,8 +174,9 @@ function HeadSection(props) {
                                 <Button
                                   variant="outlined"
                                   color="primary"
+                                  component={Link}
                                   size="large"
-                                  href="/contact"
+                                  to="#"
                                 >
                                   For Blood Donors
                                 </Button>
@@ -212,8 +189,9 @@ function HeadSection(props) {
                                   variant="contained"
                                   color="primary"
                                   size="large"
+                                  component={Link}
                                   // className={classes.butt}
-                                  href="/hospitals"
+                                  to="#"
                                 >
                                   For Hospitals
                                 </Button>
@@ -223,7 +201,8 @@ function HeadSection(props) {
                                   variant="outlined"
                                   color="primary"
                                   size="large"
-                                  href="/contact"
+                                  component={Link}
+                                  to="#"
                                 >
                                   For Blood Donors
                                 </Button>
@@ -236,13 +215,13 @@ function HeadSection(props) {
                   </Grid>
                   <Grid item md={6} className={classes.imgSection}>
                     <Image
-                      src={woman}
-                      className={classes.womanPosition}
+                      src={bwWoman}
+                      className={classes.bwWomanPosition}
                       alt="header example"
                     />
                     <Image
-                      src={child}
-                      className={classes.childPosition}
+                      src={woman}
+                      className={classes.womanPosition}
                       alt="header example"
                     />
                   </Grid>
@@ -259,7 +238,6 @@ function HeadSection(props) {
 HeadSection.propTypes = {
   classes: PropTypes.object,
   width: PropTypes.string,
-  theme: PropTypes.object,
 };
 
 export default withWidth()(

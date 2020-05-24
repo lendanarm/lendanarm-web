@@ -1,8 +1,3 @@
-/**
- * This calculates the spacing for the
- * grid container component based on the viewsize
- */
-
 import { isWidthUp } from "@material-ui/core/withWidth";
 
 function calculateSpacing(width) {

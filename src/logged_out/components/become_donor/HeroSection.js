@@ -1,5 +1,5 @@
-//Package Imports
-import React, { Fragment } from "react";
+//Packages
+import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 //MUI Component Imports
@@ -12,7 +12,8 @@ import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
 //Local Component Imports
 import Image from "../../../shared/components/Image";
 //Local Image Imports
-import infographic from "../../data/images/illustration.svg";
+import pattern from "../../data/images/Pattern.png";
+import woman from "../../data/images/woman.png";
 
 const styles = (theme) => ({
   card: {
@@ -53,6 +54,12 @@ const styles = (theme) => ({
     backgroundColor: theme.palette.background.paper,
     paddingBottom: theme.spacing(2),
   },
+  image: {
+    maxWidth: "100%",
+    verticalAlign: "middle",
+    borderRadius: theme.shape.borderRadius,
+    boxShadow: theme.shadows[4],
+  },
   container: {
     marginTop: theme.spacing(6),
     marginBottom: theme.spacing(6),
@@ -71,6 +78,18 @@ const styles = (theme) => ({
       maxWidth: "none !important",
     },
   },
+  box1: {
+    justifyContent: "center",
+  },
+  box2: {
+    justifyContent: "space-between",
+  },
+  box3: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    height: "100%",
+  },
   headerText: {
     fontStyle: "normal",
     fontWeight: "bold",
@@ -81,82 +100,85 @@ const styles = (theme) => ({
       lineHeight: "2rem",
     },
   },
-  barMargin: {
-    margin: theme.spacing(1),
-  },
   imgSection: {
     [theme.breakpoints.down("sm")]: {
       marginTop: "1.875rem",
     },
+    position: "relative",
   },
-  infographic: {
-    maxWidth: "85%",
+  patternPosition: {
+    width: "90%",
+    height: "auto",
+    borderRadius: 5,
+    marginBottom: "3%",
+  },
+  womanPosition: {
+    width: "90%",
+    height: "auto",
+    position: "absolute",
+    top: "5%",
+    right: "13%",
   },
 });
 
 function HeroSection(props) {
   const { classes, width } = props;
   return (
-    <Fragment>
-      <div className={classNames("lg-p-top", classes.wrapper)}>
-        <div className={classNames("container-fluid", classes.container)}>
-          <Box style={{ justifyContent: "center" }} className="row">
-            <Card
-              className={classes.card}
-              data-aos-delay="200"
-              data-aos="zoom-in"
-            >
-              <div className={classNames(classes.containerFix, "container")}>
-                <Box
-                  style={{ justifyContent: "space-between" }}
-                  className="row"
-                >
-                  <Grid item xs={12} md={5}>
-                    <Box
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="center"
-                      height="100%"
-                    >
-                      <Box mb={4}>
+    <div className={classNames("lg-p-top", classes.wrapper)}>
+      <div className={classNames("container-fluid", classes.container)}>
+        <Box className={classNames("row", classes.box1)}>
+          <Card
+            className={classes.card}
+            data-aos-delay="200"
+            data-aos="zoom-in"
+          >
+            <div className={classNames(classes.containerFix, "container")}>
+              <Box className={classNames("row", classes.box2)}>
+                <Grid item xs={12} md={5}>
+                  <Box className={classes.box3}>
+                    <Box mb={4}>
+                      <Typography
+                        className={classes.headerText}
+                        variant={isWidthUp("lg", width) ? "h4" : "h5"}
+                      >
+                        Become a Blood Donor
+                      </Typography>
+                    </Box>
+                    <div>
+                      <Box mb={2}>
                         <Typography
-                          className={classes.headerText}
-                          variant={isWidthUp("lg", width) ? "h4" : "h5"}
+                          variant="body1"
+                          color="textSecondary"
+                          className={classes.normalText}
                         >
-                          Blood Donor Community
+                          Donating blood is a great way to give a big hug to a
+                          sick child, hope to a woman in labour, another chance
+                          to a trauma victim, a smile to a cancer patient and
+                          zeal to a healthcare worker. <br />
+                          Be a Hero. Become a blood donor today.
                         </Typography>
                       </Box>
-                      <div>
-                        <Box mb={2}>
-                          <Typography
-                            // variant={isWidthUp("lg", width) ? "h6" : "body1"}
-                            variant="body1"
-                            color="textSecondary"
-                          >
-                            Lend an Arm is a holistic blood supply solution. We
-                            are committed to increasing voluntary blood donation
-                            in Nigeria and delivering good quality blood and
-                            blood products to patients in dire need, especially
-                            those in rural and otherwise hard-to-reach areas.
-                          </Typography>
-                        </Box>
-                      </div>
-                    </Box>
-                  </Grid>
-                  <Grid item md={6} className={classes.imgSection}>
-                    <Image
-                      src={infographic}
-                      className={classes.infographic}
-                      alt="our solution infographic"
-                    />
-                  </Grid>
-                </Box>
-              </div>
-            </Card>
-          </Box>
-        </div>
+                    </div>
+                  </Box>
+                </Grid>
+                <Grid item md={6} className={classes.imgSection}>
+                  <Image
+                    src={pattern}
+                    className={classes.patternPosition}
+                    alt="pattern"
+                  />
+                  <Image
+                    src={woman}
+                    className={classes.womanPosition}
+                    alt="woman"
+                  />
+                </Grid>
+              </Box>
+            </div>
+          </Card>
+        </Box>
       </div>
-    </Fragment>
+    </div>
   );
 }
 

@@ -104,7 +104,6 @@ class RegisterDialog extends PureComponent {
         headline="Register"
         onFormSubmit={(e) => {
           e.preventDefault();
-          this.register();
         }}
         hideBackdrop
         hasCloseIcon

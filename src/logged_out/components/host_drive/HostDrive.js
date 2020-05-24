@@ -1,30 +1,25 @@
 import React, { Fragment, PureComponent } from "react";
 import PropTypes from "prop-types";
-import HeadSection from "../home/HeadSection";
-import InfoSection from "../home/InfoSection";
-import HowToSection from "../home/HowToSection";
-import CtaSection from "../home/CtaSection";
-
+import HeroSection from "./HeroSection";
+import HowSection from "./HowSection";
 class HostDrive extends PureComponent {
   componentDidMount() {
-    const { selectHome } = this.props;
-    selectHome();
+    const { selectHost } = this.props;
+    selectHost();
   }
 
   render() {
     return (
       <Fragment>
-        {/* <HeadSection /> */}
-        {/* <InfoSection /> */}
-        {/* <HowToSection /> */}
-        {/* <CtaSection /> */}
+        <HeroSection />
+        <HowSection />
       </Fragment>
     );
   }
 }
 
 HostDrive.propTypes = {
-  selectHome: PropTypes.func.isRequired,
+  selectHost: PropTypes.func.isRequired,
 };
 
 export default HostDrive;

@@ -1,28 +1,27 @@
-import React, { Fragment } from "react";
+//Package imports
+import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import {
-  Grid,
-  Typography,
-  Card,
-  Button,
-  Hidden,
-  Box,
-  withStyles,
-  withWidth,
-  isWidthUp,
-} from "@material-ui/core";
-import pattern from "../../dummy_data/images/Pattern.png";
-import boy from "../../dummy_data/images/boy.png";
-import blankCanvas from "../../dummy_data/images/blankCanvas.png";
+//MUI Component Imports
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import Card from "@material-ui/core/Card";
+import Hidden from "@material-ui/core/Hidden";
+import Box from "@material-ui/core/Box";
+import withStyles from "@material-ui/core/styles/withStyles";
+import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
+//Local Component Imports
 import Image from "../../../shared/components/Image";
 import WaveBorder from "../../../shared/components/WaveBorder";
+//Local Image Imports
+import pattern from "../../data/images/Pattern.png";
+import drone from "../../data/images/boy.png";
 
 const styles = (theme) => ({
   card: {
     boxShadow: theme.shadows[0],
     marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(4),
+    marginRight: theme.spacing(2),
     [theme.breakpoints.up("xs")]: {
       paddingTop: theme.spacing(2),
       paddingBottom: theme.spacing(2),
@@ -34,8 +33,8 @@ const styles = (theme) => ({
       paddingRight: theme.spacing(0),
     },
     [theme.breakpoints.up("md")]: {
-      paddingTop: theme.spacing(5.5),
-      paddingBottom: theme.spacing(5.5),
+      paddingTop: theme.spacing(4),
+      paddingBottom: theme.spacing(4),
       paddingLeft: theme.spacing(2),
       paddingRight: theme.spacing(2),
     },
@@ -54,15 +53,9 @@ const styles = (theme) => ({
     backgroundColor: theme.palette.background.paper,
     paddingBottom: theme.spacing(2),
   },
-  image: {
-    maxWidth: "100%",
-    verticalAlign: "middle",
-    borderRadius: theme.shape.borderRadius,
-    boxShadow: theme.shadows[4],
-  },
   container: {
-    marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(6),
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1.5),
     [theme.breakpoints.down("md")]: {
       marginBottom: theme.spacing(4.5),
     },
@@ -81,13 +74,6 @@ const styles = (theme) => ({
   waveBorder: {
     paddingTop: theme.spacing(4),
   },
-  headerText: {
-    fontStyle: "normal",
-    fontWeight: "bold",
-    fontSize: "4rem",
-    lineHeight: "4.875rem",
-    color: "#1A1A1A",
-  },
   headerText2: {
     fontStyle: "normal",
     fontWeight: "bold",
@@ -99,28 +85,24 @@ const styles = (theme) => ({
       lineHeight: "2rem",
     },
   },
-  barMargin: {
-    margin: theme.spacing(1),
+  imgSection: {
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "1.875rem",
+    },
+    position: "relative",
   },
   patternPosition: {
-    maxWidth: "80%",
+    width: "90%",
+    height: "auto",
+    borderRadius: 5,
+    marginBottom: "10%",
   },
   boyPosition: {
-    maxWidth: "80%",
-    marginTop: "-180px",
-    marginLeft: "50px",
-  },
-  canvasPosition: {
-    maxWidth: "80%",
-    marginTop: "-130.2px",
-    marginLeft: "166px",
-  },
-  whiteText: {
-    color: "#fff",
-    width: "70%",
-    position: "relative",
-    left: "180px",
-    bottom: "130px",
+    width: "90%",
+    height: "auto",
+    position: "absolute",
+    top: "20%",
+    left: "10%",
   },
 });
 
@@ -133,39 +115,23 @@ function InfoSection(props) {
           <Box display="flex" justifyContent="center" className="row">
             <Card
               className={classes.card}
-              data-aos-delay="200"
+              data-aos-delay="500"
               data-aos="zoom-in"
             >
               <div className={classNames(classes.containerFix, "container")}>
                 <Box justifyContent="space-between" className="row">
                   <Hidden smDown>
-                    <Grid item md={6}>
+                    <Grid item md={6} className={classes.imgSection}>
                       <Image
                         src={pattern}
                         className={classes.patternPosition}
                         alt="dot patterns"
                       />
                       <Image
-                        src={boy}
+                        src={drone}
                         className={classes.boyPosition}
-                        alt="a boy"
+                        alt="a drone"
                       />
-                      <Hidden mdDown>
-                        <Image
-                          src={blankCanvas}
-                          className={classes.canvasPosition}
-                          alt="blank canvas"
-                        />
-
-                        <Typography
-                          variant="body1"
-                          className={classes.whiteText}
-                        >
-                          Our real life heroes are on an all-out mission to save
-                          lives by donating blood. Be part of this. Join the
-                          movement.
-                        </Typography>
-                      </Hidden>
                     </Grid>
                   </Hidden>
                   <Grid item sm={12} md={5}>
@@ -185,11 +151,7 @@ function InfoSection(props) {
                       </Box>
                       <div>
                         <Box mb={2}>
-                          <Typography
-                            // variant={isWidthUp("lg", width) ? "h6" : "body1"}
-                            variant="body1"
-                            color="textSecondary"
-                          >
+                          <Typography variant="body1" color="textSecondary">
                             We maintain a closely regulated chain of smart blood
                             banks, delivery motorcycles and drone fleets to
                             ensure safe supply and fast delivery of blood, blood

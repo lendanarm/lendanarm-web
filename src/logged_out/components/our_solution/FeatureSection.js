@@ -19,6 +19,10 @@ const styles = (theme) => ({
   featureContainer: {
     paddingLeft: "100px",
     paddingRight: "100px",
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: "25px",
+      paddingRight: "20px",
+    },
   },
 });
 

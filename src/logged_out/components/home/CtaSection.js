@@ -29,8 +29,8 @@ const styles = (theme) => ({
     marginLeft: theme.spacing(2),
     marginRight: theme.spacing(2),
     [theme.breakpoints.up("xs")]: {
-      paddingTop: theme.spacing(2),
-      paddingBottom: theme.spacing(2),
+      paddingTop: theme.spacing(1),
+      paddingBottom: theme.spacing(1),
     },
     [theme.breakpoints.up("sm")]: {
       paddingTop: theme.spacing(2),
@@ -80,23 +80,20 @@ const styles = (theme) => ({
   waveBorder: {
     paddingTop: theme.spacing(4),
   },
-  headerText: {
-    fontStyle: "normal",
-    fontWeight: "bold",
-    fontSize: "4rem",
-    lineHeight: "4.875rem",
-    color: "#1A1A1A",
-  },
   headerText2: {
     fontStyle: "normal",
     fontWeight: "bold",
-    fontSize: "2.25rem",
-    lineHeight: "2.75rem",
-    color: "#1A1A1A",
+    fontSize: "2.2rem",
+    lineHeight: "2.2rem",
+    color: "#FFF",
     [theme.breakpoints.down("sm")]: {
-      fontSize: "2rem",
-      lineHeight: "2rem",
+      fontSize: "1.7rem",
+      lineHeight: "1.7rem",
     },
+  },
+  ctaText: {
+    color: "#FFF",
+    [theme.breakpoints.down("sm")]: {},
   },
   barMargin: {
     margin: theme.spacing(1),
@@ -188,7 +185,6 @@ function CtaSection(props) {
                         <Typography
                           className={classes.headerText2}
                           variant={isWidthUp("lg", width) ? "h3" : "h4"}
-                          style={{ color: "#FFF" }}
                         >
                           You can do all with the mobile application.
                         </Typography>
@@ -198,7 +194,7 @@ function CtaSection(props) {
                           <Typography
                             // variant={isWidthUp("lg", width) ? "h6" : "body1"}
                             variant="body1"
-                            style={{ color: "#FFF" }}
+                            className={classes.ctaText}
                           >
                             Build a blood donation routine, track donations and
                             receive your medical reports. Create a blood drive

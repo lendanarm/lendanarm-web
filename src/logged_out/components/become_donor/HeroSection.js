@@ -141,7 +141,7 @@ function HeroSection(props) {
                         className={classes.headerText}
                         variant={isWidthUp("lg", width) ? "h4" : "h5"}
                       >
-                        Become a Blood Donor
+                        Become a Blood Donor Now
                       </Typography>
                     </Box>
                     <div>

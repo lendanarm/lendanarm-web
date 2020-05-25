@@ -98,14 +98,14 @@ const styles = (theme) => ({
     width: "90%",
     height: "auto",
     borderRadius: 5,
-    marginBottom: "14%",
+    marginBottom: "10%",
   },
   womanPosition: {
     width: "90%",
     height: "auto",
     position: "absolute",
-    top: "25%",
-    right: "20%",
+    top: "20%",
+    left: "10%",
   },
 });
 

@@ -93,6 +93,16 @@ const styles = (theme) => ({
       lineHeight: "1.7rem",
     },
   },
+  partnerHeader: {
+    fontStyle: "normal",
+    fontSize: "1rem",
+    lineHeight: "1.6rem",
+    color: "#FFF",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "0.9rem",
+      lineHeight: "1.5rem",
+    },
+  },
   ctaText: {
     color: "#FFF",
     [theme.breakpoints.down("sm")]: {},
@@ -144,6 +154,9 @@ const styles = (theme) => ({
   },
   awards: {
     filter: "grayscale(1)",
+    "&:hover": {
+      filter: "grayscale(0)",
+    },
   },
 });
 

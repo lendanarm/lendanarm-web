@@ -1,6 +1,8 @@
 //Package Imports
 import React, { Component } from "react";
 import Slider from "react-slick";
+//MUI Component Imports
+import Typography from "@material-ui/core/Typography";
 //Local Image Imports
 import whoImg from "../../data/images/who.svg";
 import resImg from "../../data/images/resolutionproject.png";
@@ -18,7 +20,7 @@ export default class Responsive extends Component {
       slidesToScroll: 1,
       arrows: false,
       autoplay: true,
-      autoplaySpeed: 5000,
+      autoplaySpeed: 3000,
       responsive: [
         {
           breakpoint: 1024,
@@ -32,7 +34,7 @@ export default class Responsive extends Component {
         {
           breakpoint: 600,
           settings: {
-            slidesToShow: 3,
+            slidesToShow: 2,
             slidesToScroll: 1,
             dots: false,
           },
@@ -40,7 +42,7 @@ export default class Responsive extends Component {
         {
           breakpoint: 480,
           settings: {
-            slidesToShow: 3,
+            slidesToShow: 2,
             slidesToScroll: 1,
             dots: false,
           },
@@ -50,44 +52,67 @@ export default class Responsive extends Component {
 
     return (
       <div style={{ marginTop: "5%" }}>
+        <Typography variant="h5" className={classes.partnerHeader}>
+          Awards and Recognition
+        </Typography>
         <Slider {...settings}>
           <div>
-            <img
-              src={resImg}
-              alt="Resolution Project"
-              style={{ margin: "auto", width: "80%" }}
-              className={classes.awards}
-            />
+            <a
+              href="https://resolutionproject.org/54th-social-venture-challenge-yields-two-new-winners-from-african-leadership-academy/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={resImg}
+                alt=""
+                style={{ margin: "auto", width: "80%" }}
+                className={classes.awards}
+              />
+            </a>
           </div>
           <div>
             <img
               src={unaids}
-              alt="ResolutionProject"
-              style={{ margin: "auto", width: "80%", marginTop: "35%" }}
+              alt=""
+              style={{ margin: "auto", width: "80%", marginTop: "25%" }}
               className={classes.awards}
             />
           </div>
           <div>
             <img
               src={hiex}
-              style={{ margin: "auto", width: "80%", marginTop: "35%" }}
+              alt=""
+              style={{ margin: "auto", width: "80%", marginTop: "25%" }}
               className={classes.awards}
             />
           </div>
           <div>
-            <img
-              src={whoImg}
-              alt="WHO regional office for Africa"
-              style={{ margin: "auto", width: "80%", marginTop: "17%" }}
-              className={classes.awards}
-            />
+            <a
+              href="http://innov.afro.who.int/innovators/dr-imodoye-abioro-27"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={whoImg}
+                alt=""
+                style={{ margin: "auto", width: "80%", marginTop: "17%" }}
+                className={classes.awards}
+              />
+            </a>
           </div>
           <div>
-            <img
-              src={ciscoImg}
-              style={{ margin: "auto", width: "80%", marginTop: "10%" }}
-              className={classes.awards}
-            />
+            <a
+              href="https://cisco.innovationchallenge.com/cisco-global-problem-solver-challenge-2020/semi-finalists"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={ciscoImg}
+                alt=""
+                style={{ margin: "auto", width: "80%", marginTop: "5%" }}
+                className={classes.awards}
+              />
+            </a>
           </div>
         </Slider>
       </div>

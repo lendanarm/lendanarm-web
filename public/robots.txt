@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+Disallow: /c/
+Sitemap: https://lendanarm.ng/sitemap.xml

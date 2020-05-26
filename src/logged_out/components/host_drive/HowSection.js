@@ -199,7 +199,7 @@ function HeadSection(props) {
 
             <Card
               className={classes.card}
-              data-aos-delay="200"
+              data-aos-delay="700"
               data-aos="zoom-in"
             >
               <div className={classNames(classes.containerFix, "container")}>

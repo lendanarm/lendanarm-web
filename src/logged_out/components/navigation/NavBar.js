@@ -1,24 +1,24 @@
+//Package Imports
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Button,
-  Hidden,
-  IconButton,
-  withStyles,
-} from "@material-ui/core";
+//MUI Component Imports
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import Hidden from "@material-ui/core/Hidden";
+import IconButton from "@material-ui/core/IconButton";
+import withStyles from "@material-ui/core/styles/withStyles";
+//MUI Icon Imports
 import MenuIcon from "@material-ui/icons/Menu";
-import HomeIcon from "@material-ui/icons/Home";
 import HowToRegIcon from "@material-ui/icons/HowToReg";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
-import BookIcon from "@material-ui/icons/Book";
-import NavigationDrawer from "../../../shared/components/NavigationDrawer";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import ApartmentIcon from "@material-ui/icons/Apartment";
 import OpacityIcon from "@material-ui/icons/Opacity";
+//Local Component Imports
+import NavigationDrawer from "../../../shared/components/NavigationDrawer";
 
 const styles = (theme) => ({
   appBar: {
@@ -37,6 +37,10 @@ const styles = (theme) => ({
   brandText: {
     fontFamily: "'Baloo Bhaijaan', cursive",
     fontWeight: 700,
+    webkitUserSelect: "none",
+    mozUserSelect: "none",
+    msUserSelect: "none",
+    userSelect: "none",
   },
   noDecoration: {
     textDecoration: "none !important",

@@ -6,6 +6,7 @@ import HeroSection from "./HeroSection";
 import InfoSection from "./InfoSection";
 import HowToSection from "./HowToSection";
 import CtaSection from "./CtaSection";
+import { Helmet } from "react-helmet";
 
 class Home extends PureComponent {
   componentDidMount() {
@@ -16,6 +17,15 @@ class Home extends PureComponent {
   render() {
     return (
       <Fragment>
+        <Helmet>
+          <title>
+            Nigeria's First Smart Blood Bank and Blood Donor Community
+          </title>
+          <meta
+            name="description"
+            content="Nigeria suffers from a damaging shortage of blood with over 350, 000 pints of blood needed. People die because of this need. Voluntary donors, everyday heroes like you, are needed to tackle this murderous menace."
+          />
+        </Helmet>
         <HeroSection />
         <InfoSection />
         <HowToSection />

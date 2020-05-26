@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import { SET_AUTHENTICATED, SET_UNAUTHENTICATED } from "./redux/types";
 import { logout, getUserData } from "./redux/actions/userActions";
+import { Helmet } from "react-helmet";
 
 import theme from "./theme";
 import GlobalStyles from "./GlobalStyles";
@@ -50,6 +51,14 @@ function App() {
                 <LoggedInComponent />
               </Route>
               <Route>
+                <Helmet>
+                  <meta charSet="utf-8" />
+                  <title>
+                    Lend An Arm - Nigera's First Smart BloodBank and Blood Donor
+                    Community
+                  </title>
+                  <link rel="canonical" href="http://lendanarm.ng/" />
+                </Helmet>
                 <LoggedOutComponent />
               </Route>
             </Switch>

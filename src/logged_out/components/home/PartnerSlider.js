@@ -6,6 +6,7 @@ import whoImg from "../../data/images/who.svg";
 import resImg from "../../data/images/resolutionproject.png";
 import hiex from "../../data/images/hiex.svg";
 import unaids from "../../data/images/unaids.png";
+import ciscoImg from "../../data/images/cisco-logo@2x.png";
 
 export default class Responsive extends Component {
   render() {
@@ -16,7 +17,7 @@ export default class Responsive extends Component {
       slidesToScroll: 1,
       arrows: false,
       autoplay: true,
-      autoplaySpeed: 10000,
+      autoplaySpeed: 3000,
       responsive: [
         {
           breakpoint: 1024,
@@ -24,7 +25,7 @@ export default class Responsive extends Component {
             slidesToShow: 2,
             slidesToScroll: 1,
             infinite: true,
-            dots: true,
+            dots: false,
           },
         },
         {
@@ -32,7 +33,7 @@ export default class Responsive extends Component {
           settings: {
             slidesToShow: 2,
             slidesToScroll: 1,
-            initialSlide: 2,
+            dots: false,
           },
         },
         {
@@ -40,6 +41,7 @@ export default class Responsive extends Component {
           settings: {
             slidesToShow: 2,
             slidesToScroll: 1,
+            dots: false,
           },
         },
       ],
@@ -49,27 +51,30 @@ export default class Responsive extends Component {
       <div style={{ marginTop: "5%" }}>
         <Slider {...settings}>
           <div>
-            <img src={resImg} alt="Resolution Project" />
+            <img
+              src={resImg}
+              alt="Resolution Project"
+              style={{ margin: "auto", width: "80%" }}
+            />
           </div>
           <div>
             <img
               src={unaids}
               alt="ResolutionProject"
-              style={{ width: "90%", marginTop: "25%" }}
+              style={{ margin: "auto", width: "80%", marginTop: "35%" }}
             />
           </div>
           <div>
             <img
               src={hiex}
-              alt="Health Innovation Exchange"
-              style={{ width: "90%", marginTop: "25%" }}
+              style={{ margin: "auto", width: "80%", marginTop: "35%" }}
             />
           </div>
           <div>
             <img
               src={whoImg}
               alt="WHO regional office for Africa"
-              style={{ marginTop: "10%" }}
+              style={{ margin: "auto", width: "80%", marginTop: "17%" }}
             />
           </div>
         </Slider>

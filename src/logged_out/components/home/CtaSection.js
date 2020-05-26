@@ -20,17 +20,15 @@ import PartnerSlider from "./PartnerSlider";
 //Local Image Imports
 import phone1 from "../../data/images/Phone1.png";
 import phone2 from "../../data/images/Phone2.png";
-import whoImg from "../../data/images/who.svg";
-import resImg from "../../data/images/resolutionproject.png";
 
 const styles = (theme) => ({
   card: {
     boxShadow: theme.shadows[0],
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(2),
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
     [theme.breakpoints.up("xs")]: {
-      paddingTop: theme.spacing(1),
-      paddingBottom: theme.spacing(1),
+      paddingTop: theme.spacing(2),
+      paddingBottom: theme.spacing(2),
     },
     [theme.breakpoints.up("sm")]: {
       paddingTop: theme.spacing(2),
@@ -76,6 +74,10 @@ const styles = (theme) => ({
     [theme.breakpoints.up("md")]: {
       maxWidth: "none !important",
     },
+  },
+  modifiedRow: {
+    display: "flex",
+    flexWrap: "wrap",
   },
   waveBorder: {
     paddingTop: theme.spacing(4),
@@ -147,8 +149,12 @@ function CtaSection(props) {
   return (
     <div style={{ backgroundColor: theme.palette.primary.main }}>
       <div className="container-fluid lg-p-top-alt">
-        <div className={classNames("container-fluid", classes.container)}>
-          <Box display="flex" justifyContent="center" className="row">
+        <div className={classNames(classes.container)}>
+          <Box
+            display="flex"
+            justifyContent="center"
+            className={classes.modifiedRow}
+          >
             <Card
               className={classes.card}
               style={{ backgroundColor: "rgb(138, 3, 3)" }}

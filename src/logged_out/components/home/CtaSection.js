@@ -142,6 +142,9 @@ const styles = (theme) => ({
       backgroundColor: "rgb(138, 3, 3)",
     },
   },
+  awards: {
+    filter: "grayscale(1)",
+  },
 });
 
 function CtaSection(props) {

@@ -6,14 +6,15 @@ import whoImg from "../../data/images/who.svg";
 import resImg from "../../data/images/resolutionproject.png";
 import hiex from "../../data/images/hiex.svg";
 import unaids from "../../data/images/unaids.png";
-import ciscoImg from "../../data/images/cisco-logo@2x.png";
+import ciscoImg from "../../data/images/cisco.png";
 
 export default class Responsive extends Component {
   render() {
+    const { classes } = this.props;
     var settings = {
       dots: false,
       infinite: true,
-      slidesToShow: 2,
+      slidesToShow: 3,
       slidesToScroll: 1,
       arrows: false,
       autoplay: true,
@@ -22,7 +23,7 @@ export default class Responsive extends Component {
         {
           breakpoint: 1024,
           settings: {
-            slidesToShow: 2,
+            slidesToShow: 3,
             slidesToScroll: 1,
             infinite: true,
             dots: false,
@@ -31,7 +32,7 @@ export default class Responsive extends Component {
         {
           breakpoint: 600,
           settings: {
-            slidesToShow: 2,
+            slidesToShow: 3,
             slidesToScroll: 1,
             dots: false,
           },
@@ -39,7 +40,7 @@ export default class Responsive extends Component {
         {
           breakpoint: 480,
           settings: {
-            slidesToShow: 2,
+            slidesToShow: 3,
             slidesToScroll: 1,
             dots: false,
           },
@@ -55,6 +56,7 @@ export default class Responsive extends Component {
               src={resImg}
               alt="Resolution Project"
               style={{ margin: "auto", width: "80%" }}
+              className={classes.awards}
             />
           </div>
           <div>
@@ -62,12 +64,14 @@ export default class Responsive extends Component {
               src={unaids}
               alt="ResolutionProject"
               style={{ margin: "auto", width: "80%", marginTop: "35%" }}
+              className={classes.awards}
             />
           </div>
           <div>
             <img
               src={hiex}
               style={{ margin: "auto", width: "80%", marginTop: "35%" }}
+              className={classes.awards}
             />
           </div>
           <div>
@@ -75,6 +79,14 @@ export default class Responsive extends Component {
               src={whoImg}
               alt="WHO regional office for Africa"
               style={{ margin: "auto", width: "80%", marginTop: "17%" }}
+              className={classes.awards}
+            />
+          </div>
+          <div>
+            <img
+              src={ciscoImg}
+              style={{ margin: "auto", width: "80%", marginTop: "10%" }}
+              className={classes.awards}
             />
           </div>
         </Slider>

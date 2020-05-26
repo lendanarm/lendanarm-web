@@ -95,6 +95,7 @@ const styles = (theme) => ({
   },
   partnerHeader: {
     fontStyle: "normal",
+    fontWeight: "bold",
     fontSize: "1rem",
     lineHeight: "1.6rem",
     color: "#FFF",

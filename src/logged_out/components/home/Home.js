@@ -23,7 +23,7 @@ class Home extends PureComponent {
           </title>
           <meta
             name="description"
-            content="Nigeria suffers from a damaging shortage of blood with over 350, 000 pints of blood needed. People die because of this need. Voluntary donors, everyday heroes like you, are needed to tackle this murderous menace."
+            content="Project LendAnArm is Nigeria's first blood donor community and smart blood bank facility, a novel integrated blood supply system utilizing two point-of-care technologies, Internet of Things and beyond-line-of-sight delivery drones to ensure delivery of blood to healthcare facilities in less than 30 minutes."
           />
         </Helmet>
         <HeroSection />

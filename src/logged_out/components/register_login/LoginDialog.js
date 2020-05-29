@@ -90,6 +90,7 @@ class LoginDialog extends PureComponent {
           loading={loading}
           onFormSubmit={(e) => {
             e.preventDefault();
+            this.login()
           }}
           hideBackdrop
           headline="Login"

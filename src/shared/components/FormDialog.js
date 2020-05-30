@@ -15,7 +15,7 @@ const styles = (theme) => ({
     marginTop: theme.spacing(2),
   },
   dialogPaperScrollPaper: {
-    maxHeight: "none",
+    maxHeight: "100vh",
   },
   dialogContent: {
     paddingTop: 0,
@@ -50,7 +50,7 @@ function FormDialog(props) {
         paperScrollPaper: classes.dialogPaperScrollPaper,
       }}
       hideBackdrop={hideBackdrop ? hideBackdrop : false}
-      scroll="body"
+      scroll="paper"
     >
       <DialogTitleWithCloseIcon
         title={headline}

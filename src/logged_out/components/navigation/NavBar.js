@@ -36,7 +36,7 @@ const styles = (theme) => ({
   },
   brandText: {
     fontFamily: "'Baloo Bhaijaan', cursive !important",
-    fontWeight: 700,
+    fontWeight: "700 !important",
     webkitUserSelect: "none",
     mozUserSelect: "none",
     msUserSelect: "none",

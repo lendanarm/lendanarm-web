@@ -140,10 +140,6 @@ const theme = createMuiTheme({
       "Arial",
       "sans-serif",
     ].join(","),
-    h4: {
-      fontFamily: "'Baloo Bhaijaan', cursive",
-      fontWeight: 700,
-    },
     h6: {
       fontSize: "0.875rem",
       fontWeight: 400,

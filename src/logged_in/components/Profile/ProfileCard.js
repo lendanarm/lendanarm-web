@@ -40,7 +40,7 @@ export default function DonationCta({
   const pointsMap = [
     {
       img: donationVector,
-      points: "00",
+      points: "05",
       title: "Donations",
       link: "/c/blood_donations",
     },

@@ -15,7 +15,7 @@ const styles = (theme) => ({
     marginTop: theme.spacing(2),
   },
   dialogPaperScrollPaper: {
-    maxHeight: "100vh",
+    maxHeight: "95vh",
   },
   dialogContent: {
     paddingTop: 0,

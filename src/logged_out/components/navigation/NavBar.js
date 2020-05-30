@@ -19,6 +19,8 @@ import ApartmentIcon from "@material-ui/icons/Apartment";
 import OpacityIcon from "@material-ui/icons/Opacity";
 //Local Component Imports
 import NavigationDrawer from "../../../shared/components/NavigationDrawer";
+//Local Image Import
+import { Logo } from "./Logo";
 
 const styles = (theme) => ({
   appBar: {
@@ -95,14 +97,7 @@ function NavBar(props) {
         <Toolbar className={classes.toolbar}>
           <div>
             <Link to="/" className={classes.noDecoration}>
-              <Typography
-                variant="h4"
-                className={classes.brandText}
-                display="inline"
-                color="primary"
-              >
-                LendAnArm
-              </Typography>
+              {Logo}
             </Link>
           </div>
           <div>

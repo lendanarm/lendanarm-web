@@ -95,11 +95,11 @@ const footerMenu = [
     title: "Careers",
   },
   {
-    link: "/team",
-    title: "Team",
+    link: "/about",
+    title: "About Us",
   },
   {
-    link: "/impact",
+    link: "/#",
     title: "Impact",
   },
 ];
@@ -197,7 +197,11 @@ function Footer(props) {
               </Box>
             </div>
             <div className={classes.privacyPolicy}>
-              <Link to="/" className={classes.footerLinks}>
+              <Link
+                to="/privacy-policy"
+                className={classes.footerLinks}
+                style={{ marginRight: 20 }}
+              >
                 Privacy Policy
               </Link>
             </div>

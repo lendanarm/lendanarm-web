@@ -23,12 +23,9 @@ class Main extends PureComponent {
   state = {
     selectedTab: null,
     mobileDrawerOpen: false,
-    blogPosts: [],
     dialogOpen: null,
     cookieRulesDialogOpen: false,
   };
-
-  blogPostsMaxUnix = Math.round(new Date().getTime() / 1000);
 
   componentDidMount() {}
 
@@ -57,10 +54,28 @@ class Main extends PureComponent {
     this.setState({ selectedTab: "Our Solution" });
   };
 
-  selectBlog = () => {
+  selectAbout = () => {
     smoothScrollTop();
-    document.title = "Lend An Arm - Blog";
-    this.setState({ selectedTab: "Blog" });
+    document.title = "Lend An Arm - About Us | Team";
+    this.setState({ selectedTab: "About" });
+  };
+
+  selectCareers = () => {
+    smoothScrollTop();
+    document.title = "Lend An Arm - Careers";
+    this.setState({ selectedTab: "Careers" });
+  };
+
+  selectImpact = () => {
+    smoothScrollTop();
+    document.title = "Lend An Arm - Impact";
+    this.setState({ selectedTab: "Impact" });
+  };
+
+  selectPrivacyPolicy = () => {
+    smoothScrollTop();
+    document.title = "Lend An Arm - Privacy Policy";
+    this.setState({ selectedTab: "Privacy Policy" });
   };
 
   openLoginDialog = () => {
@@ -150,6 +165,10 @@ class Main extends PureComponent {
           selectSolution={this.selectSolution}
           selectBecome={this.selectBecome}
           selectHost={this.selectHost}
+          selectAbout={this.selectAbout}
+          selectCareers={this.selectCareers}
+          selectImpact={this.selectImpact}
+          selectPrivacyPolicy={this.selectPrivacyPolicy}
         />
         <Footer />
       </div>

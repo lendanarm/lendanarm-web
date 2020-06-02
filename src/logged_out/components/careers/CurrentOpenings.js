@@ -127,7 +127,7 @@ function SimpleTabs({ width }) {
           onChange={handleChange}
           aria-label="simple tabs example"
         >
-          <Tab label="None-remote" {...a11yProps(0)} />
+          <Tab label="Non-remote" {...a11yProps(0)} />
           <Tab label="Remote" {...a11yProps(1)} />
         </Tabs>
       </Paper>

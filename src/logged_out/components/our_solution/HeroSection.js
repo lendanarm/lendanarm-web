@@ -143,31 +143,14 @@ function HeroSection(props) {
                       </div>
                     </Box>
                   </Grid>
-                  <Grid
-                    item
-                    md={6}
-                    className={classes.imgSection}
-                    style={{ position: 'relative' }}
-                  >
-                    <Image
-                      src={infographic}
-                      className={classes.infographic}
-                      alt="our solution infographic"
-                    />
+                  <Grid item md={6} className={classes.imgSection}>
                     <iframe
-                      width="280"
-                      height="157.5"
+                      width="560"
+                      height="315"
                       src="https://www.youtube.com/embed/TNHjmWM3vPY?controls=0"
                       frameborder="0"
                       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                       allowfullscreen
-                      style={{
-                        position: 'absolute',
-                        right: '36%',
-                        top: '36%',
-                        width: '42%',
-                        height: '34%',
-                      }}
                     ></iframe>
                   </Grid>
                 </Box>

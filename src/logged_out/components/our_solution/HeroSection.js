@@ -151,7 +151,7 @@ function HeroSection(props) {
                       frameborder="0"
                       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                       allowfullscreen
-                      style={{ maxWidth: '100%' }}
+                      style={{ maxWidth: '100%', height: 'auto' }}
                     ></iframe>
                   </Grid>
                 </Box>

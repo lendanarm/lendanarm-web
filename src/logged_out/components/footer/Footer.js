@@ -99,7 +99,7 @@ const footerMenu = [
     title: "About Us",
   },
   {
-    link: "/#",
+    link: "/impact",
     title: "Impact",
   },
 ];

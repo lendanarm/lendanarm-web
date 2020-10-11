@@ -1,0 +1,75 @@
+{
+  "name": "project-lend-an-arm",
+  "version": "1.0.0",
+  "private": true,
+  "homepage": "",
+  "description": "Nigeria's First Digital Smart Bank",
+  "dependencies": {
+    "@date-io/date-fns": "^1.3.13",
+    "@material-ui/core": "^4.9.4",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/pickers": "^3.2.10",
+    "@material-ui/system": "^4.9.3",
+    "@testing-library/jest-dom": "^5.1.1",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^10.0.0",
+    "aos": "^2.3.4",
+    "axios": "^0.19.2",
+    "classnames": "^2.2.6",
+    "date-fns": "^2.13.0",
+    "dayjs": "^1.8.25",
+    "emoji-mart": "^2.11.2",
+    "history": "^4.10.1",
+    "js-cookie": "^2.2.0",
+    "jwt-decode": "^2.2.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-cropper": "^1.3.0",
+    "react-dom": "^16.12.0",
+    "react-dropzone": "^10.2.1",
+    "react-helmet": "^6.0.0",
+    "react-redux": "^7.2.0",
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.0",
+    "react-scrollable-anchor": "^0.6.1",
+    "react-slick": "^0.25.2",
+    "react-swipeable-views": "^0.13.9",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
+    "slick-carousel": "^1.8.1"
+  },
+  "scripts": {
+    "start": "CI= react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "sitemap": "node src/sitemap.js"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Ifeanyi",
+  "license": "MIT",
+  "bugs": {
+    "url": ""
+  },
+  "proxy": "https://us-central1-project-lend-an-arm.cloudfunctions.net/api",
+  "devDependencies": {}
+}

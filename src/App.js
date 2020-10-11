@@ -1,23 +1,23 @@
 // Used to prevent googlebot from rendering our page as blank, should be imported first
-import React, { Fragment, Suspense, lazy } from 'react';
-import { MuiThemeProvider, CssBaseline } from '@material-ui/core';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import axios from 'axios';
-import jwtDecode from 'jwt-decode';
-import { Provider } from 'react-redux';
-import store from './redux/store';
-import { SET_AUTHENTICATED, SET_UNAUTHENTICATED } from './redux/types';
-import { logout, getUserData } from './redux/actions/userActions';
-import { Helmet } from 'react-helmet';
+import React, { Fragment, Suspense, lazy } from "react";
+import { MuiThemeProvider, CssBaseline } from "@material-ui/core";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import axios from "axios";
+import jwtDecode from "jwt-decode";
+import { Provider } from "react-redux";
+import store from "./redux/store";
+import { SET_AUTHENTICATED, SET_UNAUTHENTICATED } from "./redux/types";
+import { logout, getUserData } from "./redux/actions/userActions";
+import { Helmet } from "react-helmet";
 
-import theme from './theme';
-import GlobalStyles from './GlobalStyles';
-import * as serviceWorker from './serviceWorker';
-import Pace from './shared/components/Pace';
+import theme from "./theme";
+import GlobalStyles from "./GlobalStyles";
+import * as serviceWorker from "./serviceWorker";
+import Pace from "./shared/components/Pace";
 
-const LoggedInComponent = lazy(() => import('./logged_in/components/Main'));
+const LoggedInComponent = lazy(() => import("./logged_in/components/Main"));
 
-const LoggedOutComponent = lazy(() => import('./logged_out/components/Main'));
+const LoggedOutComponent = lazy(() => import("./logged_out/components/Main"));
 
 // axios.defaults.baseURL =
 //   "https://us-central1-project-lend-an-arm.cloudfunctions.net/api";
@@ -32,7 +32,7 @@ if (token) {
     store.dispatch(logout());
   } else {
     store.dispatch({ type: SET_AUTHENTICATED });
-    axios.defaults.headers.common['Authorization'] = token;
+    axios.defaults.headers.common["Authorization"] = token;
     store.dispatch(getUserData());
   }
 }

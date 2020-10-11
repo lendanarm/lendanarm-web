@@ -1,8 +1,8 @@
-import React, { PureComponent, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import axios from 'axios';
-import { withRouter } from 'react-router-dom';
+import React, { PureComponent, Fragment } from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
+import axios from "axios";
+import { withRouter } from "react-router-dom";
 import {
   TextField,
   Button,
@@ -10,36 +10,36 @@ import {
   Typography,
   FormControlLabel,
   withStyles,
-} from '@material-ui/core';
-import FormDialog from '../../../shared/components/FormDialog';
-import HighlightedInformation from '../../../shared/components/HighlightedInformation';
-import ButtonCircularProgress from '../../../shared/components/ButtonCircularProgress';
+} from "@material-ui/core";
+import FormDialog from "../../../shared/components/FormDialog";
+import HighlightedInformation from "../../../shared/components/HighlightedInformation";
+import ButtonCircularProgress from "../../../shared/components/ButtonCircularProgress";
 //Redux Stuff
-import { connect } from 'react-redux';
-import { loginUser } from '../../../redux/actions/userActions';
+import { connect } from "react-redux";
+import { loginUser } from "../../../redux/actions/userActions";
 
 const styles = (theme) => ({
   forgotPassword: {
     marginTop: theme.spacing(2),
     color: theme.palette.primary.main,
-    cursor: 'pointer',
-    '&:enabled:hover': {
+    cursor: "pointer",
+    "&:enabled:hover": {
       color: theme.palette.primary.dark,
     },
-    '&:enabled:focus': {
+    "&:enabled:focus": {
       color: theme.palette.primary.dark,
     },
   },
   disabledText: {
-    cursor: 'auto',
+    cursor: "auto",
     color: theme.palette.text.disabled,
   },
   formControlLabel: {
     marginRight: 0,
   },
   customError: {
-    color: 'red',
-    fontSize: '0.8rem',
+    color: "red",
+    fontSize: "0.8rem",
   },
 });
 
@@ -48,8 +48,8 @@ class LoginDialog extends PureComponent {
     super();
 
     this.state = {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
       errors: {},
     };
   }
@@ -90,7 +90,6 @@ class LoginDialog extends PureComponent {
           loading={loading}
           onFormSubmit={(e) => {
             e.preventDefault();
-            this.login();
           }}
           hideBackdrop
           headline="Login"
@@ -147,7 +146,7 @@ class LoginDialog extends PureComponent {
                 }
                 label={<Typography variant="body1">Remember me</Typography>}
               />
-              {status === 'verificationEmailSend' ? (
+              {status === "verificationEmailSend" ? (
                 <HighlightedInformation>
                   We have sent instructions on how to reset your password to
                   your email address

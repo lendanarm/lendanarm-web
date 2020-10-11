@@ -10,7 +10,6 @@ import CookieConsent from "./cookies/CookieConsent";
 import DialogSelector from "./register_login/DialogSelector";
 import Routing from "./Routing";
 import smoothScrollTop from "../../shared/functions/smoothScrollTop";
-import { Helmet } from "react-helmet";
 
 AOS.init({ once: true });
 

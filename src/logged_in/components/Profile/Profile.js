@@ -1,66 +1,66 @@
-import React, { PureComponent, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { Paper, withStyles } from '@material-ui/core';
-import ProfileCard from './ProfileCard';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import { uploadImage } from '../../../redux/actions/userActions';
-import ProfileTabber from './ProfileTabber';
-import ProfileSkeleton from '../../../shared/components/skeletons/ProfileSkeleton';
-import PostSkeleton from '../../../shared/components/PostSkeleton';
+import React, { PureComponent, Fragment } from "react";
+import PropTypes from "prop-types";
+import { Paper, withStyles } from "@material-ui/core";
+import ProfileCard from "./ProfileCard";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import { uploadImage } from "../../../redux/actions/userActions";
+import ProfileTabber from "./ProfileTabber";
+import ProfileSkeleton from "../../../shared/components/skeletons/ProfileSkeleton";
+import PostSkeleton from "../../../shared/components/PostSkeleton";
 
 const styles = (theme) => ({
   divider: {
-    backgroundColor: 'rgba(0, 0, 0, 0.26)',
+    backgroundColor: "rgba(0, 0, 0, 0.26)",
   },
   root: {
     padding: theme.spacing(2),
-    margin: 'auto',
+    margin: "auto",
     flexGrow: 1,
     // maxWidth: 500,
   },
   profile: {
-    '& .image-wrapper': {
-      textAlign: 'center',
-      position: 'relative',
-      '& button': {
-        position: 'absolute',
-        top: '60%',
-        left: '60%',
+    "& .image-wrapper": {
+      textAlign: "center",
+      position: "relative",
+      "& button": {
+        position: "absolute",
+        top: "60%",
+        left: "60%",
       },
     },
-    '& .profile-image': {
+    "& .profile-image": {
       width: 100,
       height: 100,
-      objectFit: 'cover',
-      maxWidth: '100%',
-      borderRadius: '50%',
+      objectFit: "cover",
+      maxWidth: "100%",
+      borderRadius: "50%",
     },
-    '& .profile-details': {
-      textAlign: 'center',
-      '&span, svg': {
-        verticalAlign: 'middle',
+    "& .profile-details": {
+      textAlign: "center",
+      "&span, svg": {
+        verticalAlign: "middle",
       },
-      '& a': {
+      "& a": {
         color: theme.palette.primary.main,
       },
     },
-    '& hr': {
-      border: 'none',
-      margin: '0 0 10px 0',
+    "& hr": {
+      border: "none",
+      margin: "0 0 10px 0",
     },
-    '& svg.button': {
-      '&:hover': {
-        cursor: 'pointer',
+    "& svg.button": {
+      "&:hover": {
+        cursor: "pointer",
       },
     },
   },
   buttons: {
-    textAlign: 'center',
-    '& a': {
-      margin: '20px 10px',
+    textAlign: "center",
+    "& a": {
+      margin: "20px 10px",
     },
   },
   image: {
@@ -68,20 +68,20 @@ const styles = (theme) => ({
     height: 128,
   },
   img: {
-    margin: 'auto',
-    display: 'block',
-    maxWidth: '100%',
-    maxHeight: '100%',
+    margin: "auto",
+    display: "block",
+    maxWidth: "100%",
+    maxHeight: "100%",
   },
   editImageIcon: {
-    marginTop: '-20px',
-    marginLeft: '-10px',
+    marginTop: "-20px",
+    marginLeft: "-10px",
   },
   heroPaper: {
-    padding: '10px',
+    padding: "10px",
     // paddingLeft: theme.spacing(2),
-    textAlign: 'center',
-    backgroundColor: '#242424',
+    textAlign: "center",
+    backgroundColor: "#242424",
     borderRadius: 5,
   },
   heroIcons: {
@@ -98,12 +98,12 @@ class Profile extends PureComponent {
   handleImageChange = (event) => {
     const image = event.target.files[0];
     const formData = new FormData();
-    formData.append('image', image, image.name);
+    formData.append("image", image, image.name);
     console.log(formData);
     this.props.uploadImage(formData);
   };
   handleEditPicture = () => {
-    const fileInput = document.getElementById('imageInput');
+    const fileInput = document.getElementById("imageInput");
     fileInput.click();
   };
 

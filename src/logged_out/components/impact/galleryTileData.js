@@ -1,35 +1,39 @@
-import hamstrings1 from "../../data/images/hamstringsactivity1.jpg";
-import hamstrings2 from "../../data/images/hamstringsActivity2.jpg";
+import fawazPitching from "../../data/images/fawazpitchingImage.jpg";
+import laaDonors from "../../data/images/lendanarmDonors.jpg";
+import bloodDriveImg1 from "../../data/images/bloodDriveImage1.jpg";
+import bloodDriveImg2 from "../../data/images/bloodDriveImage2.jpg";
+import bloodDriveImg3 from "../../data/images/bloodDriveImage3.jpg";
+import bloodDriveImg4 from "../../data/images/bloodDriveImage4.jpg";
 
 export const galleryTileData = [
   {
-    img: hamstrings1,
-    activity: "LAA Inaugural Meeting",
-    location: "Abuja, Nigeria",
+    img: fawazPitching,
+    activity: "Lend an Arm wins, Resolution Fellowship Ventures Challenge",
+    location: "NYC, USA",
   },
   {
-    img: hamstrings2,
-    activity: "LAA Win Prize",
-    location: "New York, USA",
+    img: laaDonors,
+    activity: "Lorem ipsum, lorem ipsum",
+    location: "ABH, IB, NG",
   },
   {
-    img: hamstrings1,
-    activity: "LAA Meets Jack Ma",
-    location: "Wuhan, China",
+    img: bloodDriveImg1,
+    activity: "Lorem ipsum, lorem ipsum",
+    location: "ABH, IB, NG",
   },
   {
-    img: hamstrings1,
-    activity: "LAA Inaugural Meeting",
-    location: "Abuja, Nigeria",
+    img: bloodDriveImg2,
+    activity: "Lorem ipsum, lorem ipsum",
+    location: "ABH, IB, NG",
   },
   {
-    img: hamstrings2,
-    activity: "LAA Win Prize",
-    location: "New York, USA",
+    img: bloodDriveImg3,
+    activity: "Lorem ipsum, lorem ipsum",
+    location: "ABH, IB, NG",
   },
   {
-    img: hamstrings1,
-    activity: "LAA Meets Jack Ma",
-    location: "Wuhan, China",
+    img: bloodDriveImg4,
+    activity: "Lorem ipsum, lorem ipsum",
+    location: "ABH, IB, NG",
   },
 ];

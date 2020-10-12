@@ -200,11 +200,11 @@ function HeroSection(props) {
                         data-aos="fade-up-right"
                         mt={2}
                       >
-                        <Grid item xs={4}>
+                        <Grid item xs={6}>
                           <Typography
                             className={classes.metricsText}
                             id="counter"
-                            data-target="500"
+                            data-target="764"
                             variant={isWidthUp("lg", width) ? "h3" : "h4"}
                           >
                             0
@@ -213,18 +213,18 @@ function HeroSection(props) {
                             Blood Units Distributed
                           </p>
                         </Grid>
-                        <Grid item xs={4}>
+                        <Grid item xs={6}>
                           <Typography
                             className={classes.metricsText}
                             variant={isWidthUp("lg", width) ? "h3" : "h4"}
                             id="counter"
-                            data-target="50"
+                            data-target="14"
                           >
                             0
                           </Typography>
                           <p style={{ color: "#8A0303" }}>Trusted Partners</p>
                         </Grid>
-                        <Grid item xs={4}>
+                        <Grid item xs={6}>
                           <Typography
                             className={classes.metricsText}
                             variant={isWidthUp("lg", width) ? "h3" : "h4"}
@@ -235,40 +235,16 @@ function HeroSection(props) {
                           </Typography>
                           <p style={{ color: "#8A0303" }}>Awards won</p>
                         </Grid>
-                        <Grid item xs={4}>
+                        <Grid item xs={6}>
                           <Typography
                             className={classes.metricsText}
                             variant={isWidthUp("lg", width) ? "h3" : "h4"}
                             id="counter"
-                            data-target="1000"
+                            data-target="600"
                           >
                             0
                           </Typography>
-                          <p style={{ color: "#8A0303" }}>
-                            Enrolled Blood Donors
-                          </p>
-                        </Grid>
-                        <Grid item xs={4}>
-                          <Typography
-                            className={classes.metricsText}
-                            variant={isWidthUp("lg", width) ? "h3" : "h4"}
-                            id="counter"
-                            data-target="30"
-                          >
-                            0
-                          </Typography>
-                          <p style={{ color: "#8A0303" }}>Employed personnel</p>
-                        </Grid>
-                        <Grid item xs={4}>
-                          <Typography
-                            className={classes.metricsText}
-                            variant={isWidthUp("lg", width) ? "h3" : "h4"}
-                            id="counter"
-                            data-target="36"
-                          >
-                            0
-                          </Typography>
-                          <p style={{ color: "#8A0303" }}>Nigerian states</p>
+                          <p style={{ color: "#8A0303" }}>Blood Donors</p>
                         </Grid>
                       </Grid>
                     </div>

@@ -71,12 +71,18 @@ export default class Responsive extends Component {
             </a>
           </div>
           <div>
-            <img
-              src={unaids}
-              alt=""
-              style={{ margin: "auto", width: "80%", marginTop: "25%" }}
-              className={classes.awards}
-            />
+            <a
+              href="https://healthinnovation.exchange/innovation-2020-6.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={unaids}
+                alt=""
+                style={{ margin: "auto", width: "80%", marginTop: "25%" }}
+                className={classes.awards}
+              />
+            </a>
           </div>
           <div>
             <img

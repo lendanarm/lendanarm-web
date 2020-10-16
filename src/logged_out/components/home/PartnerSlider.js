@@ -9,6 +9,7 @@ import resImg from "../../data/images/resolutionproject.png";
 import hiex from "../../data/images/hiex.svg";
 import unaids from "../../data/images/unaids.png";
 import ciscoImg from "../../data/images/cisco.png";
+import sarecoImg from "../../data/images/sareco.png";
 
 export default class Responsive extends Component {
   render() {
@@ -116,6 +117,16 @@ export default class Responsive extends Component {
                 src={ciscoImg}
                 alt=""
                 style={{ margin: "auto", width: "80%", marginTop: "5%" }}
+                className={classes.awards}
+              />
+            </a>
+          </div>
+          <div>
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <img
+                src={sarecoImg}
+                alt=""
+                style={{ margin: "auto", width: "80%", marginTop: "14%" }}
                 className={classes.awards}
               />
             </a>

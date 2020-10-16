@@ -13,27 +13,27 @@ export const galleryTileData = [
   },
   {
     img: laaDonors,
-    activity: "Lorem ipsum, lorem ipsum",
+    activity: "",
     location: "ABH, IB, NG",
   },
   {
     img: bloodDriveImg1,
-    activity: "Lorem ipsum, lorem ipsum",
+    activity: "",
     location: "ABH, IB, NG",
   },
   {
     img: bloodDriveImg2,
-    activity: "Lorem ipsum, lorem ipsum",
+    activity: "",
     location: "ABH, IB, NG",
   },
   {
     img: bloodDriveImg3,
-    activity: "Lorem ipsum, lorem ipsum",
+    activity: "",
     location: "ABH, IB, NG",
   },
   {
     img: bloodDriveImg4,
-    activity: "Lorem ipsum, lorem ipsum",
+    activity: "",
     location: "ABH, IB, NG",
   },
 ];

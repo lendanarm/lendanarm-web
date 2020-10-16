@@ -183,13 +183,14 @@ function HeroSection(props) {
                           variant="body1"
                           color="textSecondary"
                         >
-                          Since our inception, we have made impressive strides
-                          lorem ipsum lorem ipsum lorem ipsim lorem ipsum lorem
-                          ipsum lorem ipsum lorem ipsum lorem ipsim lorem ipsum
-                          lorem ipsum. <br />
+                          Since our inception, we have made impressive strides,
+                          with our venture directly responsible for saving 450
+                          lives since inception. We are an innovative venture,
+                          fast building with international renown; acknowledged
+                          by the WHO, UNAIDS and the Government of Japan. <br />
                           <span style={{ color: "#8A0303" }}>
-                            We've not done alot, hopefully we would get to
-                            increase these numbers soon.
+                            We've not done alot, hopefully with you, we would
+                            get to do even more.
                           </span>
                         </Typography>
                       </Box>

@@ -1,6 +1,7 @@
 import React, { Fragment, PureComponent } from "react";
 import PropTypes from "prop-types";
 import HeroSection from "./HeroSection";
+import DonorForm from "./DonorForm";
 import { Helmet } from "react-helmet";
 
 class BecomeDonor extends PureComponent {
@@ -20,6 +21,7 @@ class BecomeDonor extends PureComponent {
           />
         </Helmet>
         <HeroSection />
+        <DonorForm />
       </Fragment>
     );
   }

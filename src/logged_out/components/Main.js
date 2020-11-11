@@ -81,6 +81,9 @@ class Main extends PureComponent {
   openLoginDialog = () => {
     this.setState({ dialogOpen: "login", mobileDrawerOpen: false });
   };
+  openDemoDialog = () => {
+    this.setState({ dialogOpen: "demo", mobileDrawerOpen: false });
+  };
 
   closeDialog = () => {
     this.setState({ dialogOpen: null });
@@ -143,6 +146,7 @@ class Main extends PureComponent {
           onClose={this.closeDialog}
           openTermsDialog={this.openTermsDialog}
           openRegisterDialog={this.openRegisterDialog}
+          openDemoDialog={this.openDemoDialog}
           openChangePasswordDialog={this.openChangePasswordDialog}
         />
         <CookieRulesDialog
@@ -154,6 +158,7 @@ class Main extends PureComponent {
           selectTab={this.selectTab}
           openLoginDialog={this.openLoginDialog}
           openRegisterDialog={this.openRegisterDialog}
+          openDemoDialog={this.openDemoDialog}
           mobileDrawerOpen={mobileDrawerOpen}
           handleMobileDrawerOpen={this.handleMobileDrawerOpen}
           handleMobileDrawerClose={this.handleMobileDrawerClose}

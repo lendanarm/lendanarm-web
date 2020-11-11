@@ -236,7 +236,7 @@ function HeadSection(props) {
                                 color: "#8A0303",
                               }}
                             >
-                              blooddrive@lendanarm.ng
+                              hello@lendanarm.ng
                             </a>
                             . A Project- Lend an Arm representative will be
                             assigned to provide you or your organization with

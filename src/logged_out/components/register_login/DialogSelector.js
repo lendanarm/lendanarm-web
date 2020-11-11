@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import RegisterDialog from "./RegisterDialog";
 import TermsOfServiceDialog from "./TermsOfServiceDialog";
 import LoginDialog from "./LoginDialog";
+import DemoDialog from "./DemoDialog";
 import ChangePasswordDialog from "./ChangePasswordDialog";
 import ModalBackdrop from "../../../shared/components/ModalBackdrop";
 
@@ -50,6 +51,13 @@ class DialogSelector extends PureComponent {
       case "login":
         return (
           <LoginDialog
+            onClose={this.onClose}
+            openChangePasswordDialog={openChangePasswordDialog}
+          />
+        );
+      case "demo":
+        return (
+          <DemoDialog
             onClose={this.onClose}
             openChangePasswordDialog={openChangePasswordDialog}
           />

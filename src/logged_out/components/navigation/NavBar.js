@@ -55,8 +55,9 @@ const styles = (theme) => ({
 function NavBar(props) {
   const {
     classes,
-    openRegisterDialog,
-    openLoginDialog,
+    // openRegisterDialog,
+    // openLoginDialog,
+    openDemoDialog,
     handleMobileDrawerOpen,
     handleMobileDrawerClose,
     mobileDrawerOpen,
@@ -79,16 +80,10 @@ function NavBar(props) {
       icon: <OpacityIcon className="text-white" />,
     },
     {
-      name: "Sign in",
-      onClick: openLoginDialog,
+      name: "Book a Demo",
+      onClick: openDemoDialog,
       variant: "outlined",
       icon: <LockOpenIcon className="text-white" />,
-    },
-    {
-      name: "Join now",
-      variant: "contained",
-      onClick: openRegisterDialog,
-      icon: <HowToRegIcon className="text-white" />,
     },
   ];
   return (

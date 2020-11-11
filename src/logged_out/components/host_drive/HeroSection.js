@@ -11,6 +11,7 @@ import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import withStyles from "@material-ui/core/styles/withStyles";
 import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
+import HostDriveFormDialog from "./HostDriveFormDialog";
 //MUI Icons
 import ApartmentIcon from "@material-ui/icons/Apartment";
 //Local Component Imports
@@ -122,6 +123,11 @@ const styles = (theme) => ({
 
 function HeadSection(props) {
   const { classes, width } = props;
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
   return (
     <div className={classNames("lg-p-top", classes.wrapper)}>
@@ -165,8 +171,7 @@ function HeadSection(props) {
                           variant="contained"
                           color="primary"
                           size="large"
-                          component={Link}
-                          to="#host"
+                          onClick={handleClickOpen}
                           endIcon={<ApartmentIcon />}
                         >
                           Host Drive
@@ -191,6 +196,7 @@ function HeadSection(props) {
             </div>
           </Card>
         </Box>
+        <HostDriveFormDialog open={open} setOpen={setOpen} />
       </div>
     </div>
   );

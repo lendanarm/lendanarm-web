@@ -122,7 +122,11 @@ export default class Responsive extends Component {
             </a>
           </div>
           <div>
-            <a href="#" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.venturelab.ch/20-African-startups-participate-in-a-threeday-online-SABII-workshop?s=09"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img
                 src={sarecoImg}
                 alt=""

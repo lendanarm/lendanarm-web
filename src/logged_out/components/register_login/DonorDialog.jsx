@@ -79,7 +79,7 @@ render() {
   const becomeDonorHandler = () => {
     const data = {
   "from": this.state.email,
-  "subject": "NEW DONOR ENROLLMENT",
+  "subject": `NEW DONOR ENROLLMENT - ${this.state.name}`,
   "text": `Name: ${this.state.name}, <br> Phone Number: ${this.state.phoneNumber}, 
   <br/> Email: ${this.state.email}, <br/> Address: ${this.state.address}`,
   "name": this.state.name

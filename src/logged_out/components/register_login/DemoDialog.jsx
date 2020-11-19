@@ -80,7 +80,7 @@ render() {
   const bookDemoHandler = () => {
     const data = {
   "from": this.state.email,
-  "subject": "TEST DEMO BOOKING API",
+  "subject": `DEMO BOOKING BY ${this.state.name} FOR ${this.state.hospitalName} `,
   "text": `Name: ${this.state.name}, <br> Phone Number: ${this.state.phoneNumber}, 
   <br/> Email: ${this.state.email}, <br/> Hospital Name: ${this.state.hospitalName}, <br/> Number of Beds: ${this.state.numberOfBeds}`,
   "name": this.state.name

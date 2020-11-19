@@ -197,8 +197,7 @@ function HeadSection(props) {
                                   variant="outlined"
                                   color="primary"
                                   size="large"
-                                  component={Link}
-                                  to="#"
+                                  onClick={openDonorDialog}
                                 >
                                   For Blood Donors
                                 </Button>

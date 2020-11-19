@@ -84,6 +84,9 @@ class Main extends PureComponent {
   openDemoDialog = () => {
     this.setState({ dialogOpen: "demo", mobileDrawerOpen: false });
   };
+   openDonorDialog = () => {
+    this.setState({ dialogOpen: "donor", mobileDrawerOpen: false });
+  };
 
   closeDialog = () => {
     this.setState({ dialogOpen: null });
@@ -148,6 +151,7 @@ class Main extends PureComponent {
           openRegisterDialog={this.openRegisterDialog}
           openDemoDialog={this.openDemoDialog}
           openChangePasswordDialog={this.openChangePasswordDialog}
+          openDonorDialog={this.openDonorDialog}
         />
         <CookieRulesDialog
           open={cookieRulesDialogOpen}
@@ -174,6 +178,8 @@ class Main extends PureComponent {
           selectCareers={this.selectCareers}
           selectImpact={this.selectImpact}
           selectPrivacyPolicy={this.selectPrivacyPolicy}
+          openDemoDialog={this.openDemoDialog}
+          openDonorDialog={this.openDonorDialog}
         />
         <Footer />
       </div>

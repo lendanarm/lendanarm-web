@@ -21,6 +21,8 @@ function Routing(props) {
     selectCareers,
     selectImpact,
     selectPrivacyPolicy,
+    openDemoDialog,
+    openDonorDialog
   } = props;
 
   return (
@@ -56,7 +58,7 @@ function Routing(props) {
         component={PrivacyPolicy}
         selectPrivacyPolicy={selectPrivacyPolicy}
       />
-      <PropsRoute path="/" component={Home} selectHome={selectHome} />
+      <PropsRoute path="/" component={Home} selectHome={selectHome} openDemoDialog={openDemoDialog} openDonorDialog={openDonorDialog}/>
     </Switch>
   );
 }
@@ -66,6 +68,8 @@ Routing.propTypes = {
   selectBecome: PropTypes.func.isRequired,
   selectSolution: PropTypes.func.isRequired,
   selectHost: PropTypes.func.isRequired,
+  openDemoDialog: PropTypes.func.isRequired,
+  openDonorDialog: PropTypes.func.isRequired,
 };
 
 export default Routing;

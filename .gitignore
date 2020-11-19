@@ -110,3 +110,4 @@ build/
 package-lock.json
 yarn.lock
 
+sendgrid.env

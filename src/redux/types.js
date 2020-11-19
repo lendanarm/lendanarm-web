@@ -18,3 +18,6 @@ export const UNLIKE_POST = "UNLIKE_POST";
 export const DELETE_POST = "DELETE_POST";
 export const CREATE_POST = "CREATE_POST";
 export const SUBMIT_COMMENT = "SUBMIT_COMMENT";
+//Send Mail Types
+export const BOOK_DEMO = "BOOK_DEMO"
+export const BECOME_DONOR = "BECOME_DONOR"

@@ -110,7 +110,7 @@ const styles = (theme) => ({
 });
 
 function HeadSection(props) {
-  const { classes, width } = props;
+  const { classes, width, openDemoDialog, openDonorDialog } = props;
   return (
     <Fragment>
       <div className={classNames("lg-p-top", classes.wrapper)}>
@@ -163,9 +163,7 @@ function HeadSection(props) {
                                   variant="contained"
                                   color="primary"
                                   size="large"
-                                  component={Link}
-                                  // className={classes.butt}
-                                  to="#"
+                                  onClick={openDemoDialog}
                                 >
                                   For Hospitals
                                 </Button>
@@ -174,9 +172,8 @@ function HeadSection(props) {
                                 <Button
                                   variant="outlined"
                                   color="primary"
-                                  component={Link}
                                   size="large"
-                                  to="#"
+                                  onClick={openDonorDialog}
                                 >
                                   For Blood Donors
                                 </Button>
@@ -190,8 +187,7 @@ function HeadSection(props) {
                                   color="primary"
                                   size="large"
                                   component={Link}
-                                  // className={classes.butt}
-                                  to="#"
+                                  onClick={openDemoDialog}
                                 >
                                   For Hospitals
                                 </Button>

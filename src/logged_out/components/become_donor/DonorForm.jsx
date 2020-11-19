@@ -1,5 +1,5 @@
 //Package Imports
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
@@ -20,6 +20,9 @@ import WaveBorder from "../../../shared/components/WaveBorder";
 import ColoredButton from "../../../shared/components/ColoredButton";
 //Local Image Imports
 import blooddonor from "../../data/images/blood_donor_love.svg";
+//Redux Stuff
+import { connect } from "react-redux";
+import { becomeDonor } from "../../../redux/actions/emailActions";
 
 const styles = (theme) => ({
   card: {
@@ -99,7 +102,41 @@ const styles = (theme) => ({
 });
 
 function DonorForm(props) {
-  const { classes, width, theme } = props;
+  const { classes, width, theme, becomeDonor, emailState } = props;
+  
+  const [state, setState] = useState({
+    name: "",
+      phoneNumber: "",
+      email: "",
+      address: "",
+      error: null,
+      message: null
+  })
+  useEffect(()=>{
+    if(emailState.message !== null) {
+      setState(state=>({...state, name: "", phoneNumber: "",
+      email: "",
+      address: "",}))
+    }
+  }, [emailState.message])
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setState(state => ({...state, [name]: value}));
+  };
+
+   const becomeDonorHandler = (e) => {
+     e.preventDefault()
+    const data = {
+  "from": state.email,
+  "subject": "NEW DONOR ENROLLMENT",
+  "text": `Name: ${state.name}, <br> Phone Number: ${state.phoneNumber}, 
+  <br/> Email: ${state.email}, <br/> Address: ${state.address}`,
+  "name": state.name
+}
+console.log(data)
+becomeDonor(data)
+
+  };
   return (
     <Fragment>
       <WaveBorder
@@ -149,13 +186,16 @@ function DonorForm(props) {
                       </Box>
                       <div>
                         <Box mb={2}>
-                          <form>
+                          <form onSubmit={becomeDonorHandler}>
                             <Grid container spacing={1}>
                               <Grid item xs={12} sm={6} md={6}>
                                 <TextField
                                   variant="outlined"
                                   placeholder="Name"
                                   type="text"
+                                  value={state.name}
+                                  name="name"
+                                  onChange={handleChange}
                                   inputProps={{ "aria-label": "Your name" }}
                                   InputProps={{
                                     className: classes.whiteBg,
@@ -168,7 +208,10 @@ function DonorForm(props) {
                                 <TextField
                                   variant="outlined"
                                   placeholder="Email"
+                                  name="email"
                                   type="email"
+                                  value={state.email}
+                                  onChange={handleChange}
                                   inputProps={{ "aria-label": "Your email" }}
                                   InputProps={{
                                     className: classes.whiteBg,
@@ -180,8 +223,11 @@ function DonorForm(props) {
                               <Grid item xs={12}>
                                 <TextField
                                   variant="outlined"
+                                  name="phoneNumber"
                                   placeholder="Phone number"
                                   type="number"
+                                  value={state.phoneNumber}
+                                  onChange={handleChange}
                                   inputProps={{ "aria-label": "Your name" }}
                                   InputProps={{
                                     className: classes.whiteBg,
@@ -195,6 +241,9 @@ function DonorForm(props) {
                                   variant="outlined"
                                   placeholder="Address"
                                   type="text"
+                                  name="address"
+                                  value={state.address}
+                                  onChange={handleChange}
                                   inputProps={{ "aria-label": "Your address" }}
                                   InputProps={{
                                     className: classes.whiteBg,
@@ -213,6 +262,7 @@ function DonorForm(props) {
                                   Get Registered
                                 </ColoredButton>
                               </Grid>
+                              {emailState.message !== null && <p style={{color: 'white'}}>{emailState.message}</p>}
                             </Grid>
                           </form>
                         </Box>
@@ -235,4 +285,14 @@ DonorForm.propTypes = {
   theme: PropTypes.object,
 };
 
-export default withWidth()(withStyles(styles, { withTheme: true })(DonorForm));
+
+const mapStateToProps = (state) => ({
+  emailState: state.email,
+  UI: state.UI,
+});
+const mapActionsToProps = {
+  becomeDonor,
+};
+
+export default connect(mapStateToProps,
+  mapActionsToProps)(withWidth()(withStyles(styles, { withTheme: true })(DonorForm)));

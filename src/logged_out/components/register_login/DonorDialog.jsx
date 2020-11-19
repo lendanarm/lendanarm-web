@@ -16,7 +16,7 @@ import HighlightedInformation from "../../../shared/components/HighlightedInform
 import ButtonCircularProgress from "../../../shared/components/ButtonCircularProgress";
 //Redux Stuff
 import { connect } from "react-redux";
-import { bookDemo } from "../../../redux/actions/emailActions";
+import { becomeDonor } from "../../../redux/actions/emailActions";
 
 const styles = (theme) => ({
   forgotPassword: {
@@ -43,7 +43,7 @@ const styles = (theme) => ({
   },
 });
 
-class DemoDialog extends PureComponent {
+class DonorDialog extends PureComponent {
   constructor() {
     super();
 
@@ -51,8 +51,7 @@ class DemoDialog extends PureComponent {
       name: "",
       phoneNumber: "",
       email: "",
-      hospitalName: "",
-      numberOfBeds: "",
+      address: "",
       error: null,
       message: null
     };
@@ -73,19 +72,20 @@ class DemoDialog extends PureComponent {
   
 
 render() {
-  const { classes, onClose, openChangePasswordDialog, status, bookDemo, UI: { loading }, } = this.props;
+  const { classes, onClose, openChangePasswordDialog, status, becomeDonor, UI: { loading }, } = this.props;
 
   const { error } = this.state;
 
-  const bookDemoHandler = () => {
+  const becomeDonorHandler = () => {
     const data = {
   "from": this.state.email,
-  "subject": "TEST DEMO BOOKING API",
+  "subject": "NEW DONOR ENROLLMENT",
   "text": `Name: ${this.state.name}, <br> Phone Number: ${this.state.phoneNumber}, 
-  <br/> Email: ${this.state.email}, <br/> Hospital Name: ${this.state.hospitalName}, <br/> Number of Beds: ${this.state.numberOfBeds}`,
+  <br/> Email: ${this.state.email}, <br/> Address: ${this.state.address}`,
   "name": this.state.name
 }
-bookDemo(data)
+console.log(data)
+becomeDonor(data)
 
   };
   return (
@@ -96,10 +96,10 @@ bookDemo(data)
           loading={loading}
         onFormSubmit={(e) => {
           e.preventDefault();
-          bookDemoHandler();
+          becomeDonorHandler();
         }}
         hideBackdrop
-        headline="Book a Demo"
+        headline="Become a Donor"
         content={
           <Fragment>
             
@@ -128,6 +128,21 @@ bookDemo(data)
               margin="normal"
               required
               fullWidth
+              id="email"
+              label="Email"
+              name="email"
+              value={this.state.email}
+              autoFocus
+              autoComplete="off"
+              type="email"
+              onChange={this.handleChange}
+            />
+            
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
               id="phone"
               label="Phone number"
               name="phoneNumber"
@@ -142,38 +157,11 @@ bookDemo(data)
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email"
-              name="email"
-              value={this.state.email}
-              autoFocus
-              autoComplete="off"
-              type="email"
-              onChange={this.handleChange}
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="hospitalName"
-              name="hospitalName"
-              label="Hospital Name"
-              value={this.state.hospitalName}
+              id="address"
+              name="address"
+              label="Address"
+              value={this.state.address}
               type="text"
-              autoComplete="off"
-              onChange={this.handleChange}
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="numberOfBeds"
-              name="numberOfBeds"
-              label="Number of Beds"
-              value={this.state.numberOfBeds}
-              type="number"
               autoComplete="off"
               onChange={this.handleChange}
             />
@@ -209,7 +197,7 @@ bookDemo(data)
               disabled={loading}
               size="large"
             >
-              Book
+              Get Enrolled
               {loading && <ButtonCircularProgress />}
             </Button>}
           </Fragment>
@@ -220,7 +208,7 @@ bookDemo(data)
   };
 };
 
-DemoDialog.propTypes = {
+DonorDialog.propTypes = {
   classes: PropTypes.object.isRequired,
   onClose: PropTypes.func.isRequired,
   openChangePasswordDialog: PropTypes.func.isRequired,
@@ -236,10 +224,10 @@ const mapStateToProps = (state) => ({
   UI: state.UI,
 });
 const mapActionsToProps = {
-  bookDemo,
+  becomeDonor,
 };
 
 export default connect(
   mapStateToProps,
   mapActionsToProps
-)(withRouter(withStyles(styles)(DemoDialog)));
+)(withRouter(withStyles(styles)(DonorDialog)));

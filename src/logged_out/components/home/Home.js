@@ -10,7 +10,7 @@ import { Helmet } from "react-helmet";
 
 class Home extends PureComponent {
   componentDidMount() {
-    const { selectHome } = this.props;
+    const { selectHome} = this.props;
     selectHome();
   }
 
@@ -26,7 +26,7 @@ class Home extends PureComponent {
             content="Project LendAnArm is Nigeria's first blood donor community and smart blood bank facility, a novel integrated blood supply system utilizing two point-of-care technologies, Internet of Things and beyond-line-of-sight delivery drones to ensure delivery of blood to healthcare facilities in less than 30 minutes."
           />
         </Helmet>
-        <HeroSection />
+        <HeroSection openDemoDialog={this.props.openDemoDialog} openDonorDialog={this.props.openDonorDialog}/>
         <InfoSection />
         <HowToSection />
         <CtaSection />
@@ -37,6 +37,8 @@ class Home extends PureComponent {
 
 Home.propTypes = {
   selectHome: PropTypes.func.isRequired,
+  openDemoDialog: PropTypes.func.isRequired,
+  openDonorDialog: PropTypes.func.isRequired,
 };
 
 export default Home;

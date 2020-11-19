@@ -4,6 +4,7 @@ import RegisterDialog from "./RegisterDialog";
 import TermsOfServiceDialog from "./TermsOfServiceDialog";
 import LoginDialog from "./LoginDialog";
 import DemoDialog from "./DemoDialog";
+import DonorDialog from "./DonorDialog";
 import ChangePasswordDialog from "./ChangePasswordDialog";
 import ModalBackdrop from "../../../shared/components/ModalBackdrop";
 
@@ -34,6 +35,8 @@ class DialogSelector extends PureComponent {
       openRegisterDialog,
       openLoginDialog,
       openChangePasswordDialog,
+      openDemoDialog,
+      openDonorDialog
     } = this.props;
     const { loginStatus, registerStatus } = this.state;
     switch (dialogOpen) {
@@ -58,6 +61,13 @@ class DialogSelector extends PureComponent {
       case "demo":
         return (
           <DemoDialog
+            onClose={this.onClose}
+            openChangePasswordDialog={openChangePasswordDialog}
+          />
+        );
+      case "donor":
+        return (
+          <DonorDialog
             onClose={this.onClose}
             openChangePasswordDialog={openChangePasswordDialog}
           />
@@ -91,6 +101,8 @@ DialogSelector.propTypes = {
   openTermsDialog: PropTypes.func.isRequired,
   openRegisterDialog: PropTypes.func.isRequired,
   openChangePasswordDialog: PropTypes.func.isRequired,
+  openDemoDialog: PropTypes.func.isRequired,
+  openDonorDialog: PropTypes.func.isRequired,
 };
 
 export default DialogSelector;

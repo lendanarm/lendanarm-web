@@ -10,6 +10,7 @@ import hiex from "../../data/images/hiex.svg";
 import unaids from "../../data/images/unaids.png";
 import ciscoImg from "../../data/images/cisco.png";
 import sarecoImg from "../../data/images/sareco.png";
+import uscc from "../../data/images/uscc-seal.png";
 
 export default class Responsive extends Component {
   render() {
@@ -131,6 +132,20 @@ export default class Responsive extends Component {
                 src={sarecoImg}
                 alt=""
                 style={{ margin: "auto", width: "80%", marginTop: "14%" }}
+                className={classes.awards}
+              />
+            </a>
+          </div>
+          <div>
+            <a
+              href="https://www.uschamber.com/press-release/us-chamber-recognizes-three-nigerian-based-startups-digital-innovation-awards-us"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={uscc}
+                alt=""
+                style={{ margin: "auto", marginTop: "2%" }}
                 className={classes.awards}
               />
             </a>

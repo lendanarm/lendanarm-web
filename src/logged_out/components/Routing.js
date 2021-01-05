@@ -8,6 +8,7 @@ import BecomeDonor from "./become_donor/BecomeDonor";
 import HostDrive from "./host_drive/HostDrive";
 import About from "./about/About";
 import Careers from "./careers/Careers";
+import UniqueCareer from "./careers/UniqueCareerPage";
 import Impact from "./impact/Impact";
 import PrivacyPolicy from "./privacy_policy/PrivacyPolicy";
 
@@ -22,7 +23,7 @@ function Routing(props) {
     selectImpact,
     selectPrivacyPolicy,
     openDemoDialog,
-    openDonorDialog
+    openDonorDialog,
   } = props;
 
   return (
@@ -49,6 +50,11 @@ function Routing(props) {
         selectCareers={selectCareers}
       />
       <PropsRoute
+        path="/career/:slug"
+        component={UniqueCareer}
+        selectCareers={selectCareers}
+      />
+      <PropsRoute
         path="/impact"
         component={Impact}
         selectImpact={selectImpact}
@@ -58,7 +64,13 @@ function Routing(props) {
         component={PrivacyPolicy}
         selectPrivacyPolicy={selectPrivacyPolicy}
       />
-      <PropsRoute path="/" component={Home} selectHome={selectHome} openDemoDialog={openDemoDialog} openDonorDialog={openDonorDialog}/>
+      <PropsRoute
+        path="/"
+        component={Home}
+        selectHome={selectHome}
+        openDemoDialog={openDemoDialog}
+        openDonorDialog={openDonorDialog}
+      />
     </Switch>
   );
 }

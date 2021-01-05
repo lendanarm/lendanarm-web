@@ -8,6 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import Hidden from "@material-ui/core/Hidden";
 import Tab from "@material-ui/core/Tab";
 import withWidth, { isWidthDown } from "@material-ui/core/withWidth";
+import { Link, withRouter } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import { openings } from "./openings";
@@ -100,9 +101,13 @@ const useStyles = makeStyles((theme) => ({
       cursor: "pointer",
     },
   },
+  noDec: {
+    textDecoration: "none",
+    color: theme.palette.primary.main,
+  },
 }));
 
-function SimpleTabs({ width }) {
+function SimpleTabs({ width, theme }) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const [openJob, setOpenJob] = React.useState(false);
@@ -139,8 +144,9 @@ function SimpleTabs({ width }) {
                 <Grid item xs={12} sm={4} direction="column">
                   <Typography
                     variant="body1"
-                    className={classes.positionHover}
-                    onClick={handleClickJob}
+                    className={classes.positionHover + ' ' + classes.noDec}
+                    component={Link}
+                    to={`/career/${opening.slug}`}
                   >
                     {opening.position}
                   </Typography>
@@ -160,11 +166,7 @@ function SimpleTabs({ width }) {
                   setOpenJob={setOpenJob}
                 /> */}
               </Grid>
-            ) : (
-              <Typography variant="body1">
-                No non-remote positions at this time.
-              </Typography>
-            )
+            ) : null
           ) : (
             <Typography variant="body1">
               No job opening at this time.
@@ -178,7 +180,13 @@ function SimpleTabs({ width }) {
             opening.remote ? (
               <Grid container spacing={1}>
                 <Grid item xs={12} sm={4} direction="column">
-                  <Typography variant="body1" className={classes.positionHover}>
+                  <Typography
+                    variant="body1"
+                    className={classes.positionHover + ' ' + classes.noDec}
+                    component={Link}
+                    to={`/career/${opening.slug}`}
+                    
+                  >
                     {opening.position}
                   </Typography>
                   <Typography variant="body2">{opening.type}</Typography>
@@ -191,13 +199,8 @@ function SimpleTabs({ width }) {
                     <Typography variant="body2">{opening.location}</Typography>
                   </Grid>
                 </Hidden>
-                <JobDialog />
               </Grid>
-            ) : (
-              <Typography variant="body1">
-                No remote positions at this time.
-              </Typography>
-            )
+            ) : null
           ) : (
             <Typography variant="body1">
               No job opening at this time.
@@ -205,8 +208,9 @@ function SimpleTabs({ width }) {
           )
         )}
       </TabPanel>
+      <JobDialog openJob={openJob} setOpenJob={setOpenJob} />
     </div>
   );
 }
 
-export default withWidth()(SimpleTabs);
+export default withRouter(withWidth()(SimpleTabs));

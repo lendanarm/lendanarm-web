@@ -125,37 +125,31 @@ function PPSection(props) {
                           <div
                             style={{
                               display: "flex",
-                              justifyContent: "space-evenly",
                             }}
                           >
-                            <div
-                              style={{
-                                display: "flex",
-                              }}
-                            >
-                              <LocationOnIcon
-                                color="primary"
-                                style={{ marginRight: "10px" }}
-                              />
+                            <LocationOnIcon
+                              color="primary"
+                              style={{ marginRight: "10px" }}
+                            />
 
-                              <Typography
-                                variant="body1"
-                                color="textSecondary"
-                              >{`${data.remote ? "Remote" : "Non-remote"} - ${
-                                data.location
-                              }`}</Typography>
-                            </div>
-                            <div style={{ display: "flex" }}>
-                              <WorkOutlineIcon
-                                color="primary"
-                                style={{ marginRight: "10px" }}
-                              />
-
-                              <Typography variant="body1" color="textSecondary">
-                                {data.type}
-                              </Typography>
-                            </div>
+                            <Typography
+                              variant="body1"
+                              color="textSecondary"
+                            >{`${data.remote ? "Remote" : "Non-remote"} - ${
+                              data.location
+                            }`}</Typography>
                           </div>
+                          <div style={{ display: "flex" }}>
+                            <WorkOutlineIcon
+                              color="primary"
+                              style={{ marginRight: "10px" }}
+                            />
+
+                            <Typography variant="body1" color="textSecondary">
+                              {data.type}
+                            </Typography>
+                          </div>
+
                           <Typography variant="body1" color="textSecondary">
                             {data.jobDescription.intro}
                           </Typography>

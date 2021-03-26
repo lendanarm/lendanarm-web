@@ -222,27 +222,10 @@ function CtaSection(props) {
                             Build a blood donation routine, track donations and
                             receive your medical reports. Create a blood drive
                             or start a virtual donation campaign. Connect, chat,
-                            form bonds and build a vibrant donor network.
+                            form bonds and build a donor network.
                           </Typography>
                         </Box>
-                        {/* <Button
-                          variant="contained"
-                          size="medium"
-                          color="secondary"
-                          className={classes.button}
-                          startIcon={<AppleIcon />}
-                        >
-                          Download on App Store
-                        </Button>
-                        <Button
-                          variant="contained"
-                          size="medium"
-                          color="secondary"
-                          className={classes.button}
-                          startIcon={<AndroidIcon />}
-                        >
-                          Download on Google Play
-                        </Button> */}
+
                         <div style={{ width: "50%", height: "auto" }}>
                           <a href="https://play.google.com/store/apps/details?id=com.mediverse.lendanarm&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
                             <img

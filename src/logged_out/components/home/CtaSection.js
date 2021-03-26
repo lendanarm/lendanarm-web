@@ -225,7 +225,7 @@ function CtaSection(props) {
                             form bonds and build a vibrant donor network.
                           </Typography>
                         </Box>
-                        <Button
+                        {/* <Button
                           variant="contained"
                           size="medium"
                           color="secondary"
@@ -242,7 +242,20 @@ function CtaSection(props) {
                           startIcon={<AndroidIcon />}
                         >
                           Download on Google Play
-                        </Button>
+                        </Button> */}
+                        <div style={{ width: "50%", height: "auto" }}>
+                          <a href="https://play.google.com/store/apps/details?id=com.mediverse.lendanarm&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
+                            <img
+                              alt="Get it on Google Play"
+                              style={{
+                                display: "block",
+                                maxWidth: "100%",
+                                height: "auto",
+                              }}
+                              src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                            />
+                          </a>
+                        </div>
                       </div>
                       <PartnerSlider classes={classes} />
                     </Box>

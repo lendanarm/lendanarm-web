@@ -12,7 +12,6 @@ import { Helmet } from "react-helmet";
 
 import theme from "./theme";
 import GlobalStyles from "./GlobalStyles";
-import * as serviceWorker from "./serviceWorker";
 import Pace from "./shared/components/Pace";
 
 const LoggedInComponent = lazy(() => import("./logged_in/components/Main"));
@@ -68,7 +67,5 @@ function App() {
     </BrowserRouter>
   );
 }
-
-serviceWorker.register();
 
 export default App;

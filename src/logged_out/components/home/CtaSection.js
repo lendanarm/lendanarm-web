@@ -226,7 +226,7 @@ function CtaSection(props) {
                           </Typography>
                         </Box>
 
-                        <div style={{ width: "50%", height: "auto" }}>
+                        <div style={{ width: "60%", height: "auto" }}>
                           <a href="https://play.google.com/store/apps/details?id=com.mediverse.lendanarm&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
                             <img
                               alt="Get it on Google Play"

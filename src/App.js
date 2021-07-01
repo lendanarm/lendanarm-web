@@ -1,5 +1,5 @@
 // Used to prevent googlebot from rendering our page as blank, should be imported first
-import React, { Fragment, Suspense, lazy } from "react";
+import React, { Fragment, useEffect, Suspense, lazy } from "react";
 import { MuiThemeProvider, CssBaseline } from "@material-ui/core";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import axios from "axios";
@@ -13,6 +13,9 @@ import { Helmet } from "react-helmet";
 import theme from "./theme";
 import GlobalStyles from "./GlobalStyles";
 import Pace from "./shared/components/Pace";
+import ReactGA from "react-ga"
+
+ReactGA.initialize('UA-183025422-1')
 
 const LoggedInComponent = lazy(() => import("./logged_in/components/Main"));
 
@@ -37,6 +40,10 @@ if (token) {
 }
 
 function App() {
+
+useEffect(()=>{
+  ReactGA.pageview(window.location.pathname+ window.location.search)
+})
   return (
     <BrowserRouter>
       <MuiThemeProvider theme={theme}>

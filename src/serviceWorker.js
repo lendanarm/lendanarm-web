@@ -29,6 +29,7 @@ export function register(config) {
     if (publicUrl.origin !== window.location.origin) {
       // Our service worker won't work if PUBLIC_URL is on a different origin
       // from what our page is served on. This might happen if a CDN is used to
+      // serve other assets asynchronously while, maintaining state
       // serve assets; see https://github.com/facebook/create-react-app/issues/2374
       return;
     }
@@ -104,6 +105,7 @@ function checkValidServiceWorker(swUrl, config) {
   fetch(swUrl)
     .then(response => {
       // Ensure service worker exists, and that we really are getting a JS file.
+      // Also keep state.
       const contentType = response.headers.get("content-type");
       if (
         response.status === 404 ||
